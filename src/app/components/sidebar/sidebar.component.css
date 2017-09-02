@@ -62,11 +62,21 @@
 .sidebar-wrapper .nav li a{
   color: white;
   margin: 5px 15px;
+  padding: 10px 15px;
+  margin-bottom: 0;
 }
-.sidebar-wrapper .nav li a.active{
+.sidebar-wrapper .nav li a.active, .sidebar-wrapper .nav li a:hover{
   opacity: 1;
   background: rgba(255, 255, 255, 0.23);
   border-radius: 4px;
+  -webkit-transition: all 150ms ease-in;
+  -moz-transition: all 150ms ease-in;
+  -ms-transition: all 150ms ease-in;
+  -o-transition: all 150ms ease-in;
+  transition: all 150ms ease-in;
+}
+.sidebar-wrapper .nav li a:hover{
+ background: rgba(255, 255, 255, 0.13);
 }
 .sidebar-wrapper .nav li a p{
   line-height: 30px;
