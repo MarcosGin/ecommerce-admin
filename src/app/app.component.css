@@ -1,0 +1,8 @@
+.wrapper{
+  display: flex;
+}
+
+.main{
+  background: rgba(203, 203, 210, 0.15);
+  width: calc(100% - 260px);
+}
