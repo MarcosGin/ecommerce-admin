@@ -21,7 +21,7 @@
       "styles": [
         "styles.css",
         "assets/b4/css/bootstrap.min.css",
-        "assets/font-awesome/css/font-awesome.min.css"
+        "assets/css/pe-icon-7-stroke.css"
       ],
       "scripts": [
         "assets/jquery/jquery.slim.min.js",
