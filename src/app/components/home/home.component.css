@@ -1,0 +1,75 @@
+
+.icon-big{
+  font-size: 46px;
+}
+.icon-orange{
+  color: #f3b246;
+}
+.icon-celestial{
+  color: #68B3C8;
+}
+.icon-green{
+  color: #66c296;
+}
+.icon-red{
+  color: #dd0629;
+}
+.numbers{
+  text-align: right;
+  font-size: 2em;
+  font-weight: 300;
+}
+.numbers p{
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.4em;
+}
+.card-header{
+  background-color: #fff;
+  border-bottom: none;
+  margin: 0;
+  color: #333333;
+  font-size: 18px;
+  font-weight: 300;
+}
+.card-header .card-title{
+  font-size: 13px;
+  font-weight: 400;
+  color: #9A9A9A;
+  margin-bottom: 0;
+}
+.card-block .table td{
+  font-size: 13px;
+}
+.card-nopadding{
+  padding: 0;
+}
+.card-footer{
+  border-top: none;
+  background-color: #fff;
+  padding-top: 0;
+}
+.card-footer hr{
+  margin: 10px 0;
+}
+.card-footer .stats{
+  color: #a49e93;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.tooltip-example-block {
+  margin-top: 100px;
+}
+
+.special-tooltip {
+  background-color:blueviolet;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+  font-weight: 400;
+  -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+}
