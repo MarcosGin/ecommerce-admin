@@ -21,7 +21,8 @@
       "styles": [
         "styles.css",
         "assets/b4/css/bootstrap.min.css",
-        "assets/css/pe-icon-7-stroke.css"
+        "assets/css/pe-icon-7-stroke.css",
+        "assets/themify-icons/themify-icons.css"
       ],
       "scripts": [
         "assets/jquery/jquery.slim.min.js",
