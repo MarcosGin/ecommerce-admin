@@ -26,13 +26,15 @@ a:hover{
   margin: 0;
   line-height: 1.4em;
 }
+.card{
+  font-weight: 300;
+}
 .card-header{
   background-color: #fff;
   border-bottom: none;
   margin: 0;
   color: #333333;
   font-size: 18px;
-  font-weight: 300;
 }
 .card-header .card-title{
   font-size: 13px;
@@ -54,12 +56,28 @@ a:hover{
 .card-footer hr{
   margin: 10px 0;
 }
+.card-footer .footer-title{
+  padding-top: 2px;
+  display: inline-block;
+}
 .card-footer .stats{
   color: #a49e93;
-  font-weight: 300;
   font-size: 14px;
 }
 
+.card-footer .btn-fill{
+  border-radius: 25px;
+  padding: 5px 7px;
+  cursor: pointer;
+}
+.card-footer .btn-fill i{
+  vertical-align: middle;
+}
+
+td > span.badge{
+  font-weight: 300;
+  padding: 4px 6px;
+}
 .tooltip-hover{
   position: relative;
 }
