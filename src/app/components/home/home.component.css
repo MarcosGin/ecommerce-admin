@@ -58,18 +58,26 @@
   font-size: 14px;
 }
 
-.tooltip-example-block {
-  margin-top: 100px;
+.tooltip-hover{
+  position: relative;
 }
-
-.special-tooltip {
-  background-color:blueviolet;
-  border: 3px solid #fff;
-  border-radius: 10px;
-  padding: 10px;
+.tooltip-hover:before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #444;
+  border-radius: 8px;
   color: #fff;
-  font-weight: 400;
-  -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.75);
+  margin-top: -20px;
+  margin-left: -20px;
+  content: attr(tooltip-msg);
+  font-size: 10px;
+  padding: 2px;
+  text-align: center;
+  width: 60px;
+  opacity: 0;
+  transition: all 250ms ease-in;
+}
+.tooltip-hover:hover:before{
+  opacity: 1;
 }
