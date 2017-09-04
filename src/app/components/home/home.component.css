@@ -1,4 +1,6 @@
-
+a:hover{
+  text-decoration: none;
+}
 .icon-big{
   font-size: 46px;
 }
@@ -68,7 +70,7 @@
   background: #444;
   border-radius: 8px;
   color: #fff;
-  margin-top: -20px;
+  margin-top: -25px;
   margin-left: -20px;
   content: attr(tooltip-msg);
   font-size: 10px;
@@ -76,8 +78,9 @@
   text-align: center;
   width: 60px;
   opacity: 0;
-  transition: all 250ms ease-in;
+  transition: all 350ms ease-in;
 }
 .tooltip-hover:hover:before{
   opacity: 1;
+  margin-top: -20px;
 }
