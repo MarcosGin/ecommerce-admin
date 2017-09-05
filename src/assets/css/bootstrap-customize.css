@@ -1,3 +1,6 @@
+a:hover{
+  text-decoration: none;
+}
 /* Styles for the cards */
 .card{
   font-weight: 300;
@@ -14,10 +17,6 @@
   font-weight: 400;
   color: #9A9A9A;
   margin-bottom: 0;
-}
-.card-block .table td{
-  font-size: 13px;
-  vertical-align: middle;
 }
 .card-nopadding{
   padding: 0;
@@ -80,4 +79,29 @@
   border-left: 0 none;
   font-size: 20px;
   transition: all 300ms linear;
+}
+/* Styles for the tooltips */
+.tooltip-hover{
+  position: relative;
+}
+.tooltip-hover:before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #444;
+  border-radius: 8px;
+  color: #fff;
+  margin-top: -25px;
+  margin-left: -20px;
+  content: attr(tooltip-msg);
+  font-size: 10px;
+  padding: 2px;
+  text-align: center;
+  width: 60px;
+  opacity: 0;
+  transition: all 350ms ease-in;
+}
+.tooltip-hover:hover:before{
+  opacity: 1;
+  margin-top: -20px;
 }
