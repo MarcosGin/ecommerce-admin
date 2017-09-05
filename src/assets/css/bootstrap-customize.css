@@ -46,3 +46,38 @@
 .card-footer .btn-fill i{
   vertical-align: middle;
 }
+/*Styles for the search */
+.input-group .form-control{
+  background-color: #F3F2EE;
+  border: 1px solid #e8e7e3;
+  border-right: 0 none;
+  transition: all 300ms linear;
+}
+ .input-group .form-control:focus, .input-group .form-control:focus ~ .input-group-addon{
+  border-color: #73aff5;
+  background-color: #fff;
+}
+.input-group .form-control::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #cbcbcb;
+}
+.input-group .form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #cbcbcb;
+  opacity: 1;
+}
+.input-group .form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #cbcbcb;
+  opacity: 1;
+}
+.input-group .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #cbcbcb;
+}
+.input-group .form-control::-ms-input-placeholder { /* Microsoft Edge */
+  color: #cbcbcb;
+}
+.input-group .input-group-addon{
+  background-color: #F3F2EE;
+  border: 1px solid #e8e7e3;
+  border-left: 0 none;
+  font-size: 20px;
+  transition: all 300ms linear;
+}
