@@ -1,0 +1,48 @@
+/* Styles for the cards */
+.card{
+  font-weight: 300;
+}
+.card-header{
+  background-color: #fff;
+  border-bottom: none;
+  margin: 0;
+  color: #333333;
+  font-size: 18px;
+}
+.card-header .card-title{
+  font-size: 13px;
+  font-weight: 400;
+  color: #9A9A9A;
+  margin-bottom: 0;
+}
+.card-block .table td{
+  font-size: 13px;
+  vertical-align: middle;
+}
+.card-nopadding{
+  padding: 0;
+}
+.card-footer{
+  border-top: none;
+  background-color: #fff;
+  padding-top: 0;
+}
+.card-footer hr{
+  margin: 10px 0;
+}
+.card-footer .footer-title{
+  padding-top: 2px;
+  display: inline-block;
+}
+.card-footer .stats{
+  color: #a49e93;
+  font-size: 14px;
+}
+.card-footer .btn-fill{
+  border-radius: 25px;
+  padding: 5px 7px;
+  cursor: pointer;
+}
+.card-footer .btn-fill i{
+  vertical-align: middle;
+}
