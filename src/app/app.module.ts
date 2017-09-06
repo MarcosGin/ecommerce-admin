@@ -7,8 +7,8 @@ import { APP_ROUTING } from './app.routes';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsersComponent } from './components/users/users.component';
-import { UserEditComponent } from './components/users/user-edit.component';
-import { UserListComponent } from './components/users/user-list.component';
+import { UserEditComponent } from './components/users/edit/user-edit.component';
+import { UserListComponent } from './components/users/list/user-list.component';
 
 @NgModule({
   declarations: [
