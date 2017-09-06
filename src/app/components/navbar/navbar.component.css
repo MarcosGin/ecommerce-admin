@@ -3,8 +3,6 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   height: 65px;
 }
-
-/*Styles for the search */
 .navbar-form{
   margin-left: 30px;
 }
@@ -12,42 +10,6 @@
   height: 100%;
   padding: 5px;
 }
-.navbar-form .input-group .form-control{
-  background-color: #F3F2EE;
-  border: 1px solid #e8e7e3;
-  border-right: 0 none;
-  transition: all 300ms linear;
-}
-.navbar-form .input-group .form-control:focus, .navbar-form .input-group .form-control:focus ~ .input-group-addon{
-  border-color: #73aff5;
-  background-color: #fff;
-}
-.navbar-form .input-group .form-control::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-  color: #cbcbcb;
-}
-.navbar-form .input-group .form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: #cbcbcb;
-  opacity: 1;
-}
-.navbar-form .input-group .form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: #cbcbcb;
-  opacity: 1;
-}
-.navbar-form .input-group .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #cbcbcb;
-}
-.navbar-form .input-group .form-control::-ms-input-placeholder { /* Microsoft Edge */
-  color: #cbcbcb;
-}
-.navbar-form .input-group .input-group-addon{
-  background-color: #F3F2EE;
-  border: 1px solid #e8e7e3;
-  border-left: 0 none;
-  font-size: 20px;
-  transition: all 300ms linear;
-}
-
-
 /* Styles for the dropdown*/
 .navbar .nav-item .nav-link{
   cursor: pointer;

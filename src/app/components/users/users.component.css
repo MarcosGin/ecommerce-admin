@@ -1,0 +1,110 @@
+.card-header{
+  vertical-align: middle;
+}
+.table-striped tbody tr:nth-of-type(odd){
+  background-color: #f9f9f9;
+}
+.table-hover>tbody>tr:hover {
+  background-color: #f5f5f5;
+}
+.card-block .table > thead > tr > th:first-child,.card-block .table > tbody > tr > td:first-child{
+  padding-left: 15px;
+}
+
+.card-block .table > thead > tr > th {
+  border-bottom-width: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #9A9A9A;
+  font-weight: 400;
+  padding-bottom:  5px;
+  padding-left: 8px;
+  border-top: 0;
+}
+.card-block .table > tbody > tr > td {
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  padding: 12px 8px;
+}
+.card-block label{
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #9A9A9A;
+}
+.card-search{
+  max-width: 240px;
+}
+.card-search .input-group .form-control{
+  padding-top: 10px;
+  font-size: 14px;
+}
+.card-search .input-group .input-group-addon{
+  font-size: 16px;
+}
+
+.user-profile .card-header{
+  background-image: url("../../../assets/img/users/user-background.png");
+  background-size: cover;
+  background-position: center center;
+  height: 120px;
+}
+.user-profile .avatar{
+  text-align: center;
+  margin-top: -80px;
+}
+.user-profile .avatar img{
+  width: 124px;
+  height: 124px;
+  border: 5px solid #EEE;
+  margin-bottom: 5px;
+  border-radius: 50%;
+}
+.user-profile .avatar span{
+  font-weight: 300;
+  font-size: 19px;
+  display: block;
+}
+
+
+
+.flag{
+  background-repeat: no-repeat;
+  background-position: 1.5em 50%;
+  background-size: 2em auto;
+  padding: 0.8em 1em 0.8em 4em;
+}
+.flag-ar{
+  background-image: url("../../../assets/img/flags/ar.svg");
+}
+.flag-bo{
+  background-image: url("../../../assets/img/flags/bo.svg");
+}
+.flag-br{
+  background-image: url("../../../assets/img/flags/br.svg");
+}
+.flag-cl{
+  background-image: url("../../../assets/img/flags/cl.svg");
+}
+.flag-co{
+  background-image: url("../../../assets/img/flags/co.svg");
+}
+.flag-ec {
+  background-image: url("../../../assets/img/flags/ec.svg");
+}
+.flag-mx{
+  background-image: url("../../../assets/img/flags/mx.svg");
+}
+.flag-pe{
+  background-image: url("../../../assets/img/flags/pe.svg");
+}
+.flag-py{
+  background-image: url("../../../assets/img/flags/py.svg");
+}
+.flag-uy {
+  background-image: url("../../../assets/img/flags/uy.svg");
+}
+.flag-ve{
+  background-image: url("../../../assets/img/flags/ve.svg");
+}

@@ -1,0 +1,83 @@
+<div class="row animated fadeInLeftBig">
+  <div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">Editing user</div>
+        <div class="card-block">
+          <form action="">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group"><label for="firstName">First name</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="First name">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group"><label for="lastName">Last name</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Last name">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group"><label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="Username">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group"><label for="email">Email Address</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email address">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group"><label for="numberPhone">Number phone</label>
+                  <input type="text" class="form-control" id="numberPhone" placeholder="Phone">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group"><label for="country">Country</label>
+                  <select class="form-control" id="country">
+                    <option value="" selected>Select country</option>
+                    <option value="ar">Argentina</option>
+                    <option value="bo">Bolivia</option>
+                    <option value="pe">Perú</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group"><label for="city">City</label>
+                  <input type="text" class="form-control" id="city" placeholder="City">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group"><label for="address">Address</label>
+                  <input type="text" class="form-control" id="address" placeholder="Address">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group"><label for="postalCode">Postal code</label>
+                  <input type="text" class="form-control" id="postalCode" placeholder="Postal code">
+                </div>
+              </div>
+            </div>
+            <button type="submit" [routerLink]="['/users']" class="btn btn-danger float-left">Go back</button>
+            <button type="submit" class="btn btn-info float-right">Save changes</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card user-profile">
+      <div class="card-header">
+      </div>
+      <div class="card-block">
+        <div class="avatar">
+          <img src="../../../assets/img/users/user-avatar.png" class="img-thumbnail" alt="">
+          <span>Marcos Gin</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
