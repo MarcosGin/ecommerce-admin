@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HomeService } from './services/home.service';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { APP_ROUTING } from './app.routes';
@@ -24,7 +26,9 @@ import { UserListComponent } from './components/users/list/user-list.component';
     BrowserModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    HomeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

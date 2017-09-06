@@ -1,18 +1,19 @@
 <div class="content">
   <div class="container-fluid">
+
     <div class="row animated fadeInLeftBig">
       <div class="col-lg-3 col-sm-6">
         <div class="card">
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-orange text-center"><i class="ti-shopping-cart"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Products</p> {{ products }}</div>
+              <div class="col-7"><div class="numbers"><p>Products</p> {{ statistics[0].products.size }}</div>
               </div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> Updated now</div>
+            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].products.updated_at }}</div>
           </div>
         </div>
       </div>
@@ -21,12 +22,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-celestial text-center"><i class="ti-user"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Users</p> {{ users }}</div></div>
+              <div class="col-7"><div class="numbers"><p>Users</p>  {{ statistics[0].users.size }}</div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> In the last hour</div>
+            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].users.updated_at }}</div>
           </div>
         </div>
       </div>
@@ -35,12 +36,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-green text-center"><i class="ti-wallet"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Buys</p> {{ buys }}</div></div>
+              <div class="col-7"><div class="numbers"><p>Buys</p> {{ statistics[0].buys.size }} </div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> In the last hour</div>
+            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].buys.updated_at }}</div>
           </div>
         </div>
       </div>
@@ -49,12 +50,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-red text-center"><i class="ti-pulse"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Errors</p> {{ errors }}</div></div>
+              <div class="col-7"><div class="numbers"><p>Errors</p> {{ statistics[0].mistakes.size }}</div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> In the last hour</div>
+            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].mistakes.updated_at }}</div>
           </div>
         </div>
       </div>
@@ -66,41 +67,11 @@
           <div class="card-header">Latest products added</div>
           <div class="card-block card-nopadding">
             <table class="table">
-              <tr>
+              <tr *ngFor="let product of lastProducts;">
                 <td class="text-center"><i class="ti-mobile"></i></td>
-                <td>Celular Motorola 4G liberado 16GB</td>
-                <td><span class="badge badge-pill badge-info">an hour ago</span></td>
+                <td>{{ product.title }}</td>
+                <td class="text-center"><span class="badge badge-pill badge-info">{{ product.created_at }}</span></td>
                 <td class="text-center"><a href="product/1" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
-              </tr>
-              <tr>
-                <td class="text-center"><i class="ti-mobile"></i></td>
-                <td>Celular Motorola 4G liberado 16GB</td>
-                <td><span class="badge badge-pill badge-info">an hour ago</span></td>
-                <td class="text-center"><a href="product/2" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
-              </tr>
-              <tr>
-                <td class="text-center"><i class="ti-mobile"></i></td>
-                <td>Celular Motorola 4G liberado 16GB</td>
-                <td><span class="badge badge-pill badge-info">an hour ago</span></td>
-                <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
-              </tr>
-              <tr>
-                <td class="text-center"><i class="ti-mobile"></i></td>
-                <td>Celular Motorola 4G liberado 16GB</td>
-                <td><span class="badge badge-pill badge-info">an hour ago</span></td>
-                <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
-              </tr>
-              <tr>
-                <td class="text-center"><i class="ti-mobile"></i></td>
-                <td>Celular Motorola 4G liberado 16GB</td>
-                <td><span class="badge badge-pill badge-info">an hour ago</span></td>
-                <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
-              </tr>
-              <tr>
-                <td class="text-center"><i class="ti-mobile"></i></td>
-                <td>Celular Motorola 4G liberado 16GB</td>
-                <td><span class="badge badge-pill badge-info">an hour ago</span></td>
-                <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
               </tr>
             </table>
           </div>
@@ -124,28 +95,17 @@
           <div class="card-block card-nopadding">
             <table class="table">
               <tbody>
-                <tr>
-                  <td class="text-center">#01242</td>
-                  <td>Product # 023123, does not have your images</td>
-                  <td class="text-center"><span class="badge badge-pill badge-info">an hour ago</span></td>
-                  <td class="text-center"><span class="badge badge-pill badge-danger">fixed</span></td>
+                <tr *ngFor="let mistake of lastMistakes;">
+                  <td class="text-center">#{{ mistake.id }}</td>
+                  <td>{{ mistake.title }}</td>
+                  <td class="text-center"><span class="badge badge-pill badge-info">{{ mistake.created_at }}</span></td>
+                  <td class="text-center">
+                    <span class="badge badge-pill"
+                          [ngClass]="{'badge-danger': mistake.state == 'pending',
+                                      'badge-success': mistake.state == 'fixed',
+                                      'badge-warning': mistake.state == 'fixing'}">{{ mistake.state}}</span></td>
                   <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
                 </tr>
-                <tr>
-                  <td class="text-center">#01243</td>
-                  <td>Product # 213151, does not have your price</td>
-                  <td class="text-center"><span class="badge badge-pill badge-info">an hour ago</span></td>
-                  <td class="text-center"><span class="badge badge-pill badge-warning">fixing</span></td>
-                  <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
-                </tr>
-                <tr>
-                  <td class="text-center">#01244</td>
-                  <td>Product # 020123, does not exist on the web</td>
-                  <td class="text-center"><span class="badge badge-pill badge-info">an hour ago</span></td>
-                  <td class="text-center"><span class="badge badge-pill badge-success">pending</span></td>
-                  <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
-                </tr>
-
               </tbody>
             </table>
           </div>
