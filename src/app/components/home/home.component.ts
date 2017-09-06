@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  products: number = 2450;
+  users: number = 145;
+  buys: number = 42;
+  errors: number = 23;
+
+
   constructor() { }
 
   ngOnInit() {
