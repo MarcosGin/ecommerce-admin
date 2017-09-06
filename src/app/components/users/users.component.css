@@ -44,6 +44,29 @@
   font-size: 16px;
 }
 
+.user-profile .card-header{
+  background-image: url("../../../assets/img/users/user-background.png");
+  background-size: cover;
+  background-position: center center;
+  height: 120px;
+}
+.user-profile .avatar{
+  text-align: center;
+  margin-top: -80px;
+}
+.user-profile .avatar img{
+  width: 124px;
+  height: 124px;
+  border: 5px solid #EEE;
+  margin-bottom: 5px;
+  border-radius: 50%;
+}
+.user-profile .avatar span{
+  font-weight: 300;
+  font-size: 19px;
+  display: block;
+}
+
 
 
 .flag{
