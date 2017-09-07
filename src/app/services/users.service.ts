@@ -13,7 +13,7 @@ export class UsersService {
       phone: 42131424,
       country: 'ar',
       city: 'Avellaneda',
-      address: 'Bearley 91',
+      address: 'Beazley 91',
       postalCode: 1872
     },
     {
@@ -48,6 +48,10 @@ export class UsersService {
 
   getUsers () {
     return this.users;
+  }
+
+  getUser ( id: number ) {
+    return this.users[id - 1];
   }
 
 }
