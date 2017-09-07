@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HomeService } from './services/home.service';
+import { UsersService } from './services/users.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -27,7 +28,8 @@ import { UserListComponent } from './components/users/list/user-list.component';
     APP_ROUTING
   ],
   providers: [
-    HomeService
+    HomeService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })
