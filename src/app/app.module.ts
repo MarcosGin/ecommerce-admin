@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { HomeService } from './services/home.service';
 import { UsersService } from './services/users.service';
@@ -25,6 +27,8 @@ import { UserListComponent } from './components/users/list/user-list.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
     APP_ROUTING
   ],
   providers: [
