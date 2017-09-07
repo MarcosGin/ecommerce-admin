@@ -3,33 +3,38 @@
     <div class="card">
         <div class="card-header">Editing user</div>
         <div class="card-block">
-          <form action="">
+          <form (ngSubmit)="saveChanges()" #formUser="ngForm">
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group"><label for="firstName">First name</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="First name">
+                  <input  [(ngModel)]="user.firstName"
+                              type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group"><label for="lastName">Last name</label>
-                  <input type="text" class="form-control" id="lastName" placeholder="Last name">
+                  <input [(ngModel)]="user.lastName"
+                             type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group"><label for="username">Username</label>
-                  <input type="text" class="form-control" id="username" placeholder="Username">
+                  <input [(ngModel)]="user.username"
+                             type="text" class="form-control" name="username" id="username" placeholder="Username">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-5">
                 <div class="form-group"><label for="email">Email Address</label>
-                  <input type="email" class="form-control" id="email" placeholder="Email address">
+                  <input [(ngModel)]="user.email"
+                             type="email" class="form-control" name="email" id="email" placeholder="Email address">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group"><label for="numberPhone">Number phone</label>
-                  <input type="text" class="form-control" id="numberPhone" placeholder="Phone">
+                  <input [(ngModel)]="user.phone"
+                             type="text" class="form-control" name="phone" id="numberPhone" placeholder="Phone">
                 </div>
               </div>
               <div class="col-md-4">
@@ -46,17 +51,20 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="form-group"><label for="city">City</label>
-                  <input type="text" class="form-control" id="city" placeholder="City">
+                  <input [(ngModel)]="user.city"
+                             type="text" class="form-control" name="city" id="city" placeholder="City">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group"><label for="address">Address</label>
-                  <input type="text" class="form-control" id="address" placeholder="Address">
+                  <input [(ngModel)]="user.address"
+                             type="text" class="form-control" name="address" id="address" placeholder="Address">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group"><label for="postalCode">Postal code</label>
-                  <input type="text" class="form-control" id="postalCode" placeholder="Postal code">
+                  <input [(ngModel)]="user.postalCode"
+                             type="text" class="form-control" name="postalCode" id="postalCode" placeholder="Postal code">
                 </div>
               </div>
             </div>
@@ -74,7 +82,7 @@
       <div class="card-block">
         <div class="avatar">
           <img src="../../../assets/img/users/user-avatar.png" class="img-thumbnail" alt="">
-          <span>Marcos Gin</span>
+          <span>{{ user.firstName }} {{ user.lastName }}</span>
         </div>
 
       </div>
