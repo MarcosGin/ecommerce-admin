@@ -94,20 +94,16 @@ export class UserEditComponent implements OnInit {
       'address': [this.user.address, [Validators.required]],
       'postalCode': [this.user.postalCode, [Validators.required]]
     });
-
     this.form.valueChanges
-      .subscribe(data => this.onValueChanged(data));
-
-    this.onValueChanged(); // (re)set validation messages now
+      .subscribe(data => this.onValueChanged());
   }
 
   onValueChanged(data?: any) {
     if (!this.form) { return; }
-    console.log(this.form);
+    console.log(this.form.value);
     const form = this.form;
 
     for (const field in this.formErrors) {
-      // clear previous error message (if any)
       this.formErrors[field] = '';
       const control = form.get(field);
 
