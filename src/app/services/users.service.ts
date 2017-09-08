@@ -55,7 +55,7 @@ export class UsersService {
   }
 
 }
-export interface Users {
+export class Users {
   id: number;
   firstName: string;
   lastName: string;

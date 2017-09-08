@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpModule } from '@angular/http';
 
 import { HomeService } from './services/home.service';
@@ -28,6 +29,7 @@ import { UserListComponent } from './components/users/list/user-list.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     APP_ROUTING
   ],
