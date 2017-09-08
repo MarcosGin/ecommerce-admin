@@ -116,7 +116,7 @@ export class UserEditComponent implements OnInit {
     }
   }
 
-  formErrors = {
+   formErrors = {
     'firstName': '',
     'lastName': '',
     'username': '',

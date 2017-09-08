@@ -6,12 +6,16 @@
           <form [formGroup]="form">
             <div class="row">
               <div class="col-md-4">
-                <div *ngIf="formErrors.firstName">
-                  {{ formErrors.firstName }}
-                </div>
-                <div class="form-group"><label for="firstName">First name</label>
+
+                <div class="form-group has-danger">
+                  <label class="form-control-label" for="firstName">First name</label>
+                  <div class="form-icon-error" *ngIf="formErrors.firstName">
+                    <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+                    <div class="message">{{ formErrors.firstName }}</div>
+                  </div>
                   <input  formControlName="firstName"
-                              type="text" class="form-control"  id="firstName" placeholder="First name">
+                              type="text" class="form-control" id="firstName" placeholder="First name">
+
                 </div>
               </div>
               <div class="col-md-4">
