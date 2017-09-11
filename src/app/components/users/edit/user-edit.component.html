@@ -10,7 +10,7 @@
                   <label class="form-control-label" for="firstName">First name</label>
                   <div class="form-icon-error" *ngIf="formErrors.firstName">
                     <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
-                    <div class="message">{{ formErrors.firstName }}</div>
+                    <div class="message animated fadeInDown">{{ formErrors.firstName }}</div>
                   </div>
                   <input  formControlName="firstName"
                               type="text" class="form-control" id="firstName" placeholder="First name">
