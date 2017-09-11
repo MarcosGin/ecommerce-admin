@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { USERS_ROUTES } from './components/users/users.routes';
+import { PRODUCTS_ROUTES } from './components/products/products.routes';
 
 import {HomeComponent} from './components/home/home.component';
 import {UsersComponent} from './components/users/users.component';
@@ -13,7 +14,11 @@ const APP_ROUTES: Routes = [
     component: UsersComponent,
     children: USERS_ROUTES,
   },
-  { path: 'products', component: ProductsComponent },
+  {
+    path: 'products',
+    component: ProductsComponent,
+    children: PRODUCTS_ROUTES
+  },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
