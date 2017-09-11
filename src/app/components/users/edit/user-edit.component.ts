@@ -95,19 +95,19 @@ export class UserEditComponent implements OnInit {
       'postalCode': [this.user.postalCode, [Validators.required]]
     });
     this.form.valueChanges
-      .subscribe(data => this.onValueChanged());
+      .subscribe(data => this.onValueChanged(data));
   }
 
   onValueChanged(data?: any) {
     if (!this.form) { return; }
-    console.log(this.form.value);
+    console.log('entro');
     const form = this.form;
 
     for (const field in this.formErrors) {
       this.formErrors[field] = '';
       const control = form.get(field);
 
-      if (control && control.dirty && !control.valid) {
+      if (control && !control.valid) {
         const messages = this.validationMessages[field];
         for (const key in control.errors) {
           this.formErrors[field] += messages[key] + ' ';
@@ -131,25 +131,25 @@ export class UserEditComponent implements OnInit {
 
   validationMessages = {
     'firstName': {
-      'required':  'required field',
-      'minlength': 'must be at least 4 characters long.',
-      'maxlength': 'cannot be more than 24 characters long.'
+      'required':  'This field is required',
+      'minlength': 'Must be at least 4 characters long.',
+      'maxlength': 'Cannot be more than 24 characters long.'
     },
     'lastName': {
-      'required': 'required field',
-      'minlength': 'must be at least 4 characters long.',
-      'maxlength':     'cannot be more than 24 characters long.'
+      'required':  'This field is required',
+      'minlength': 'Must be at least 4 characters long.',
+      'maxlength': 'Cannot be more than 24 characters long.'
     },
     'username': {
-      'required': 'required field',
-      'minlength': 'must be at least 8 characters long.',
-      'maxlength':     'cannot be more than 8 characters long.'
+      'required':  'This field is required',
+      'minlength': 'Must be at least 8 characters long.',
+      'maxlength': 'Cannot be more than 8 characters long.'
     },
-    'email': {'required': 'required field', 'pattern': 'The email is invalid!'},
-    'phone': {'required': 'required field'},
-    'country': {'required': 'required field'},
-    'city': {'required': 'required field'},
-    'address': {'required': 'required field'},
-    'postalCode': {'required': 'required field'}
+    'email': {'required': 'This field is required', 'pattern': 'The email is invalid'},
+    'phone': {'required': 'This field is required'},
+    'country': {'required': 'This field is required'},
+    'city': {'required': 'This field is required'},
+    'address': {'required': 'This field is required'},
+    'postalCode': {'required': 'This field is required'}
   };
 }
