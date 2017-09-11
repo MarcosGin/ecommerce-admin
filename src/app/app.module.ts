@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserEditComponent } from './components/users/edit/user-edit.component';
 import { UserListComponent } from './components/users/list/user-list.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserListComponent } from './components/users/list/user-list.component';
     NavbarComponent,
     UsersComponent,
     UserEditComponent,
-    UserListComponent
+    UserListComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
