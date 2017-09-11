@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import {UserEditComponent} from './user-edit.component';
-import {UserListComponent} from './user-list.component';
+import {UserEditComponent} from './edit/user-edit.component';
+import {UserListComponent} from './list/user-list.component';
 
 
 export const USERS_ROUTES: Routes = [
