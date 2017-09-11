@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { HomeService } from './services/home.service';
 import { UsersService } from './services/users.service';
+import { ProductsService } from './services/products.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -37,7 +38,8 @@ import { ProductsComponent } from './components/products/products.component';
   ],
   providers: [
     HomeService,
-    UsersService
+    UsersService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })
