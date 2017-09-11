@@ -1,3 +1,7 @@
+.container-fluid > .row  > [class*=col-]{
+  margin-bottom: 5px;
+}
+
 a:hover{
   text-decoration: none;
 }
