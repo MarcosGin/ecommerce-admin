@@ -26,6 +26,11 @@
   font-size: 14px;
   padding: 12px 8px;
 }
+
+.card-block .table > tbody > tr > td > span.badge{
+  font-weight: 300;
+  padding: 4px 6px;
+}
 .card-search{
   max-width: 240px;
 }
