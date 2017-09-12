@@ -9,8 +9,8 @@ export class ProductsService {
       id: 1,
       title: 'Celular Motorola 4G liberado 16GB',
       description: 'its is my description',
-      category: 'celular',
-      mark: 'motorola',
+      category: 1,
+      mark: 1,
       price: 1700,
       stock: 120,
       created_at: 'four hour ago',
@@ -20,8 +20,8 @@ export class ProductsService {
       id: 2,
       title: 'Smart Tv SAMSUNG 48 UN48JU6700',
       description: 'its is my description',
-      category: 'televisor',
-      mark: 'samsung',
+      category: 2,
+      mark: 2,
       price: 8700,
       stock: 47,
       created_at: 'six hour ago',
@@ -31,8 +31,8 @@ export class ProductsService {
       id: 3,
       title: 'Notebook Lenovo Y700-15ISK 80NV003SAR',
       description: 'its is my description',
-      category: 'notebook',
-      mark: 'lenovo',
+      category: 3,
+      mark: 3,
       price: 13000,
       stock: 23,
       created_at: 'three hour ago',
@@ -68,6 +68,10 @@ export class ProductsService {
 
   getLastProductsList() {
     return this.lastProductsList;
+  }
+
+  getProduct (id: number) {
+    return this.products[id - 1];
   }
 
 }
