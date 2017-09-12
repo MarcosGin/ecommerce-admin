@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 import { ProductsService } from '../../../services/products.service';
 import { Products } from '../../../interfaces/products';
-import { ActivatedRoute } from '@angular/router';
 import { Category } from '../../../interfaces/category';
 import { Mark } from '../../../interfaces/mark';
 
