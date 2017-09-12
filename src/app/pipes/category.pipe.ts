@@ -6,7 +6,7 @@ import { Pipe, PipeTransform} from '@angular/core';
 
 export class CategoryPipe implements PipeTransform {
 
-  private iconsCategory = ['fa-mobile', 'fa-tv', 'fa-laptop' , 'fa-tablet' , 'fa-desktop'];
+  private iconsCategory = ['fa-mobile', 'fa-laptop', 'fa-tv' , 'fa-tablet' , 'fa-desktop'];
 
   transform(value: number): string {
     if (value === 1) {

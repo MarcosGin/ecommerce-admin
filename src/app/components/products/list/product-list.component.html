@@ -62,28 +62,14 @@
             <th></th>
           </tr>
           </thead>
-          <tr>
-            <td>1</td>
-            <td>Motorola</td>
-            <td class="text-center">10</td>
-            <td class="text-center"><a href="" tooltip-msg="Edit mark" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
-            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Motorola</td>
-            <td class="text-center">10</td>
-            <td class="text-center"><a href="" tooltip-msg="Edit mark" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
-            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Motorola</td>
-            <td class="text-center">10</td>
-            <td class="text-center"><a href="" tooltip-msg="Edit mark" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
-            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
-          </tr>
           <tbody>
+          <tr *ngFor="let mark of marksList">
+            <td>{{ mark.id }}</td>
+            <td>{{ mark.name }}</td>
+            <td class="text-center">{{ getProductsMarks(mark.id) }}</td>
+            <td class="text-center"><a href="" tooltip-msg="Edit mark" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
+            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
+          </tr>
           </tbody>
         </table>
       </div>
@@ -105,28 +91,14 @@
             <th></th>
           </tr>
           </thead>
-          <tr>
-            <td>1</td>
-            <td>Celular</td>
-            <td class="text-center">10</td>
-            <td class="text-center"><a href="" tooltip-msg="Edit" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
-            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Notebook</td>
-            <td class="text-center">10</td>
-            <td class="text-center"><a href="" tooltip-msg="Edit" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
-            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Televisor</td>
-            <td class="text-center">10</td>
-            <td class="text-center"><a href="" tooltip-msg="Edit" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
-            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
-          </tr>
           <tbody>
+          <tr *ngFor="let category of categorysList">
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td class="text-center">{{ getProductsCategorys(category.id)}}</td>
+            <td class="text-center"><a href="" tooltip-msg="Edit" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
+            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
+          </tr>
           </tbody>
         </table>
       </div>

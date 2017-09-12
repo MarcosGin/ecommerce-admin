@@ -20,8 +20,8 @@ export class ProductsService {
       id: 2,
       title: 'Smart Tv SAMSUNG 48 UN48JU6700',
       description: 'its is my description',
-      category: 2,
-      mark: 2,
+      category: 3,
+      mark: 3,
       price: 8700,
       stock: 47,
       created_at: 'six hour ago',
@@ -31,13 +31,24 @@ export class ProductsService {
       id: 3,
       title: 'Notebook Lenovo Y700-15ISK 80NV003SAR',
       description: 'its is my description',
-      category: 3,
-      mark: 3,
+      category: 2,
+      mark: 2,
       price: 13000,
       stock: 23,
       created_at: 'three hour ago',
       updated_at: 'yesterday',
     },
+    {
+      id: 4,
+      title: 'Notebook ACER E5-573-574S CI5',
+      description: 'its is my description',
+      category: 2,
+      mark: 2,
+      price: 19000,
+      stock: 23,
+      created_at: 'three hour ago',
+      updated_at: 'yesterday',
+    }
   ];
   private lastProductsList: ListProduct [] = [
     {
@@ -72,6 +83,25 @@ export class ProductsService {
 
   getProduct (id: number) {
     return this.products[id - 1];
+  }
+
+  getProductsForMark( id: number ) {
+    let cont = 0;
+    for (const product of this.products) {
+      if (product.mark === id) {
+        cont++;
+      }
+    }
+    return cont;
+  }
+  getProductsForCategory( id: number ) {
+    let cont = 0;
+    for (const product of this.products) {
+      if (product.category === id) {
+        cont++;
+      }
+    }
+    return cont;
   }
 
 }
