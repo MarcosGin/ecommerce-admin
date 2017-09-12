@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { HttpModule } from '@angular/http';
 
 import { HomeService } from './services/home.service';
@@ -38,12 +38,14 @@ import { ProductListComponent } from './components/products/list/product-list.co
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    APP_ROUTING
+    APP_ROUTING,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [
     HomeService,
     UsersService,
-    ProductsService
+    ProductsService,
   ],
   bootstrap: [AppComponent]
 })

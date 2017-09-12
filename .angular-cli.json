@@ -24,12 +24,15 @@
         "assets/css/animate.css",
         "assets/css/bootstrap-customize.css",
         "assets/css/pe-icon-7-stroke.css",
-        "assets/themify-icons/themify-icons.css"
+        "assets/themify-icons/themify-icons.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css"
       ],
       "scripts": [
         "assets/jquery/jquery.slim.min.js",
         "assets/tether/tether.min.js",
-        "assets/b4/js/bootstrap.min.js"
+        "assets/b4/js/bootstrap.min.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

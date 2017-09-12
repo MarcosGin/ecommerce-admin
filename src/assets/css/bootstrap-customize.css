@@ -61,9 +61,6 @@ a:hover{
   transition: all 300ms linear;
   position: relative;
 }
-.form-group textarea.form-control{
-  height: 150px;
-}
 .form-group .form-control:focus {
   border: 1px solid #AAAAAA;
   outline: 0 !important;

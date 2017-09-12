@@ -34,7 +34,7 @@
                   <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                   <div class="message animated fadeInDown">{{ formErrors.description }}</div>
                 </div>
-                <textarea formControlName="description" class="form-control" id="description" placeholder="Description"></textarea>
+                <textarea [froalaEditor]="optionsEditor" formControlName="description" class="form-control" id="description" placeholder="Description"></textarea>
               </div>
             </div>
           </div>

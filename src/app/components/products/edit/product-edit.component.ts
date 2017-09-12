@@ -14,6 +14,10 @@ import { Mark } from '../../../interfaces/mark';
 })
 export class ProductEditComponent implements OnInit {
 
+  public optionsEditor: Object = {
+    placeholderText: 'Insert the description here...',
+    height: 200
+  };
   public form: FormGroup;
   public product: Products;
   public categorys: Category [];
