@@ -1,9 +1,9 @@
-export interface Products {
+export class Products {
   id: number;
   title: string;
   description: string;
-  category: string;
-  mark: string;
+  category: number;
+  mark: number;
   price: number;
   stock: number;
   created_at: string;
