@@ -6,6 +6,7 @@ import { ProductsService } from '../../../services/products.service';
 import { Products } from '../../../interfaces/products';
 import { Category } from '../../../interfaces/category';
 import { Mark } from '../../../interfaces/mark';
+import {CategorysService} from "../../../services/categorys.service";
 
 @Component({
   selector: 'app-edit',
@@ -26,23 +27,11 @@ export class ProductEditComponent implements OnInit {
   public id: number;
 
   constructor( private _productsService: ProductsService,
+               private _categorysService: CategorysService,
                private router: ActivatedRoute,
                private formBuilder: FormBuilder ) {
     this.product = new Products();
-    this.categorys = [
-      {
-        id: 1,
-        name: 'Celular'
-      },
-      {
-        id: 2,
-        name: 'Notebook'
-      },
-      {
-        id: 3,
-        name: 'Televisor'
-      }
-    ];
+    this.categorys = this._categorysService.getCategorys();
     this.marks = [
       {
         id: 1,
