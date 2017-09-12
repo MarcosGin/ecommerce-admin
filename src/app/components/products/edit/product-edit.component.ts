@@ -3,10 +3,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductsService } from '../../../services/products.service';
+import { CategorysService } from '../../../services/categorys.service';
+import { MarksService } from '../../../services/marks.service';
+
 import { Products } from '../../../interfaces/products';
 import { Category } from '../../../interfaces/category';
 import { Mark } from '../../../interfaces/mark';
-import {CategorysService} from "../../../services/categorys.service";
 
 @Component({
   selector: 'app-edit',
@@ -28,24 +30,12 @@ export class ProductEditComponent implements OnInit {
 
   constructor( private _productsService: ProductsService,
                private _categorysService: CategorysService,
+               private _marksService: MarksService,
                private router: ActivatedRoute,
                private formBuilder: FormBuilder ) {
     this.product = new Products();
     this.categorys = this._categorysService.getCategorys();
-    this.marks = [
-      {
-        id: 1,
-        name: 'Motorola'
-      },
-      {
-        id: 2,
-        name: 'Samsung'
-      },
-      {
-        id: 3,
-        name: 'Huawei'
-      }
-    ];
+    this.marks = this._marksService.getMarks();
   }
 
   ngOnInit() {

@@ -9,8 +9,12 @@ import { HomeService } from './services/home.service';
 import { UsersService } from './services/users.service';
 import { ProductsService } from './services/products.service';
 import { CategorysService } from './services/categorys.service';
+import { MarksService } from './services/marks.service';
+
 
 import { CategoryPipe } from './pipes/category.pipe';
+import {MarkPipe} from './pipes/mark.pipe';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -22,7 +26,6 @@ import { UserListComponent } from './components/users/list/user-list.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductEditComponent } from './components/products/edit/product-edit.component';
 import { ProductListComponent } from './components/products/list/product-list.component';
-
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { ProductListComponent } from './components/products/list/product-list.co
     ProductsComponent,
     ProductEditComponent,
     ProductListComponent,
-    CategoryPipe
+    CategoryPipe,
+    MarkPipe
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ import { ProductListComponent } from './components/products/list/product-list.co
     HomeService,
     UsersService,
     ProductsService,
-    CategorysService
+    CategorysService,
+    MarksService
   ],
   bootstrap: [AppComponent]
 })

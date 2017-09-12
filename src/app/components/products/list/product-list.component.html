@@ -32,7 +32,7 @@
           <tr *ngFor="let product of productsList">
             <td>{{ product.id }}</td>
             <td>{{ product.title }}</td>
-            <td>{{ product.mark }}</td>
+            <td>{{ product.mark | mark }}</td>
             <td class="text-center">{{ product.price | currency:'USD':true }}</td>
             <td class="text-center"><i class="fa {{ product.category | category }}"></i></td>
             <td class="text-center"><span class="badge badge-pill" [ngClass]="{'badge-danger': product.stock <= 25, 'badge-warning': product.stock > 25 && product.stock <= 50, 'badge-success': product.stock >= 100}"> {{ product.stock }} </span></td>
