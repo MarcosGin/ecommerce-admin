@@ -16,8 +16,8 @@ export class ProductEditComponent implements OnInit {
 
   public form: FormGroup;
   public product: Products;
-  public category: Category [];
-  public mark: Mark [];
+  public categorys: Category [];
+  public marks: Mark [];
   public data: Products;
   public id: number;
 
