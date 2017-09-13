@@ -12,7 +12,7 @@
                   <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                   <div class="message animated fadeInDown">{{ formErrors.title }}</div>
                 </div>
-                <input formControlName="title" type="text" class="form-control" id="title" placeholder="Title">
+                <input formControlName="title" [ngClass]="{'input-invalid': formErrors.title }" type="text" class="form-control" id="title" placeholder="Title">
               </div>
             </div>
             <div class="col-md-4">
@@ -22,7 +22,7 @@
                   <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                   <div class="message animated fadeInDown">{{ formErrors.price }}</div>
                 </div>
-                <input formControlName="price" type="text" class="form-control" id="price" placeholder="Price">
+                <input formControlName="price" [ngClass]="{'input-invalid': formErrors.price }" type="text" class="form-control" id="price" placeholder="Price">
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@
                   <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                   <div class="message animated fadeInDown">{{ formErrors.description }}</div>
                 </div>
-                <textarea [froalaEditor]="optionsEditor" formControlName="description" class="form-control" id="description" placeholder="Description"></textarea>
+                <textarea [froalaEditor]="optionsEditor" [ngClass]="{'input-invalid': formErrors.description }" formControlName="description" class="form-control" id="description" placeholder="Description"></textarea>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
                   <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                   <div class="message animated fadeInDown">{{ formErrors.category }}</div>
                 </div>
-                <select formControlName="category"
+                <select formControlName="category" [ngClass]="{'input-invalid': formErrors.category }"
                         class="form-control"  id="category">
                   <option *ngFor="let category of categorys" [value]="category.id">{{ category.name }}</option>
                 </select>
@@ -59,7 +59,7 @@
                   <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                   <div class="message animated fadeInDown">{{ formErrors.mark }}</div>
                 </div>
-                <select formControlName="mark"
+                <select formControlName="mark" [ngClass]="{'input-invalid': formErrors.mark }"
                         class="form-control"  id="mark">
                   <option *ngFor="let mark of marks" [value]="mark.id">{{ mark.name }}</option>
                 </select>
@@ -72,7 +72,7 @@
                   <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                   <div class="message animated fadeInDown">{{ formErrors.stock }}</div>
                 </div>
-                <input formControlName="stock" type="number" class="form-control" min="0" max="10000" id="stock" placeholder="Stock">
+                <input formControlName="stock" [ngClass]="{'input-invalid': formErrors.stock }" type="number" class="form-control" min="0" max="10000" id="stock" placeholder="Stock">
               </div>
             </div>
           </div>
