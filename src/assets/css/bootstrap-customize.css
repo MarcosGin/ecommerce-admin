@@ -66,8 +66,16 @@ a:hover{
   outline: 0 !important;
   color: #333333;
 }
-.form-group .form-control.ng-invalid{
+.form-group .form-control.input-invalid{
   border-color: #d9534f;
+}
+
+.form-group label{
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #9A9A9A;
 }
 .form-group .form-icon-error{
   position: absolute;

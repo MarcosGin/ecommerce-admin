@@ -1,33 +1,10 @@
 import { Injectable } from '@angular/core';
 
+import { ProductsService } from './products.service';
+
 @Injectable()
 export class HomeService {
-  private productsNew: ListProduct [] = [
-    {
-      id: 1,
-      title: 'Celular Motorola 4G liberado 16GB',
-      created_at: 'four hour ago',
-      category: '1'
-    },
-    {
-      id: 2,
-      title: 'Celular Samsung S3 4G liberado 8GB',
-      created_at: 'three hours ago',
-      category: '1'
-    },
-    {
-      id: 3,
-      title: 'Smart Tv SAMSUNG 48 UN48JU6700',
-      created_at: 'two hours ago',
-      category: ''
-    },
-    {
-      id: 4,
-      title: 'Notebook Lenovo Y700-15ISK 80NV003SAR',
-      created_at: 'an hours ago',
-      category: ''
-    }
-    ];
+  private productsNew: ListProduct [] = [];
   private mistakesNew: ListMistake [] = [
     {
       id: 4521,
@@ -70,10 +47,11 @@ export class HomeService {
   ];
 
 
-  constructor() {}
+  constructor( private _productsService: ProductsService ) {}
 
 
   getLastProducts() {
+    this.productsNew = this._productsService.getLastProductsList();
     return this.productsNew;
   }
   getLastMistakes() {

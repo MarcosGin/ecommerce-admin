@@ -26,13 +26,6 @@
   font-size: 14px;
   padding: 12px 8px;
 }
-.card-block label{
-  font-size: 12px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-  font-weight: 400;
-  color: #9A9A9A;
-}
 .card-search{
   max-width: 240px;
 }
