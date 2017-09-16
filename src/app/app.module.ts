@@ -30,6 +30,7 @@ import { ProductEditComponent } from './admin/components/products/edit/product-e
 import { ProductListComponent } from './admin/components/products/list/product-list.component';
 import { ProductAddComponent } from './admin/components/products/add/product-add.component';
 import { AdminComponent } from './admin/admin.component';
+import { AccountComponent } from './admin/components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AdminComponent } from './admin/admin.component';
     ProductAddComponent,
     CategoryPipe,
     MarkPipe,
-    AdminComponent
+    AdminComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {USERS_ROUTES } from './components/users/users.routes';
 import { PRODUCTS_ROUTES } from './components/products/products.routes';
 
 import { HomeComponent } from './components/home/home.component';
+import { AccountComponent } from './components/account/account.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProductsComponent } from './components/products/products.component';
 
@@ -15,6 +16,10 @@ export const ADMIN_ROUTES: Routes = [
     path: 'users',
     component: UsersComponent,
     children: USERS_ROUTES,
+  },
+  {
+    path: 'account',
+    component: AccountComponent
   },
   {
     path: 'products',

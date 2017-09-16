@@ -9,7 +9,7 @@ import { ADMIN_ROUTES } from './admin/admin.routes';
 const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: ADMIN_ROUTES},
-  { path: '**', pathMatch: 'full', redirectTo: 'login' }
+  { path: '**', pathMatch: 'full', redirectTo: 'admin' }
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);
