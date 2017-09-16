@@ -32,4 +32,10 @@ export class AuthService {
     return result;
   }
 
+  logout(): void {
+
+    localStorage.removeItem('jwt');
+
+  }
+
 }

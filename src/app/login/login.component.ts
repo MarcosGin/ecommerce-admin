@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   processing: boolean = false;
-  user: any = {username: '', password: ''};
+  user: any = {username: 'admin', password: 'admin1'};
   constructor( private _authService: AuthService,
                private router: Router ) {}
 

@@ -88,6 +88,7 @@
 }
 .navbar li.dropdown .dropdown-menu a {
   padding: 8px 16px;
+  cursor: pointer;
 }
 .navbar li.dropdown .dropdown-menu a:active{
   background-color: #f7f7f9;
