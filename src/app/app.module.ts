@@ -31,6 +31,10 @@ import { ProductListComponent } from './admin/components/products/list/product-l
 import { ProductAddComponent } from './admin/components/products/add/product-add.component';
 import { AdminComponent } from './admin/admin.component';
 import { AccountComponent } from './admin/components/account/account.component';
+import { ProfileComponent } from './admin/components/account/profile/profile.component';
+import { ConfigComponent } from './admin/components/account/config/config.component';
+import { HistoryComponent } from './admin/components/account/history/history.component';
+import { PermissionComponent } from './admin/components/account/permission/permission.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { AccountComponent } from './admin/components/account/account.component';
     CategoryPipe,
     MarkPipe,
     AdminComponent,
-    AccountComponent
+    AccountComponent,
+    ProfileComponent,
+    ConfigComponent,
+    HistoryComponent,
+    PermissionComponent
   ],
   imports: [
     BrowserModule,
