@@ -16,16 +16,17 @@ export class AuthService {
     }
   ];
 
+  public user_id: number;
 
   constructor () {
-
+    this.user_id = JSON.parse(localStorage.getItem('jwt')).user_id;
   }
 
   login( username: string, password: string ): boolean {
     let result = false;
     for (const user of this.users) {
       if (user.username === username && user.password === password) {
-        localStorage.setItem('jwt', JSON.stringify({username: username}));
+        localStorage.setItem('jwt', JSON.stringify({token: 'notoken', user_id: user.id}));
         result = true;
       }
     }
