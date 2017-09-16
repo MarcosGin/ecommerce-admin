@@ -1,25 +1,15 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { USERS_ROUTES } from './components/users/users.routes';
-import { PRODUCTS_ROUTES } from './components/products/products.routes';
+import { AuthGuard } from './guards/auth.guard';
 
-import {HomeComponent} from './components/home/home.component';
-import {UsersComponent} from './components/users/users.component';
-import {ProductsComponent} from './components/products/products.component';
+import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { ADMIN_ROUTES } from './admin/admin.routes';
 
 const APP_ROUTES: Routes = [
-  { path: 'home', component: HomeComponent },
-  {
-    path: 'users',
-    component: UsersComponent,
-    children: USERS_ROUTES,
-  },
-  {
-    path: 'products',
-    component: ProductsComponent,
-    children: PRODUCTS_ROUTES
-  },
-  { path: '**', pathMatch: 'full', redirectTo: 'home' }
+  { path: 'login', component: LoginComponent},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: ADMIN_ROUTES},
+  { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

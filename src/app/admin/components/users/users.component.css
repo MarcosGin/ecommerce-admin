@@ -38,7 +38,7 @@
 }
 
 .user-profile .card-header{
-  background-image: url("../../../assets/img/users/user-background.png");
+  background-image: url("../../../../assets/img/users/user-background.png");
   background-size: cover;
   background-position: center center;
   height: 120px;
@@ -69,35 +69,35 @@
   padding: 0.8em 1em 0.8em 4em;
 }
 .flag-ar{
-  background-image: url("../../../assets/img/flags/ar.svg");
+  background-image: url("../../../../assets/img/flags/ar.svg");
 }
 .flag-bo{
-  background-image: url("../../../assets/img/flags/bo.svg");
+  background-image: url("../../../../assets/img/flags/bo.svg");
 }
 .flag-br{
-  background-image: url("../../../assets/img/flags/br.svg");
+  background-image: url("../../../../assets/img/flags/br.svg");
 }
 .flag-cl{
-  background-image: url("../../../assets/img/flags/cl.svg");
+  background-image: url("../../../../assets/img/flags/cl.svg");
 }
 .flag-co{
-  background-image: url("../../../assets/img/flags/co.svg");
+  background-image: url("../../../../assets/img/flags/co.svg");
 }
 .flag-ec {
-  background-image: url("../../../assets/img/flags/ec.svg");
+  background-image: url("../../../../assets/img/flags/ec.svg");
 }
 .flag-mx{
-  background-image: url("../../../assets/img/flags/mx.svg");
+  background-image: url("../../../../assets/img/flags/mx.svg");
 }
 .flag-pe{
-  background-image: url("../../../assets/img/flags/pe.svg");
+  background-image: url("../../../../assets/img/flags/pe.svg");
 }
 .flag-py{
-  background-image: url("../../../assets/img/flags/py.svg");
+  background-image: url("../../../../assets/img/flags/py.svg");
 }
 .flag-uy {
-  background-image: url("../../../assets/img/flags/uy.svg");
+  background-image: url("../../../../assets/img/flags/uy.svg");
 }
 .flag-ve{
-  background-image: url("../../../assets/img/flags/ve.svg");
+  background-image: url("../../../../assets/img/flags/ve.svg");
 }

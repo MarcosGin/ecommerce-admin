@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService, ListProduct, ListMistake, StatisticsHome } from '../../services/home.service';
+import { HomeService, ListProduct, ListMistake, StatisticsHome } from '../../../services/home.service';
 
 @Component({
   selector: 'app-home',

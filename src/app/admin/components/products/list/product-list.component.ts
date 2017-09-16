@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Products } from '../../../interfaces/products';
-import { Category } from '../../../interfaces/category';
-import { Mark } from '../../../interfaces/mark';
+import { Products } from '../../../../interfaces/products';
+import { Category } from '../../../../interfaces/category';
+import { Mark } from '../../../../interfaces/mark';
 
-import { ProductsService } from '../../../services/products.service';
-import { CategorysService } from '../../../services/categorys.service';
-import { MarksService } from '../../../services/marks.service';
+import { ProductsService } from '../../../../services/products.service';
+import { CategorysService } from '../../../../services/categorys.service';
+import { MarksService } from '../../../../services/marks.service';
 
 @Component({
   selector: 'app-list',

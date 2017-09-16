@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Country } from '../../../interfaces/country';
+import { Country } from '../../../../interfaces/country';
 
-import { UsersService, Users } from '../../../services/users.service';
+import { UsersService, Users } from '../../../../services/users.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

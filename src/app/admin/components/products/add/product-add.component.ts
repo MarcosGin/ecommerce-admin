@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { CategorysService } from '../../../services/categorys.service';
-import { MarksService } from '../../../services/marks.service';
+import { CategorysService } from '../../../../services/categorys.service';
+import { MarksService } from '../../../../services/marks.service';
 
-import { Products } from '../../../interfaces/products';
-import { Category } from '../../../interfaces/category';
-import { Mark } from '../../../interfaces/mark';
+import { Products } from '../../../../interfaces/products';
+import { Category } from '../../../../interfaces/category';
+import { Mark } from '../../../../interfaces/mark';
+
 @Component({
   selector: 'app-product-add',
   templateUrl: './product-add.component.html',

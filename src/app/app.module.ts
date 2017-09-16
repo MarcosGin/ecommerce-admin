@@ -11,27 +11,30 @@ import { ProductsService } from './services/products.service';
 import { CategorysService } from './services/categorys.service';
 import { MarksService } from './services/marks.service';
 
-
 import { CategoryPipe } from './pipes/category.pipe';
-import {MarkPipe} from './pipes/mark.pipe';
+import { MarkPipe } from './pipes/mark.pipe';
 
+import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { UsersComponent } from './components/users/users.component';
-import { UserEditComponent } from './components/users/edit/user-edit.component';
-import { UserListComponent } from './components/users/list/user-list.component';
-import { ProductsComponent } from './components/products/products.component';
-import { ProductEditComponent } from './components/products/edit/product-edit.component';
-import { ProductListComponent } from './components/products/list/product-list.component';
-import { ProductAddComponent } from './components/products/add/product-add.component';
+import { HomeComponent } from './admin/components/home/home.component';
+import { LoginComponent } from './login/login.component';
+import { SidebarComponent } from './admin/components/sidebar/sidebar.component';
+import { NavbarComponent } from './admin/components/navbar/navbar.component';
+import { UsersComponent } from './admin/components/users/users.component';
+import { UserEditComponent } from './admin/components/users/edit/user-edit.component';
+import { UserListComponent } from './admin/components/users/list/user-list.component';
+import { ProductsComponent } from './admin/components/products/products.component';
+import { ProductEditComponent } from './admin/components/products/edit/product-edit.component';
+import { ProductListComponent } from './admin/components/products/list/product-list.component';
+import { ProductAddComponent } from './admin/components/products/add/product-add.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
     SidebarComponent,
     NavbarComponent,
     UsersComponent,
@@ -42,7 +45,8 @@ import { ProductAddComponent } from './components/products/add/product-add.compo
     ProductListComponent,
     ProductAddComponent,
     CategoryPipe,
-    MarkPipe
+    MarkPipe,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +58,7 @@ import { ProductAddComponent } from './components/products/add/product-add.compo
     FroalaViewModule.forRoot()
   ],
   providers: [
+    AuthGuard,
     HomeService,
     UsersService,
     ProductsService,
