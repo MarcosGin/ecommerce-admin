@@ -5,6 +5,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { HttpModule } from '@angular/http';
 import { APP_ROUTING } from './app.routes';
 
+import { AuthService } from './services/auth.service';
 import { HomeService } from './services/home.service';
 import { UsersService } from './services/users.service';
 import { ProductsService } from './services/products.service';
@@ -59,6 +60,7 @@ import { AdminComponent } from './admin/admin.component';
   ],
   providers: [
     AuthGuard,
+    AuthService,
     HomeService,
     UsersService,
     ProductsService,
