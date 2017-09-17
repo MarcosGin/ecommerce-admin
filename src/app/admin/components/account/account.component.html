@@ -1,17 +1,15 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row animated fadeInLeft">
-      <div class="col-md-7">
+      <div class="col-md-8">
         <div class="card">
           <div class="card-header"> My account</div>
           <div class="card-block">
-            <pre>
-              {{ user | json }}
-            </pre>
+            <router-outlet></router-outlet>
           </div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-4">
         <div class="card user-profile">
           <div class="card-header">
           </div>

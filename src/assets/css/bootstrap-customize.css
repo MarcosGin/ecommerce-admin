@@ -75,6 +75,9 @@ a:hover{
 .user-profile .card-block .menu{
   margin-top: 10px;
 }
+.user-profile .card-block .menu button{
+  padding: 6px 8px;
+}
 .user-profile .card-block .menu button:hover, .user-profile .card-block .menu button:active{
   background-color: #dadada;
 }
