@@ -1,3 +1,29 @@
-<p>
-  permission works!
-</p>
+<div class="card-header">My account <small class="card-title">(These are your permissions in the admin, you can only edit this if you are superadmin)</small></div>
+<div class="card-block animated fadeIn">
+  <ul class="list-group">
+    <li class="list-group-item justify-content-between">
+      Permission for edit users
+      <ui-switch color="#3171b9" size="small" [(ngModel)]="permissions.users_edit" name="users_edit" [disabled]="!superadmin"></ui-switch>
+    </li>
+    <li class="list-group-item justify-content-between">
+      Permission for delete users
+      <ui-switch color="#3171b9" size="small" [(ngModel)]="permissions.users_delete" name="users_delete" [disabled]="!superadmin"></ui-switch>
+    </li>
+    <li class="list-group-item justify-content-between">
+      Permission for edit and add products
+      <ui-switch color="#3171b9" size="small" [(ngModel)]="permissions.products_edit_add" name="products_edit_add" [disabled]="!superadmin"></ui-switch>
+    </li>
+    <li class="list-group-item justify-content-between">
+      Permission for delete products
+      <ui-switch color="#3171b9" size="small" [(ngModel)]="permissions.products_delete" name="products_delete" [disabled]="!superadmin"></ui-switch>
+    </li>
+    <li class="list-group-item justify-content-between">
+      Permission for edit and add mistakes
+      <ui-switch color="#3171b9" size="small" [(ngModel)]="permissions.mistakes_edit_add" name="mistakes_edit_add" [disabled]="!superadmin"></ui-switch>
+    </li>
+    <li class="list-group-item justify-content-between">
+      Permission for delete mistakes
+      <ui-switch color="#3171b9" size="small" [(ngModel)]="permissions.mistakes_delete" name="mistakes_delete" [disabled]="!superadmin"></ui-switch>
+    </li>
+  </ul>
+</div>
