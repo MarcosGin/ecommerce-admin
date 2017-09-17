@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
-import {USERS_ROUTES } from './components/users/users.routes';
+import { ACCOUNT_ROUTES } from './components/account/account.routes';
+import { USERS_ROUTES } from './components/users/users.routes';
 import { PRODUCTS_ROUTES } from './components/products/products.routes';
 
 import { HomeComponent } from './components/home/home.component';
@@ -19,7 +20,8 @@ export const ADMIN_ROUTES: Routes = [
   },
   {
     path: 'account',
-    component: AccountComponent
+    component: AccountComponent,
+    children: ACCOUNT_ROUTES
   },
   {
     path: 'products',
