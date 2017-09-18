@@ -231,3 +231,39 @@ a:hover{
   opacity: 1;
   margin-top: -20px;
 }
+/* Input toggle switch */
+label.switch input{
+  display: none;
+}
+
+.switch {
+  display: inline-block;
+  font-size: 20px;
+  height: 1em;
+  width: 2em;
+  cursor: pointer;
+}
+.switch .toggle {
+  background: #cccccc;
+  border-radius: 1em;
+  transition: all 300ms;
+}
+
+.switch .toggle .icon {
+  height: 1em;
+  width: 1em;
+  border-radius: 1em;
+  background: #FFF;
+  box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
+  transition: all 500ms;
+}
+.switch input:checked + .toggle {
+  background: #3d74c0;
+}
+
+.switch input:checked + .toggle  .icon {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+
