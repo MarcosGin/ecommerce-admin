@@ -19,7 +19,6 @@ export class AuthService {
   public user_id: number;
 
   constructor () {
-    this.user_id = JSON.parse(localStorage.getItem('jwt')).user_id;
   }
 
   login( username: string, password: string ): boolean {
@@ -31,6 +30,11 @@ export class AuthService {
       }
     }
     return result;
+  }
+
+  getUser() {
+    this.user_id = JSON.parse(localStorage.getItem('jwt')).user_id;
+    return this.user_id;
   }
 
   logout(): void {
