@@ -3,7 +3,7 @@
   <ul class="list-group">
     <li class="list-group-item justify-content-between">
       Permission for edit users
-      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.users_edit" name="users_edit"/>
+      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.users_edit" name="users_edit" [disabled]="!superadmin"/>
       <div class="toggle">
         <div class="icon"></div>
       </div>
@@ -11,7 +11,7 @@
      </li>
     <li class="list-group-item justify-content-between">
       Permission for delete users
-      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.users_delete" name="users_delete"/>
+      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.users_delete" name="users_delete" [disabled]="!superadmin"/>
         <div class="toggle">
           <div class="icon"></div>
         </div>
@@ -19,7 +19,7 @@
      </li>
     <li class="list-group-item justify-content-between">
       Permission for edit and add products
-      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.products_edit_add" name="products_edit_add"/>
+      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.products_edit_add" name="products_edit_add" [disabled]="!superadmin"/>
         <div class="toggle">
           <div class="icon"></div>
         </div>
@@ -27,7 +27,7 @@
       </li>
     <li class="list-group-item justify-content-between">
       Permission for delete products
-      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.products_delete" name="products_detele"/>
+      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.products_delete" name="products_detele" [disabled]="!superadmin"/>
         <div class="toggle">
           <div class="icon"></div>
         </div>
@@ -35,7 +35,7 @@
       </li>
     <li class="list-group-item justify-content-between">
       Permission for edit and add mistakes
-      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.mistakes_edit_add" name="mistakes_edit_add"/>
+      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.mistakes_edit_add" name="mistakes_edit_add" [disabled]="!superadmin"/>
         <div class="toggle">
           <div class="icon"></div>
         </div>
@@ -43,7 +43,7 @@
      </li>
     <li class="list-group-item justify-content-between">
       Permission for delete mistakes
-      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.mistakes_delete" name="mistakes_delete"/>
+      <label class="switch"><input type="checkbox" [(ngModel)]="permissions.mistakes_delete" name="mistakes_delete" [disabled]="!superadmin"/>
         <div class="toggle">
           <div class="icon"></div>
         </div>

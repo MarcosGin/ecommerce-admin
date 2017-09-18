@@ -233,10 +233,13 @@ a:hover{
 }
 /* Input toggle switch */
 label.switch input{
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 100%;
 }
 
 .switch {
+  position: relative;
   display: inline-block;
   font-size: 20px;
   height: 1em;
