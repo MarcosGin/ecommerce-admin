@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UiSwitchModule } from 'angular2-ui-switch';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { HttpModule } from '@angular/http';
 import { APP_ROUTING } from './app.routes';
@@ -63,7 +62,6 @@ import { PermissionComponent } from './admin/components/account/permission/permi
   imports: [
     BrowserModule,
     FormsModule,
-    UiSwitchModule,
     ReactiveFormsModule,
     HttpModule,
     APP_ROUTING,
@@ -79,7 +77,6 @@ import { PermissionComponent } from './admin/components/account/permission/permi
     CategorysService,
     MarksService
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
