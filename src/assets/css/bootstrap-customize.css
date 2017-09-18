@@ -244,6 +244,7 @@ label.switch input{
   font-size: 20px;
   height: 1em;
   width: 2em;
+  margin: 0;
   cursor: pointer;
 }
 .switch .toggle {
