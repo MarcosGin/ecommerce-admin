@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
     ];
   }
   ngOnInit() {
-    this.data = this._usersService.getUser(this._authService.getUser());
+    this.data = this._usersService.getUser(1);
     this.buildForm();
     this.form.setValue({
       'firstName': this.data.firstName,
