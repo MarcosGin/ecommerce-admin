@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   }
 
   getTittle() {
-    let titlee = window.location.pathname;
+    const path = window.location.pathname;
     function SplitTheString(ResultStr) {
       if (ResultStr != null) {
         const SplitChars = '/';
@@ -32,12 +32,12 @@ export class NavbarComponent implements OnInit {
         }
       }
     }
-    titlee = SplitTheString(titlee);
-    if (typeof titlee[2] === 'undefined') {
-      titlee[2] = 'home';
+    const pathList = SplitTheString(path);
+    if (typeof pathList[2] === 'undefined') {
+      pathList[2] = 'home';
     }
     for (const routes of this.listRoutes) {
-      if (routes.path === titlee[2]) {
+      if (routes.path === pathList[2]) {
           return routes.title;
       }
     }
