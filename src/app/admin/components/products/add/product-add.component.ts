@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { CategorysService } from '../../../../services/categorys.service';
@@ -26,7 +27,8 @@ export class ProductAddComponent implements OnInit {
 
   constructor( private _categorysService: CategorysService,
                private _marksService: MarksService,
-               private formBuilder: FormBuilder ) {
+               private formBuilder: FormBuilder,
+               private location: Location) {
     this.product = new Products();
     this.categorys = this._categorysService.getCategorys();
     this.marks = this._marksService.getMarks();
@@ -35,8 +37,13 @@ export class ProductAddComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
   }
+
   save() {
     console.log(this.form.value);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   buildForm(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -32,6 +33,7 @@ export class ProductEditComponent implements OnInit {
                private _categorysService: CategorysService,
                private _marksService: MarksService,
                private router: ActivatedRoute,
+               private location: Location,
                private formBuilder: FormBuilder ) {
     this.product = new Products();
     this.categorys = this._categorysService.getCategorys();
@@ -56,6 +58,10 @@ export class ProductEditComponent implements OnInit {
 
   save() {
     console.log(this.form.value);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   buildForm(): void {

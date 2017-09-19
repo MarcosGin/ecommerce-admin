@@ -76,7 +76,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" [routerLink]="['/products']" class="btn btn-danger float-left">Go back</button>
+          <button type="submit" class="btn btn-danger float-left" (click)="goBack()">Go back</button>
           <button type="submit" [disabled]="!form.valid || !form.dirty" (click)="save()" class="btn btn-info float-right">Save changes</button>
           <div class="clearfix"></div>
         </form>
