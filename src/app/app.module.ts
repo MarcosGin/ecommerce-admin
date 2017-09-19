@@ -35,6 +35,8 @@ import { ProfileComponent } from './admin/components/account/profile/profile.com
 import { ConfigComponent } from './admin/components/account/config/config.component';
 import { HistoryComponent } from './admin/components/account/history/history.component';
 import { PermissionComponent } from './admin/components/account/permission/permission.component';
+import { MarksComponent } from './admin/components/products/marks/marks.component';
+import { CategoriesComponent } from './admin/components/products/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { PermissionComponent } from './admin/components/account/permission/permi
     ProfileComponent,
     ConfigComponent,
     HistoryComponent,
-    PermissionComponent
+    PermissionComponent,
+    MarksComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
