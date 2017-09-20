@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers} from '@angular/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 
@@ -8,13 +8,13 @@ export class AuthService {
 
   public token: string;
 
-  constructor ( private http: Http) {
+  constructor ( private http: Http ) {
     const currentUser = JSON.parse(localStorage.getItem('jwt'));
     this.token = currentUser && currentUser.jwt;
   }
 
   login( username: string, password: string ) {
-    const apiUrl = environment.apiUrl + 'account/login';
+    const apiUrl = environment.apiUrl + 'auth/login';
     return this.http.post(apiUrl, JSON.stringify({email: username, password: password}))
       .map( res => {
         if (res.json().result === true) {
@@ -25,9 +25,19 @@ export class AuthService {
       });
   }
 
-  logout(): void {
+  logout() {
+    const apiUrl = environment.apiUrl + 'auth/logout';
+    const headers = new Headers();
+    headers.append('Authorization', this.token);
+    headers.append('Content-Type', 'application/json');
+    const options = new RequestOptions({headers: headers});
+    return this.http.get(apiUrl, options)
+      .map(res => {
+        return res.json();
+      });
 
-    localStorage.removeItem('jwt');
+
+    // localStorage.removeItem('jwt');
 
   }
 

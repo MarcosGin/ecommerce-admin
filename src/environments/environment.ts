@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/ecommerce/public/'
+  apiUrl: 'http://localhost/ecommerce/api/'
 };
