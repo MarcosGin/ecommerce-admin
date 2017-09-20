@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/ecommerce/api/'
+  apiUrl: 'http://localhost/curso-symfony/web/app_dev.php/api/'
 };
