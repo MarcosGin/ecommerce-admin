@@ -20,14 +20,18 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.processing = true;
     this._authService.login(this.user.username, this.user.password)
-      .subscribe(response => {
-      if (response.result === true) {
-        this.router.navigate(['/admin']);
-      } else {
-        this.error = response.message;
-        this.processing = false;
-      }
-    });
+      .subscribe(data => {
+          if (data.status === true) {
+
+            this.router.navigate(['/admin']);
+
+          }else {
+            this.processing = false;
+            this.error = data.response.message;
+          }
+        }
+      );
+
   }
 
 }
