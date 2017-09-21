@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   login( username: string, password: string ) {
-    const apiUrl = environment.apiUrl + 'auth/login';
+    const apiUrl = environment.apiUrl + environment.endpoints.authLogin;
     return this.http.post(apiUrl, JSON.stringify({email: username, password: password}))
       .map((res: Response) => {
         if (res.json().status === true) {
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   logout() {
-    const apiUrl = environment.apiUrl + 'auth/logout';
+    const apiUrl = environment.apiUrl + environment.endpoints.authLogout;
     const headers = new Headers();
     headers.append('authorization', this.token);
     const options = new RequestOptions({headers: headers});
