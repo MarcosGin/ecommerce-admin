@@ -14,7 +14,7 @@ import { Country } from '../../../../interfaces/country';
 export class ProfileComponent implements OnInit {
 
   public user: Users;
-  public data: Users;
+  public username: string;
   public form: FormGroup;
   public countrys: Country [];
 
@@ -38,20 +38,23 @@ export class ProfileComponent implements OnInit {
     ];
   }
   ngOnInit() {
-    this.data = this._usersService.getUser(1);
     this.buildForm();
-    this.form.setValue({
-      'firstName': this.data.firstName,
-      'lastName': this.data.lastName,
-      'username': this.data.username,
-      'document': this.data.document,
-      'email': this.data.email,
-      'phone': this.data.phone,
-      'country': this.data.country,
-      'city': this.data.city,
-      'address': this.data.address,
-      'postalCode': this.data.postalCode
-    });
+    this._usersService.getUser(1)
+      .subscribe(data => {
+        this.username = data.firstname + ' ' + data.lastname;
+        this.form.setValue({
+          'firstname': data.firstname,
+          'lastname': data.lastname,
+          'username': data.username,
+          'document': data.document,
+          'email': data.email,
+          'phone': data.phone,
+          'country': data.country,
+          'city': data.city,
+          'address': data.address,
+          'postalcode': data.postalcode
+        });
+      });
   }
 
   save () {
@@ -60,13 +63,13 @@ export class ProfileComponent implements OnInit {
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      'firstName': [this.user.firstName, [
+      'firstName': [this.user.firstname, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30)
       ]
       ],
-      'lastName': [this.user.lastName, [
+      'lastName': [this.user.lastname, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(30)
@@ -76,7 +79,7 @@ export class ProfileComponent implements OnInit {
         Validators.minLength(4),
         Validators.maxLength(30)
       ]],
-      'document': [this.user.lastName, [
+      'document': [this.user.document, [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(8)
@@ -86,7 +89,7 @@ export class ProfileComponent implements OnInit {
       'country': [this.user.country, [Validators.required]],
       'city': [this.user.city, [Validators.required]],
       'address': [this.user.address, [Validators.required]],
-      'postalCode': [this.user.postalCode, [Validators.required]]
+      'postalCode': [this.user.postalcode, [Validators.required]]
     });
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -111,8 +114,8 @@ export class ProfileComponent implements OnInit {
   }
 
   formErrors = {
-    'firstName': '',
-    'lastName': '',
+    'firstname': '',
+    'lastname': '',
     'username': '',
     'document': '',
     'email': '',
@@ -120,16 +123,16 @@ export class ProfileComponent implements OnInit {
     'country': '',
     'city': '',
     'address': '',
-    'postalCode': ''
+    'postalcode': ''
   };
 
   validationMessages = {
-    'firstName': {
+    'firstname': {
       'required':  'This field is required',
       'minlength': 'Must be at least 4 characters long.',
       'maxlength': 'Cannot be more than 24 characters long.'
     },
-    'lastName': {
+    'lastname': {
       'required':  'This field is required',
       'minlength': 'Must be at least 4 characters long.',
       'maxlength': 'Cannot be more than 24 characters long.'

@@ -4,7 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 const endpoints = {
   authLogin: 'auth/login',
-  authLogout: 'auth/logout'
+  authLogout: 'auth/logout',
+  user: 'user/get',
+  userUpdate: 'user/update',
+  userList: 'user/list'
 };
 export const environment = {
   production: false,

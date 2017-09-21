@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Country } from '../../../../interfaces/country';
@@ -16,11 +17,17 @@ export class UserEditComponent implements OnInit {
   public form: FormGroup;
   public countrys: Country[];
   public user: Users;
-  public data: Users;
+  public userName: string;
   public id: number;
+  public loading = false;
+  public message = {
+    type: 'success',
+    content: ''
+  };
 
   constructor( private _usersService: UsersService,
                private router: ActivatedRoute,
+               private location: Location,
                private formBuilder: FormBuilder ) {
     this.user = new Users();
     this.countrys = [
@@ -43,36 +50,61 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     this.router.params.subscribe( params => {
       this.id = params['id'];
-      this.data = this._usersService.getUser(this.id);
       this.buildForm();
-      this.form.setValue({
-        'firstName': this.data.firstName,
-        'lastName': this.data.lastName,
-        'username': this.data.username,
-        'document': this.data.document,
-        'email': this.data.email,
-        'phone': this.data.phone,
-        'country': this.data.country,
-        'city': this.data.city,
-        'address': this.data.address,
-        'postalCode': this.data.postalCode
-      });
+      this._usersService.getUser(this.id)
+        .subscribe(data => {
+          this.userName = data.firstname + ' ' + data.lastname;
+          this.form.setValue({
+            'firstname': data.firstname,
+            'lastname': data.lastname,
+            'username': data.username,
+            'document': data.document,
+            'email': data.email,
+            'phone': data.phone,
+            'country': data.country,
+            'city': data.city,
+            'address': data.address,
+            'postalcode': data.postalcode
+          });
+        });
     });
   }
 
+  goBack() {
+    this.location.back();
+  }
+
   save () {
-    console.log(this.form.value);
+    this.loading = true;
+    this._usersService.updateUser(this.id, this.form.value)
+      .subscribe(data => {
+        this.userName = data.response.data.firstname + ' ' + data.response.data.lastname;
+        this.form.setValue({
+          'firstname': data.response.data.firstname,
+          'lastname': data.response.data.lastname,
+          'username': data.response.data.username,
+          'document': data.response.data.document,
+          'email': data.response.data.email,
+          'phone': data.response.data.phone,
+          'country': data.response.data.country,
+          'city': data.response.data.city,
+          'address': data.response.data.address,
+          'postalcode': data.response.data.postalcode
+        });
+        this.message.content = data.response.message;
+        this.loading = false;
+      });
   }
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      'firstName': [this.user.firstName, [
+      'firstname': [this.user.firstname, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30)
       ]
       ],
-      'lastName': [this.user.lastName, [
+      'lastname': [this.user.lastname, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(30)
@@ -82,7 +114,7 @@ export class UserEditComponent implements OnInit {
         Validators.minLength(4),
         Validators.maxLength(30)
       ]],
-      'document': [this.user.lastName, [
+      'document': [this.user.document, [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(8)
@@ -92,7 +124,7 @@ export class UserEditComponent implements OnInit {
       'country': [this.user.country, [Validators.required]],
       'city': [this.user.city, [Validators.required]],
       'address': [this.user.address, [Validators.required]],
-      'postalCode': [this.user.postalCode, [Validators.required]]
+      'postalcode': [this.user.postalcode, [Validators.required]]
     });
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -100,7 +132,6 @@ export class UserEditComponent implements OnInit {
 
   onValueChanged(data?: any) {
     if (!this.form) { return; }
-    console.log('entro');
     const form = this.form;
 
     for (const field in this.formErrors) {
@@ -117,8 +148,8 @@ export class UserEditComponent implements OnInit {
   }
 
    formErrors = {
-    'firstName': '',
-    'lastName': '',
+    'firstname': '',
+    'lastname': '',
     'username': '',
     'document': '',
     'email': '',
@@ -126,16 +157,16 @@ export class UserEditComponent implements OnInit {
     'country': '',
     'city': '',
     'address': '',
-    'postalCode': ''
+    'postalcode': ''
   };
 
   validationMessages = {
-    'firstName': {
+    'firstname': {
       'required':  'This field is required',
       'minlength': 'Must be at least 4 characters long.',
       'maxlength': 'Cannot be more than 24 characters long.'
     },
-    'lastName': {
+    'lastname': {
       'required':  'This field is required',
       'minlength': 'Must be at least 4 characters long.',
       'maxlength': 'Cannot be more than 24 characters long.'
@@ -150,6 +181,6 @@ export class UserEditComponent implements OnInit {
     'country': {'required': 'This field is required'},
     'city': {'required': 'This field is required'},
     'address': {'required': 'This field is required'},
-    'postalCode': {'required': 'This field is required'}
+    'postalcode': {'required': 'This field is required'}
   };
 }

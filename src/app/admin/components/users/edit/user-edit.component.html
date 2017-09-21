@@ -3,29 +3,32 @@
     <div class="card">
         <div class="card-header">Editing user</div>
         <div class="card-block">
+          <div class="alert alert-{{ message.type }}" *ngIf="message.content && !loading ">
+            {{ message.content }}
+          </div>
           <form [formGroup]="form">
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-control-label" for="firstName">First name</label>
-                  <div class="form-icon-error" *ngIf="formErrors.firstName">
+                  <label class="form-control-label" for="firstname">First name</label>
+                  <div class="form-icon-error" *ngIf="formErrors.firstname">
                     <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
-                    <div class="message animated fadeInDown">{{ formErrors.firstName }}</div>
+                    <div class="message animated fadeInDown">{{ formErrors.firstname }}</div>
                   </div>
-                  <input  formControlName="firstName" [ngClass]="{'input-invalid': formErrors.firstName }"
-                              type="text" class="form-control" id="firstName" placeholder="First name">
+                  <input  formControlName="firstname" [ngClass]="{'input-invalid': formErrors.firstname }"
+                              type="text" class="form-control" id="firstname" placeholder="First name">
 
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-control-label" for="lastName">Last name</label>
-                  <div class="form-icon-error" *ngIf="formErrors.lastName">
+                  <label class="form-control-label" for="lastname">Last name</label>
+                  <div class="form-icon-error" *ngIf="formErrors.lastname">
                     <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
-                    <div class="message">{{ formErrors.lastName }}</div>
+                    <div class="message">{{ formErrors.lastname }}</div>
                   </div>
-                  <input formControlName="lastName" [ngClass]="{'input-invalid': formErrors.lastName }"
-                             type="text" class="form-control" id="lastName" placeholder="Last name">
+                  <input formControlName="lastname" [ngClass]="{'input-invalid': formErrors.lastname }"
+                             type="text" class="form-control" id="lastname" placeholder="Last name">
                 </div>
               </div>
               <div class="col-md-4">
@@ -54,18 +57,18 @@
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <label class="form-control-label" for="lastName">Number phone</label>
+                  <label class="form-control-label" for="phone">Number phone</label>
                   <div class="form-icon-error" *ngIf="formErrors.phone">
                     <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                     <div class="message">{{ formErrors.phone }}</div>
                   </div>
                   <input formControlName="phone" [ngClass]="{'input-invalid': formErrors.phone }"
-                             type="text" class="form-control" id="numberPhone" placeholder="Phone">
+                             type="text" class="form-control" id="phone" placeholder="Phone">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-control-label" for="lastName">Country</label>
+                  <label class="form-control-label" for="country">Country</label>
                   <div class="form-icon-error" *ngIf="formErrors.country">
                     <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                     <div class="message">{{ formErrors.country }}</div>
@@ -80,7 +83,7 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="form-group">
-                  <label class="form-control-label" for="lastName">City</label>
+                  <label class="form-control-label" for="city">City</label>
                   <div class="form-icon-error" *ngIf="formErrors.city">
                     <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                     <div class="message">{{ formErrors.city }}</div>
@@ -91,7 +94,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-control-label" for="lastName">Address</label>
+                  <label class="form-control-label" for="address">Address</label>
                   <div class="form-icon-error" *ngIf="formErrors.address">
                     <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
                     <div class="message">{{ formErrors.address }}</div>
@@ -102,17 +105,17 @@
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <label class="form-control-label" for="lastName">Postal code</label>
-                  <div class="form-icon-error" *ngIf="formErrors.postalCode">
+                  <label class="form-control-label" for="postalcode">Postal code</label>
+                  <div class="form-icon-error" *ngIf="formErrors.postalcode">
                     <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
-                    <div class="message">{{ formErrors.postalCode }}</div>
+                    <div class="message">{{ formErrors.postalcode }}</div>
                   </div>
-                  <input formControlName="postalCode" [ngClass]="{'input-invalid': formErrors.postalCode }"
-                             type="text" class="form-control" id="postalCode" placeholder="Postal code">
+                  <input formControlName="postalcode" [ngClass]="{'input-invalid': formErrors.postalcode }"
+                             type="text" class="form-control" id="postalcode" placeholder="Postal code">
                 </div>
               </div>
             </div>
-            <button type="submit" [routerLink]="['/users']" class="btn btn-danger float-left">Go back</button>
+            <button type="submit" class="btn btn-danger float-left" (click)="goBack()">Go back</button>
             <button type="submit" class="btn btn-info float-right" [disabled]="!form.valid || !form.dirty" (click)="save()">Save changes</button>
             <div class="clearfix"></div>
           </form>
@@ -126,7 +129,7 @@
       <div class="card-block">
         <div class="avatar">
           <img src="../../../assets/img/users/user-avatar.png" class="img-thumbnail" alt="">
-          <span>{{ data.firstName }} {{ data.lastName }}</span>
+          <span>{{ userName }}</span>
         </div>
 
       </div>
