@@ -234,6 +234,7 @@ a:hover{
 /* Styles for the tooltips */
 .tooltip-hover{
   position: relative;
+  cursor: pointer;
 }
 .tooltip-hover:before{
   position: absolute;
