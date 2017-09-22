@@ -1,6 +1,11 @@
 .card-header{
   vertical-align: middle;
 }
+.card-header .alert {
+  font-size: 15px;
+  padding: 5px 8px;
+  margin: 0;
+}
 .card-search{
   max-width: 240px;
 }
@@ -11,6 +16,25 @@
 .card-search .input-group .input-group-addon{
   font-size: 16px;
 }
+.card-block .table > thead > tr > th:first-child {
+  width: 8%;
+}
+.card-block .table > thead > tr > th:nth-child(2){
+  width: 15%;
+}
+.card-block .table > thead > tr > th:nth-child(3){
+  width: 30%;
+}
+.card-block .table > thead > tr > th:nth-child(4){
+  width: 15%;
+}
+.card-block .table > thead > tr > th:nth-child(5){
+  width: 15%;
+}
+.card-block .table > thead > tr > th:nth-child(6),.card-block .table > thead > tr > th:nth-child(7){
+  width: 5%;
+}
+
 
 .flag{
   background-repeat: no-repeat;

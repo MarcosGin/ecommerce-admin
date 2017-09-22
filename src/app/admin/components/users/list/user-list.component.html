@@ -3,11 +3,11 @@
     <div class="card">
       <div class="card-header">
         <div class="row">
-          <div class="col-md-9 col-sm-6">List of users</div>
+          <div class="col-md-9 col-sm-6">List of users <div class="float-right alert alert-danger animated fadeInRight" *ngIf="message.status"> {{ message.content }}</div></div>
           <div class="col-md-3 col-sm-6">
             <div class="card-search float-right">
               <div class="input-group">
-                <input class="form-control" placeholder="Search user..." type="text" value="">
+                <input class="form-control" type="text" placeholder="Search user..." [(ngModel)]="searchValue" name="searchValue" (keyup.enter)="search()" (blur)="search()" >
                 <span class="input-group-addon"><i class="pe-7s-search"></i></span>
               </div>
             </div>
@@ -28,7 +28,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let users of listUsers;">
+          <tr *ngFor="let users of listUsers;" class="animated fadeIn">
             <td>{{ users.id }}</td>
             <td>{{ users.firstname }}</td>
             <td>{{ users.email }}</td>

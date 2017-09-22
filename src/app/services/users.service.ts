@@ -27,7 +27,15 @@ export class UsersService {
       }).catch(this.handleError);
   }
 
-  updateUser ( id: number, data: any){
+  searchUser( value: string ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.userSearch + '/' + value;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  updateUser ( id: number, data: any) {
     const apiUrl = environment.apiUrl + environment.endpoints.userUpdate + '/' + id;
     return this.http.put(apiUrl, JSON.stringify(data))
       .map((res: Response) => {

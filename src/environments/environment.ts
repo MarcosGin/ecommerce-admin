@@ -6,6 +6,7 @@ const endpoints = {
   authLogin: 'auth/login',
   authLogout: 'auth/logout',
   user: 'user/get',
+  userSearch: 'user/search',
   userUpdate: 'user/update',
   userList: 'user/list'
 };
