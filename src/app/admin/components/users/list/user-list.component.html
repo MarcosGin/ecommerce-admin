@@ -3,7 +3,9 @@
     <div class="card">
       <div class="card-header">
         <div class="row">
-          <div class="col-md-9 col-sm-6">List of users <div class="float-right alert alert-danger animated fadeInRight" *ngIf="message.status"> {{ message.content }}</div></div>
+          <div class="col-md-9 col-sm-6">List of users
+            <div class="float-right alert alert-{{ message.type }} animated fadeInLeft" *ngIf="message.status"> {{ message.content }}</div>
+          </div>
           <div class="col-md-3 col-sm-6">
             <div class="card-search float-right">
               <div class="input-group">

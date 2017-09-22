@@ -12,6 +12,7 @@ export class UserListComponent implements OnInit {
   searchValue: string = '';
   message = {
     status: false,
+    type: 'danger',
     content: ''
   };
 
@@ -31,6 +32,7 @@ export class UserListComponent implements OnInit {
           } else {
             this.getUsers();
             this.message.status = true;
+            this.message.type = 'danger';
             this.message.content = data.response.message;
           }
         });
@@ -44,8 +46,14 @@ export class UserListComponent implements OnInit {
     this._usersService.deleteUser( id)
       .subscribe( data => {
         if (data.status === true ) {
-          this.getUsers();
+          this.message.content = data.response;
+          this.message.type = 'success';
+        } else {
+          this.message.type = 'danger';
+          this.message.content = data.response;
         }
+        this.message.status = true;
+        this.getUsers();
       });
   }
 
