@@ -35,7 +35,7 @@
             <td>{{ users.document }}</td>
             <td><span class="flag flag-{{ users.country }}"></span></td>
             <td class="text-center"><a [routerLink]="['edit', users.id]" tooltip-msg="Edit user" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
-            <td class="text-center"><a href="" tooltip-msg="Delete user" class="tooltip-hover"><i class="ti-trash text-danger  "></i></a></td>
+            <td class="text-center"><a (click)="delete(users.id)" tooltip-msg="Delete user" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
           </tr>
           </tbody>
         </table>

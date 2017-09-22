@@ -40,6 +40,15 @@ export class UserListComponent implements OnInit {
     }
   }
 
+  delete( id: number) {
+    this._usersService.deleteUser( id)
+      .subscribe( data => {
+        if (data.status === true ) {
+          this.getUsers();
+        }
+      });
+  }
+
   getUsers() {
     this._usersService.getUsers()
       .subscribe(data => {

@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
+import { AuthService } from './auth.service';
+
 @Injectable()
 export class UsersService {
 
-  constructor ( private http: Http ) {}
+  constructor ( private http: Http,
+                private _authService: AuthService ) {}
 
   getUsers () {
     const apiUrl = environment.apiUrl + environment.endpoints.userList;
@@ -38,6 +41,17 @@ export class UsersService {
   updateUser ( id: number, data: any) {
     const apiUrl = environment.apiUrl + environment.endpoints.userUpdate + '/' + id;
     return this.http.put(apiUrl, JSON.stringify(data))
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  deleteUser ( id: number ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.userDelete + '/' + id;
+    const headers = new Headers();
+    headers.append('authorization', this._authService.token);
+    const options = new RequestOptions({headers: headers});
+    return this.http.delete(apiUrl, options)
       .map((res: Response) => {
         return res.json();
       }).catch(this.handleError);

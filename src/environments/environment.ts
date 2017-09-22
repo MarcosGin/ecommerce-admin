@@ -6,9 +6,10 @@ const endpoints = {
   authLogin: 'auth/login',
   authLogout: 'auth/logout',
   user: 'user/get',
+  userList: 'user/list',
   userSearch: 'user/search',
   userUpdate: 'user/update',
-  userList: 'user/list'
+  userDelete: 'user/delete'
 };
 export const environment = {
   production: false,
