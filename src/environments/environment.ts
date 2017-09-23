@@ -9,7 +9,8 @@ const endpoints = {
   userList: 'users/list',
   userSearch: 'users/search',
   userUpdate: 'users/update',
-  userDelete: 'users/delete'
+  userDelete: 'users/delete',
+  countryList: 'country/list'
 };
 export const environment = {
   production: false,

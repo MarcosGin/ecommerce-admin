@@ -11,6 +11,8 @@ import { UsersService } from './services/users.service';
 import { ProductsService } from './services/products.service';
 import { CategorysService } from './services/categorys.service';
 import { MarksService } from './services/marks.service';
+import { CountryService } from './services/country.service';
+
 
 import { CategoryPipe } from './pipes/category.pipe';
 import { MarkPipe } from './pipes/mark.pipe';
@@ -79,7 +81,8 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     UsersService,
     ProductsService,
     CategorysService,
-    MarksService
+    MarksService,
+    CountryService
   ],
   bootstrap: [AppComponent]
 })

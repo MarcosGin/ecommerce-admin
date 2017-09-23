@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Country } from '../../../../interfaces/country';
 
 import { UsersService, Users } from '../../../../services/users.service';
+import { CountryService } from '../../../../services/country.service';
+
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UserEditComponent implements OnInit {
 
   public form: FormGroup;
-  public countrys: Country[];
+  public countrys: Country[] = [];
   public user: Users;
   public userName: string;
   public id: number;
@@ -26,48 +28,38 @@ export class UserEditComponent implements OnInit {
   };
 
   constructor( private _usersService: UsersService,
+               private _countrysService: CountryService,
                private router: ActivatedRoute,
                private location: Location,
                private formBuilder: FormBuilder ) {
     this.user = new Users();
-    this.countrys = [
-      {
-        id: 'ar',
-        name: 'Argentina'
-      },
-      {
-        id: 'bo',
-        name: 'Bolivia'
-      },
-      {
-        id: 'pe',
-        name: 'Perú'
-      }
-    ];
-
   }
 
   ngOnInit() {
-    this.router.params.subscribe( params => {
-      this.id = params['id'];
-      this.buildForm();
-      this._usersService.getUser(this.id)
-        .subscribe(data => {
-          this.userName = data.firstname + ' ' + data.lastname;
-          this.form.setValue({
-            'firstname': data.firstname,
-            'lastname': data.lastname,
-            'username': data.username,
-            'document': data.document,
-            'email': data.email,
-            'phone': data.phone,
-            'country': data.country,
-            'city': data.city,
-            'address': data.address,
-            'postalcode': data.postalcode
-          });
+    this._countrysService.getCountrys()
+      .subscribe(res => {
+        this.countrys = res.response;
+        this.router.params.subscribe( params => {
+          this.id = params['id'];
+          this.buildForm();
+          this._usersService.getUser(this.id)
+            .subscribe(data => {
+              this.userName = data.firstname + ' ' + data.lastname;
+              this.form.setValue({
+                'firstname': data.firstname,
+                'lastname': data.lastname,
+                'username': data.username,
+                'document': data.document,
+                'email': data.email,
+                'phone': data.phone,
+                'country': data.country,
+                'city': data.city,
+                'address': data.address,
+                'postalcode': data.postalcode
+              });
+            });
         });
-    });
+      });
   }
 
   goBack() {
