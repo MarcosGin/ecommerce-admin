@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
           }else {
             this.processing = false;
-            this.error = data.response.message;
+            this.error = data.response;
           }
         }
       );
