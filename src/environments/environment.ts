@@ -5,14 +5,14 @@
 const endpoints = {
   authLogin: 'auth/login',
   authLogout: 'auth/logout',
-  user: 'user/get',
-  userList: 'user/list',
-  userSearch: 'user/search',
-  userUpdate: 'user/update',
-  userDelete: 'user/delete'
+  user: 'users/get',
+  userList: 'users/list',
+  userSearch: 'users/search',
+  userUpdate: 'users/update',
+  userDelete: 'users/delete'
 };
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/curso-symfony/web/app_dev.php/api/',
+  apiUrl: 'http://localhost/ecommerce/ecommerce/public/api/',
   endpoints: endpoints
 };

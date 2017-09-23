@@ -33,7 +33,7 @@ export class UserListComponent implements OnInit {
             this.getUsers();
             this.message.status = true;
             this.message.type = 'danger';
-            this.message.content = data.response.message;
+            this.message.content = data.response;
           }
         });
     } else {
