@@ -1,28 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Mark } from '../interfaces/mark';
-
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 @Injectable()
 export class MarksService {
-  private marks: Mark [] = [
-    {
-      id: 1,
-      name: 'Motorola'
-    },
-    {
-      id: 2,
-      name: 'Samsung'
-    },
-    {
-      id: 3,
-      name: 'Huawei'
-    }
-  ];
-  constructor() {}
+  constructor( private http: Http) {}
 
   getMarks() {
-    return this.marks;
+    const apiUrl = environment.apiUrl + environment.endpoints.productMarkList;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
   }
-  getMark( id: number) {
-    return this.marks[ id - 1];
+
+  private handleError(error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    return Observable.throw(errMsg);
   }
 }
