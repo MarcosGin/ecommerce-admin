@@ -13,10 +13,6 @@ import { CategorysService } from './services/categorys.service';
 import { MarksService } from './services/marks.service';
 import { CountryService } from './services/country.service';
 
-
-import { CategoryPipe } from './pipes/category.pipe';
-import { MarkPipe } from './pipes/mark.pipe';
-
 import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
@@ -54,8 +50,6 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     ProductEditComponent,
     ProductListComponent,
     ProductAddComponent,
-    CategoryPipe,
-    MarkPipe,
     AdminComponent,
     AccountComponent,
     ProfileComponent,
