@@ -61,13 +61,12 @@ export class ProductsService {
       }).catch(this.handleError);
   }
 
-  getProductsForMark( id: number ) {
-    const cont = 0;
-    return cont;
-  }
-  getProductsForCategory( id: number ) {
-    const cont = 0;
-    return cont;
+  searchProduct( value: string ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productSearch + '/' + value;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
   }
 
   private handleError(error: Response | any) {
