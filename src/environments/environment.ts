@@ -10,6 +10,11 @@ const endpoints = {
   userSearch: 'users/search',
   userUpdate: 'users/update',
   userDelete: 'users/delete',
+  product: 'products/get',
+  productList: 'products/list',
+  productUpdate: 'products/update',
+  productMarkList: 'products/marks/list',
+  productCategoryList: 'products/categories/list',
   countryList: 'country/list'
 };
 export const environment = {
