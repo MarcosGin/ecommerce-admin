@@ -30,8 +30,8 @@ export class ProductAddComponent implements OnInit {
                private formBuilder: FormBuilder,
                private location: Location) {
     this.product = new Products();
-    this.categorys = this._categorysService.getCategorys();
-    this.marks = this._marksService.getMarks();
+    this.categorys = [];
+    this.marks = [];
   }
 
   ngOnInit() {

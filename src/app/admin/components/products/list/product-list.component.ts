@@ -16,7 +16,7 @@ import { MarksService } from '../../../../services/marks.service';
 export class ProductListComponent implements OnInit {
 
   public productsList: Products [] = [];
-  public categorysList: Category [] = [];
+  public categoriesList: Category [] = [];
   public marksList: Mark [] = [];
 
   constructor( private _productsService: ProductsService,
@@ -24,17 +24,22 @@ export class ProductListComponent implements OnInit {
                private _marksService: MarksService) { }
 
   ngOnInit() {
-    this.productsList = this._productsService.getProducts();
-    this.categorysList = this._categorysService.getCategorys();
-    this.marksList = this._marksService.getMarks();
-  }
+    this._productsService.getProducts()
+      .subscribe( data => {
+        if ( data.status === true) {
+          this.productsList = data.response;
+        }
+        this._marksService.getMarks()
+          .subscribe( data2 => {
+            if ( data2.status === true) {
+              this.marksList = data2.response;
+            }
+            this._categorysService.getCategories()
+              .subscribe(data3 => {
+                this.categoriesList = data3.response;
+              });
 
-  getProductsMarks( id: number ) {
-    return this._productsService.getProductsForMark(id);
+          });
+      });
   }
-
-  getProductsCategorys( id: number ) {
-    return this._productsService.getProductsForCategory(id);
-  }
-
 }

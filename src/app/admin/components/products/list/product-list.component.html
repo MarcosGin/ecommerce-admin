@@ -32,9 +32,9 @@
           <tr *ngFor="let product of productsList">
             <td>{{ product.id }}</td>
             <td>{{ product.title }}</td>
-            <td>{{ product.mark | mark }}</td>
+            <td>{{ product.mark.name }}</td>
             <td class="text-center">{{ product.price | currency:'USD':true }}</td>
-            <td class="text-center"><i class="fa {{ product.category | category }}"></i></td>
+            <td class="text-center"><i class="fa {{ product.category.icon }}"></i></td>
             <td class="text-center"><span class="badge badge-pill" [ngClass]="{'badge-danger': product.stock <= 25, 'badge-warning': product.stock > 25 && product.stock <= 50, 'badge-success': product.stock >= 100}"> {{ product.stock }} </span></td>
             <td class="text-center"><a [routerLink]="['edit', product.id]" tooltip-msg="Edit product" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
             <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
@@ -75,7 +75,7 @@
           <tr *ngFor="let mark of marksList">
             <td>{{ mark.id }}</td>
             <td>{{ mark.name }}</td>
-            <td class="text-center">{{ getProductsMarks(mark.id) }}</td>
+            <td class="text-center">{{ mark.products }}</td>
             <td class="text-center"><a href="" tooltip-msg="Edit mark" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
             <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
           </tr>
@@ -110,10 +110,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let category of categorysList">
+          <tr *ngFor="let category of categoriesList">
             <td>{{ category.id }}</td>
             <td>{{ category.name }}</td>
-            <td class="text-center">{{ getProductsCategorys(category.id)}}</td>
+            <td class="text-center">{{ category.products }}</td>
             <td class="text-center"><a href="" tooltip-msg="Edit" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
             <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
           </tr>

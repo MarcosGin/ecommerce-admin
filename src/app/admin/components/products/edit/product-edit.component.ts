@@ -24,40 +24,67 @@ export class ProductEditComponent implements OnInit {
   };
   public form: FormGroup;
   public product: Products;
-  public categorys: Category [];
+  public categories: Category [];
   public marks: Mark [];
-  public data: Products;
   public id: number;
+  public loading = false;
+  public message = {
+    type: 'success',
+    content: ''
+  };
 
   constructor( private _productsService: ProductsService,
-               private _categorysService: CategorysService,
+               private _categoriesService: CategorysService,
                private _marksService: MarksService,
                private router: ActivatedRoute,
                private location: Location,
                private formBuilder: FormBuilder ) {
     this.product = new Products();
-    this.categorys = this._categorysService.getCategorys();
-    this.marks = this._marksService.getMarks();
   }
 
   ngOnInit() {
     this.router.params.subscribe( params => {
       this.id = params['id'];
-      this.data = this._productsService.getProduct(this.id);
       this.buildForm();
-      this.form.setValue({
-        'title': this.data.title,
-        'price': this.data.price,
-        'description': this.data.description,
-        'category': this.data.category,
-        'mark': this.data.mark,
-        'stock': this.data.stock
-      });
+      this._productsService.getProduct(this.id)
+        .subscribe( data => {
+          if ( data.status === true) {
+            this.form.setValue({
+              'title': data.response.title,
+              'price': data.response.price,
+              'description': data.response.description,
+              'category': data.response.category.id,
+              'mark': data.response.mark.id,
+              'stock': data.response.stock
+            });
+          }
+          this._categoriesService.getCategories()
+            .subscribe(data2 => {
+              this.categories = data2.response;
+              this._marksService.getMarks()
+                .subscribe(data3 => {
+                  this.marks = data3.response;
+                });
+            });
+        });
     });
   }
 
   save() {
-    console.log(this.form.value);
+    this.loading = true;
+    this._productsService.updateProduct(this.id, this.form.value)
+      .subscribe(data => {
+        this.form.setValue({
+          'title': data.response.data.title,
+          'price': data.response.data.price,
+          'description': data.response.data.description,
+          'category': data.response.data.category.id,
+          'mark': data.response.data.mark.id,
+          'stock': data.response.data.stock,
+        });
+        this.message.content = data.response.message;
+        this.loading = false;
+      });
   }
 
   goBack() {
@@ -69,13 +96,13 @@ export class ProductEditComponent implements OnInit {
         'title': [this.product.title, [
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(100)
+          Validators.maxLength(5000)
         ]],
         'price': [this.product.price, [Validators.required]],
         'description': [this.product.description, [
           Validators.required,
           Validators.minLength(20),
-          Validators.maxLength(240)
+          Validators.maxLength(10000)
         ]],
         'category': [this.product.category, [Validators.required]],
         'mark': [this.product.mark, [Validators.required]],
@@ -123,7 +150,7 @@ export class ProductEditComponent implements OnInit {
     'description': {
       'required': 'This field is required',
       'minlength': 'Must be at least 20 characters long.',
-      'maxlength': 'Cannot be more than 240 characters long.'
+      'maxlength': 'Cannot be more than 5000 characters long.'
     },
     'category': {
       'required': 'This field is required'
