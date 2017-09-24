@@ -1,9 +1,16 @@
 export class Products {
   id: number;
   title: string;
-  description: string;
-  category: number;
-  mark: number;
+  description?: string;
+  category = {
+    id: '',
+    name: '',
+    icon: ''
+  };
+  mark = {
+    id: '',
+    name: ''
+  };
   price: number;
   stock: number;
   created_at: string;
