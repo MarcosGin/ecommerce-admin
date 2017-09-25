@@ -16,6 +16,11 @@ a:hover{
   color: #333333;
   font-size: 18px;
 }
+.card-header .alert {
+  font-size: 15px;
+  padding: 5px 8px;
+  margin: 0;
+}
 .card-header .card-title{
   font-size: 13px;
   font-weight: 400;
