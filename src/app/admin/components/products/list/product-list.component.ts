@@ -25,11 +25,10 @@ export class ProductListComponent implements OnInit {
     type: 'danger',
     content: ''
   };
-  // pager object
-  pager: any = {};
-
-  // paged items
-  pagedItems: any[];
+  pagerProducts: any = {};
+  pagedProducts: any[];
+  pagerMarks: any = {};
+  pagedMarks: any[];
   constructor( private _productsService: ProductsService,
                private _categorysService: CategorysService,
                private _marksService: MarksService,
@@ -38,17 +37,18 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this._productsService.getProducts()
       .subscribe( data => {
-        if ( data.status === true) {
-          this.productsList = data.response;
-          this.setPage(1);
-        }
-          this._marksService.getMarks().subscribe(data2 => {
-            this.marksList = data2.response;
-            this._categorysService.getCategories().subscribe(data3 => {
-              this.categoriesList = data3.response;
-            });
-          });
-      });
+        if ( data.status === true) {this.productsList = data.response; this.setPageProducts(1); }
+      },err => console.log(err),
+                () => {
+                  this._marksService.getMarks().subscribe(data => {
+                    if (data.status === true) {this.marksList = data.response; this.setPageMarks(1); }
+                  },err => console.log(err),
+                    () => {
+                    this._categorysService.getCategories().subscribe(data => {
+                      if (data.status === true) {this.categoriesList = data.response; }
+                    });
+                    });
+                  });
   }
 
   search() {
@@ -58,7 +58,7 @@ export class ProductListComponent implements OnInit {
           if (data.status === true) {
             this.productsList = data.response;
             this.message.status = false;
-            this.setPage(1);
+            this.setPageProducts(1);
           } else {
             this.getProducts();
             this.message.status = true;
@@ -77,21 +77,27 @@ export class ProductListComponent implements OnInit {
       .subscribe( data => {
         if (data.status === true) {
           this.productsList = data.response;
-          this.setPage(1);
+          this.setPageProducts(1);
         }
       });
   }
 
-  setPage(page: number) {
-    if (page < 1 || page > this.pager.totalPages) {
+  setPageProducts(page: number) {
+    if (page < 1 || page > this.pagerProducts.totalPages) {
       return;
     }
 
-    // get pager object from service
-    this.pager = this._paginationService.getPager(this.productsList.length, page);
+    this.pagerProducts = this._paginationService.getPager(this.productsList.length, page);
+    this.pagedProducts = this.productsList.slice(this.pagerProducts.startIndex, this.pagerProducts.endIndex + 1);
+  }
 
-    // get current page of items
-    this.pagedItems = this.productsList.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  setPageMarks(page: number) {
+    if (page < 1 || page > this.pagerMarks.totalPages) {
+      return;
+    }
+
+    this.pagerMarks = this._paginationService.getPager(this.marksList.length, page, 5);
+    this.pagedMarks = this.marksList.slice(this.pagerMarks.startIndex, this.pagerMarks.endIndex + 1);
   }
 
 }
