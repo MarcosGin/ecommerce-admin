@@ -21,6 +21,23 @@ a:hover{
   padding: 5px 8px;
   margin: 0;
 }
+.card-header .pagination {
+  font-size: 14px;
+  margin-left: 20px;
+}
+.card-header .pagination .page-item{
+  cursor: pointer;
+}
+.card-header .pagination .page-item.disabled{
+  cursor: not-allowed;
+}
+.card-header .pagination .page-item.active .page-link{
+  background-color: #eceeef;
+  border-color: #dddfe0;
+  color: #000;
+}
+
+
 .card-header .card-title{
   font-size: 13px;
   font-weight: 400;

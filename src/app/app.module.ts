@@ -12,6 +12,8 @@ import { ProductsService } from './services/products.service';
 import { CategorysService } from './services/categorys.service';
 import { MarksService } from './services/marks.service';
 import { CountryService } from './services/country.service';
+import { PaginationService } from './services/pagination.service';
+
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -76,7 +78,8 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     ProductsService,
     CategorysService,
     MarksService,
-    CountryService
+    CountryService,
+    PaginationService
   ],
   bootstrap: [AppComponent]
 })

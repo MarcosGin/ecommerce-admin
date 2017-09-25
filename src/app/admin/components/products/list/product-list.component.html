@@ -3,7 +3,18 @@
     <div class="card">
       <div class="card-header">
         <div class="row">
-          <div class="col-md-9 col-sm-6">List of product
+          <div class="col-md-9 col-sm-6"><div class="float-left">List of product</div>
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination float-left">
+              <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                <a class="page-link" (click)="setPage(pager.currentPage - 1)">&laquo;</a>
+              </li>
+              <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a class="page-link" (click)="setPage(page)">{{page}}</a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a class="page-link" (click)="setPage(pager.currentPage + 1)">&raquo;</a>
+              </li>
+            </ul>
             <div class="float-right alert alert-{{ message.type }} animated fadeInLeft" *ngIf="message.status"> {{ message.content }}</div>
           </div>
           <div class="col-md-3 col-sm-6">
@@ -31,7 +42,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let product of productsList" class="animated fadeIn">
+          <tr *ngFor="let product of pagedItems" class="animated fadeIn">
             <td>{{ product.id }}</td>
             <td>{{ product.title }}</td>
             <td>{{ product.mark.name }}</td>
