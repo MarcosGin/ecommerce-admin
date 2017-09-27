@@ -61,6 +61,14 @@ export class ProductsService {
       }).catch(this.handleError);
   }
 
+  deleteProduct( id: number ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productDelete + '/' + id;
+    return this.http.delete(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
   searchProduct( value: string ) {
     const apiUrl = environment.apiUrl + environment.endpoints.productSearch + '/' + value;
     return this.http.get(apiUrl)

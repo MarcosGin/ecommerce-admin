@@ -51,6 +51,21 @@ export class ProductListComponent implements OnInit {
                   });
   }
 
+  delete( id: number) {
+    this._productsService.deleteProduct( id)
+      .subscribe( data => {
+        if (data.status === true ) {
+          this.message.content = data.response;
+          this.message.type = 'success';
+        } else {
+          this.message.type = 'danger';
+          this.message.content = data.response;
+        }
+        this.message.status = true;
+        this.getProducts();
+      });
+  }
+
   search() {
     if (this.searchValue) {
       this._productsService.searchProduct(this.searchValue)

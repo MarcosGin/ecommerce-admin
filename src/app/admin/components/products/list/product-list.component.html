@@ -50,7 +50,7 @@
             <td class="text-center"><i class="fa {{ product.category.icon }}"></i></td>
             <td class="text-center"><span class="badge badge-pill" [ngClass]="{'badge-danger': product.stock <= 25, 'badge-warning': product.stock > 25 && product.stock < 75, 'badge-success': product.stock >= 75}"> {{ product.stock }} </span></td>
             <td class="text-center"><a [routerLink]="['edit', product.id]" tooltip-msg="Edit product" class="tooltip-hover"><i class="ti-pencil-alt text-info"></i></a></td>
-            <td class="text-center"><a href="" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
+            <td class="text-center"><a (click)="delete(product.id)" tooltip-msg="Delete" class="tooltip-hover"><i class="ti-trash text-danger"></i></a></td>
           </tr>
           </tbody>
         </table>
