@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { CategorysService } from '../../../../services/categorys.service';
 import { MarksService } from '../../../../services/marks.service';
+import { ProductsService } from '../../../../services/products.service';
+
 
 import { Products } from '../../../../interfaces/products';
 import { Category } from '../../../../interfaces/category';
@@ -22,24 +24,49 @@ export class ProductAddComponent implements OnInit {
   };
   public form: FormGroup;
   public product: Products;
-  public categorys: Category [];
+  public categories: Category [];
   public marks: Mark [];
+  public loading = false;
+  public message = {
+    type: 'success',
+    content: ''
+  };
 
   constructor( private _categorysService: CategorysService,
                private _marksService: MarksService,
+               private _productsService: ProductsService,
                private formBuilder: FormBuilder,
                private location: Location) {
     this.product = new Products();
-    this.categorys = [];
-    this.marks = [];
   }
 
   ngOnInit() {
+    this._categorysService.getCategories()
+      .subscribe(data => {
+        this.categories = data.response;
+      },err => { console.log(err); },
+        () => {
+        this._marksService.getMarks()
+          .subscribe(data => {
+            this.marks = data.response;
+          });
+        });
     this.buildForm();
+    this.form.setValue({
+      'title': '',
+      'price': '',
+      'description': '',
+      'category': '1',
+      'mark': '1',
+      'stock': 1,
+    });
   }
 
   save() {
-    console.log(this.form.value);
+    this._productsService.addProduct(this.form.value)
+      .subscribe(data => {
+        console.log(data); // add notifications and redirect to products list
+    });
   }
 
   goBack() {

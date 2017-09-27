@@ -48,8 +48,7 @@
                 </div>
                 <select formControlName="category" [ngClass]="{'input-invalid': formErrors.category }"
                         class="form-control"  id="category">
-                  <option value="" [selected]="!product.category">Select category</option>
-                  <option *ngFor="let category of categorys" [value]="category.id">{{ category.name }}</option>
+                  <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
                 </select>
               </div>
             </div>
@@ -62,7 +61,6 @@
                 </div>
                 <select formControlName="mark" [ngClass]="{'input-invalid': formErrors.mark }"
                         class="form-control"  id="mark">
-                  <option value="" [selected]="!product.mark">Select mark</option>
                   <option *ngFor="let mark of marks" [value]="mark.id">{{ mark.name }}</option>
                 </select>
               </div>

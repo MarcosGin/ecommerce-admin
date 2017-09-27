@@ -49,8 +49,12 @@ export class ProductsService {
       }).catch(this.handleError);
   }
 
-  getLastProductsList() {
-    return this.lastProductsList;
+  addProduct (data: any) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productAdd;
+    return this.http.post(apiUrl, JSON.stringify(data))
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
   }
 
   updateProduct( id: number, data: any) {
@@ -75,6 +79,10 @@ export class ProductsService {
       .map((res: Response) => {
         return res.json();
       }).catch(this.handleError);
+  }
+
+  getLastProductsList() {
+    return this.lastProductsList;
   }
 
   private handleError(error: Response | any) {

@@ -13,6 +13,7 @@ const endpoints = {
   product: 'products/get',
   productList: 'products/list',
   productSearch: 'products/search',
+  productAdd: 'products/add',
   productUpdate: 'products/update',
   productDelete: 'products/delete',
   productMarkList: 'products/marks/list',
