@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AccountService } from '../../../../services/account.service';
+import { NotificationsService } from 'angular2-notifications/dist';
 import { Users } from '../../../../services/users.service';
 import { Country } from '../../../../interfaces/country';
 
@@ -15,9 +16,11 @@ export class ProfileComponent implements OnInit {
   public user: Users;
   public form: FormGroup;
   public countrys: Country [];
+  public loading = false;
 
   constructor(  private _accountService: AccountService,
-               private formBuilder: FormBuilder) {
+                private _notifications: NotificationsService,
+                private formBuilder: FormBuilder) {
     this.user = new Users();
     this.countrys = [
       {
@@ -54,7 +57,24 @@ export class ProfileComponent implements OnInit {
   }
 
   save () {
-    console.log(this.form.value);
+    this.loading = true;
+    this._accountService.updateProfile(this.form.value)
+      .subscribe(data => {
+        this.form.setValue({
+          'firstname': data.response.data.firstname,
+          'lastname': data.response.data.lastname,
+          'username': data.response.data.username,
+          'document': data.response.data.document,
+          'email': data.response.data.email,
+          'phone': data.response.data.phone,
+          'country': data.response.data.country,
+          'city': data.response.data.city,
+          'address': data.response.data.address,
+          'postalcode': data.response.data.postalcode
+        });
+        this._notifications.success('Edit profile', data.response.message);
+        this.loading = false;
+      });
   }
 
   buildForm(): void {
