@@ -67,13 +67,7 @@ export class ProductAddComponent implements OnInit {
   save() {
     this._productsService.addProduct(this.form.value)
       .subscribe(data => {
-          this._notifications.success(
-            'Add product',
-            data.response.message,
-            {
-              showProgressBar: true,
-            }
-          );
+        this._notifications.success('Add product', data.response.message);
         this.location.back();
     });
   }

@@ -8,6 +8,8 @@ import { ProductsService } from '../../../../services/products.service';
 import { CategorysService } from '../../../../services/categorys.service';
 import { MarksService } from '../../../../services/marks.service';
 import { PaginationService } from '../../../../services/pagination.service';
+import { NotificationsService } from 'angular2-notifications/dist';
+
 
 @Component({
   selector: 'app-list',
@@ -32,6 +34,7 @@ export class ProductListComponent implements OnInit {
   constructor( private _productsService: ProductsService,
                private _categorysService: CategorysService,
                private _marksService: MarksService,
+               private _notifications: NotificationsService,
                private _paginationService: PaginationService) { }
 
   ngOnInit() {
@@ -55,13 +58,10 @@ export class ProductListComponent implements OnInit {
     this._productsService.deleteProduct( id)
       .subscribe( data => {
         if (data.status === true ) {
-          this.message.content = data.response;
-          this.message.type = 'success';
+          this._notifications.success('Delete product', data.response);
         } else {
-          this.message.type = 'danger';
-          this.message.content = data.response;
+          this._notifications.error('Delete product', data.response);
         }
-        this.message.status = true;
         this.getProducts();
       });
   }

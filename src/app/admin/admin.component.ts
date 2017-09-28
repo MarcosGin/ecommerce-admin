@@ -9,7 +9,8 @@ export class AdminComponent implements OnInit {
   public options = {
     position: ['bottom', 'right'],
     timeOut: 6000,
-    lastOnBottom: true
+    lastOnBottom: true,
+    showProgressBar: true
   };
   constructor() {
   }
