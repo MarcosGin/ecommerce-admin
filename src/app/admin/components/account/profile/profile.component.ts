@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AuthService } from '../../../../services/auth.service';
-import { UsersService } from '../../../../services/users.service';
+import { AccountService } from '../../../../services/account.service';
 import { Users } from '../../../../services/users.service';
 import { Country } from '../../../../interfaces/country';
 
@@ -14,12 +13,10 @@ import { Country } from '../../../../interfaces/country';
 export class ProfileComponent implements OnInit {
 
   public user: Users;
-  public username: string;
   public form: FormGroup;
   public countrys: Country [];
 
-  constructor( private _authService: AuthService,
-               private _usersService: UsersService,
+  constructor(  private _accountService: AccountService,
                private formBuilder: FormBuilder) {
     this.user = new Users();
     this.countrys = [
@@ -39,9 +36,8 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit() {
     this.buildForm();
-    this._usersService.getUser(1)
+    this._accountService.getProfile()
       .subscribe(data => {
-        this.username = data.firstname + ' ' + data.lastname;
         this.form.setValue({
           'firstname': data.firstname,
           'lastname': data.lastname,
@@ -63,13 +59,13 @@ export class ProfileComponent implements OnInit {
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      'firstName': [this.user.firstname, [
+      'firstname': [this.user.firstname, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30)
       ]
       ],
-      'lastName': [this.user.lastname, [
+      'lastname': [this.user.lastname, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(30)
@@ -89,7 +85,7 @@ export class ProfileComponent implements OnInit {
       'country': [this.user.country, [Validators.required]],
       'city': [this.user.city, [Validators.required]],
       'address': [this.user.address, [Validators.required]],
-      'postalCode': [this.user.postalcode, [Validators.required]]
+      'postalcode': [this.user.postalcode, [Validators.required]]
     });
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -97,7 +93,6 @@ export class ProfileComponent implements OnInit {
 
   onValueChanged(data?: any) {
     if (!this.form) { return; }
-    console.log('entro');
     const form = this.form;
 
     for (const field in this.formErrors) {
@@ -147,7 +142,7 @@ export class ProfileComponent implements OnInit {
     'country': {'required': 'This field is required'},
     'city': {'required': 'This field is required'},
     'address': {'required': 'This field is required'},
-    'postalCode': {'required': 'This field is required'}
+    'postalcode': {'required': 'This field is required'}
   };
 
 }

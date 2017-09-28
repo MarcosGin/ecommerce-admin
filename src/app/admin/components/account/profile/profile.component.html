@@ -4,25 +4,25 @@
   <div class="row">
     <div class="col-md-4">
       <div class="form-group">
-        <label class="form-control-label" for="firstName">First name</label>
-        <div class="form-icon-error" *ngIf="formErrors.firstName">
+        <label class="form-control-label" for="firstname">First name</label>
+        <div class="form-icon-error" *ngIf="formErrors.firstname">
           <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
-          <div class="message animated fadeInDown">{{ formErrors.firstName }}</div>
+          <div class="message animated fadeInDown">{{ formErrors.firstname }}</div>
         </div>
-        <input  formControlName="firstName" [ngClass]="{'input-invalid': formErrors.firstName }"
-                type="text" class="form-control" id="firstName" placeholder="First name">
+        <input  formControlName="firstname" [ngClass]="{'input-invalid': formErrors.firstname }"
+                type="text" class="form-control" id="firstname" placeholder="First name">
 
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label class="form-control-label" for="lastName">Last name</label>
-        <div class="form-icon-error" *ngIf="formErrors.lastName">
+        <label class="form-control-label" for="lastname">Last name</label>
+        <div class="form-icon-error" *ngIf="formErrors.lastname">
           <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
-          <div class="message">{{ formErrors.lastName }}</div>
+          <div class="message">{{ formErrors.lastname }}</div>
         </div>
-        <input formControlName="lastName" [ngClass]="{'input-invalid': formErrors.lastName }"
-               type="text" class="form-control" id="lastName" placeholder="Last name">
+        <input formControlName="lastname" [ngClass]="{'input-invalid': formErrors.lastname }"
+               type="text" class="form-control" id="lastname" placeholder="Last name">
       </div>
     </div>
     <div class="col-md-4">
@@ -100,12 +100,12 @@
     <div class="col-md-3">
       <div class="form-group">
         <label class="form-control-label" for="postalCode">Postal code</label>
-        <div class="form-icon-error" *ngIf="formErrors.postalCode">
+        <div class="form-icon-error" *ngIf="formErrors.postalcode">
           <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
-          <div class="message">{{ formErrors.postalCode }}</div>
+          <div class="message">{{ formErrors.postalcode }}</div>
         </div>
-        <input formControlName="postalCode" [ngClass]="{'input-invalid': formErrors.postalCode }"
-               type="text" class="form-control" id="postalCode" placeholder="Postal code">
+        <input formControlName="postalcode" [ngClass]="{'input-invalid': formErrors.postalcode }"
+               type="text" class="form-control" id="postalcode" placeholder="Postal code">
       </div>
     </div>
   </div>
