@@ -28,6 +28,17 @@ export class AccountService {
       }).catch(this.handleError);
   }
 
+  updateProfile( data: any) {
+    const apiUrl = environment.apiUrl + environment.endpoints.accountProfile;
+    const headers = new Headers();
+    headers.append('authorization', this._authService.token);
+    const options = new RequestOptions({headers: headers});
+    return this.http.put(apiUrl,  JSON.stringify(data) , options)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
   private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
