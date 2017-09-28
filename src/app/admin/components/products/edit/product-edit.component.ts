@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../../services/products.service';
 import { CategorysService } from '../../../../services/categorys.service';
 import { MarksService } from '../../../../services/marks.service';
+import { NotificationsService } from 'angular2-notifications/dist';
+
 
 import { Products } from '../../../../interfaces/products';
 import { Category } from '../../../../interfaces/category';
@@ -28,14 +30,11 @@ export class ProductEditComponent implements OnInit {
   public marks: Mark [];
   public id: number;
   public loading = false;
-  public message = {
-    type: 'success',
-    content: ''
-  };
 
   constructor( private _productsService: ProductsService,
                private _categoriesService: CategorysService,
                private _marksService: MarksService,
+               private _notifications: NotificationsService,
                private router: ActivatedRoute,
                private location: Location,
                private formBuilder: FormBuilder ) {
@@ -82,7 +81,7 @@ export class ProductEditComponent implements OnInit {
           'mark': data.response.data.mark.id,
           'stock': data.response.data.stock,
         });
-        this.message.content = data.response.message;
+        this._notifications.success('Edit product', data.response.message);
         this.loading = false;
       });
   }
