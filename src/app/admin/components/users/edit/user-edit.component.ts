@@ -6,6 +6,7 @@ import { Country } from '../../../../interfaces/country';
 
 import { UsersService, Users } from '../../../../services/users.service';
 import { CountryService } from '../../../../services/country.service';
+import { NotificationsService } from 'angular2-notifications/dist';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -22,13 +23,9 @@ export class UserEditComponent implements OnInit {
   public userName: string;
   public id: number;
   public loading = false;
-  public message = {
-    type: 'success',
-    content: ''
-  };
-
   constructor( private _usersService: UsersService,
                private _countrysService: CountryService,
+               private _notifications: NotificationsService,
                private router: ActivatedRoute,
                private location: Location,
                private formBuilder: FormBuilder ) {
@@ -36,12 +33,12 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.buildForm();
     this._countrysService.getCountrys()
       .subscribe(res => {
         this.countrys = res.response;
         this.router.params.subscribe( params => {
           this.id = params['id'];
-          this.buildForm();
           this._usersService.getUser(this.id)
             .subscribe(data => {
               this.userName = data.firstname + ' ' + data.lastname;
@@ -83,7 +80,7 @@ export class UserEditComponent implements OnInit {
           'address': data.response.data.address,
           'postalcode': data.response.data.postalcode
         });
-        this.message.content = data.response.message;
+        this._notifications.success('Edit user', data.response.message);
         this.loading = false;
       });
   }

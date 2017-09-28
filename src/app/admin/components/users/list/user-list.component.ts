@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService, Users } from '../../../../services/users.service';
+import { NotificationsService } from 'angular2-notifications/dist';
+
 
 @Component({
   selector: 'app-user-list',
@@ -16,7 +18,8 @@ export class UserListComponent implements OnInit {
     content: ''
   };
 
-  constructor( private _usersService: UsersService) { }
+  constructor( private _usersService: UsersService,
+               private _notifications: NotificationsService) { }
 
   ngOnInit() {
       this.getUsers();
@@ -46,13 +49,10 @@ export class UserListComponent implements OnInit {
     this._usersService.deleteUser( id)
       .subscribe( data => {
         if (data.status === true ) {
-          this.message.content = data.response;
-          this.message.type = 'success';
+          this._notifications.success('Edit user', data.response);
         } else {
-          this.message.type = 'danger';
-          this.message.content = data.response;
+          this._notifications.error('Edit user', data.response);
         }
-        this.message.status = true;
         this.getUsers();
       });
   }
