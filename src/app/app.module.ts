@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { APP_ROUTING } from './app.routes';
 
 import { AuthService } from './services/auth.service';
+import { AccountService } from './services/account.service';
 import { HomeService } from './services/home.service';
 import { UsersService } from './services/users.service';
 import { ProductsService } from './services/products.service';
@@ -77,6 +78,7 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
   providers: [
     AuthGuard,
     AuthService,
+    AccountService,
     HomeService,
     UsersService,
     ProductsService,
