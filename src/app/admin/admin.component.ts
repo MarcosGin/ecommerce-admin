@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor() { }
+  public options = {
+    position: ['bottom', 'right'],
+    timeOut: 6000,
+    lastOnBottom: true
+  };
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
+
 
 }

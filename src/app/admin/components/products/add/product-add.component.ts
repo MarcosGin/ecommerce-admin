@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CategorysService } from '../../../../services/categorys.service';
 import { MarksService } from '../../../../services/marks.service';
 import { ProductsService } from '../../../../services/products.service';
+import { NotificationsService } from 'angular2-notifications/dist';
 
 
 import { Products } from '../../../../interfaces/products';
@@ -35,6 +36,7 @@ export class ProductAddComponent implements OnInit {
   constructor( private _categorysService: CategorysService,
                private _marksService: MarksService,
                private _productsService: ProductsService,
+               private _notifications: NotificationsService,
                private formBuilder: FormBuilder,
                private location: Location) {
     this.product = new Products();
@@ -65,7 +67,14 @@ export class ProductAddComponent implements OnInit {
   save() {
     this._productsService.addProduct(this.form.value)
       .subscribe(data => {
-        console.log(data); // add notifications and redirect to products list
+          this._notifications.success(
+            'Add product',
+            data.response.message,
+            {
+              showProgressBar: true,
+            }
+          );
+        this.location.back();
     });
   }
 
