@@ -16,6 +16,28 @@ a:hover{
   color: #333333;
   font-size: 18px;
 }
+.card-header .alert {
+  font-size: 15px;
+  padding: 5px 8px;
+  margin: 0;
+}
+.card-header .pagination {
+  font-size: 14px;
+  margin-left: 20px;
+}
+.card-header .pagination .page-item{
+  cursor: pointer;
+}
+.card-header .pagination .page-item.disabled{
+  cursor: not-allowed;
+}
+.card-header .pagination .page-item.active .page-link{
+  background-color: #eceeef;
+  border-color: #dddfe0;
+  color: #000;
+}
+
+
 .card-header .card-title{
   font-size: 13px;
   font-weight: 400;
@@ -24,6 +46,31 @@ a:hover{
 }
 .card-nopadding{
   padding: 0;
+}
+.table-striped tbody tr:nth-of-type(odd){
+  background-color: #f9f9f9;
+}
+.table-hover>tbody>tr:hover {
+  background-color: #f5f5f5;
+}
+.card-block .table > thead > tr > th:first-child,.card-block .table > tbody > tr > td:first-child{
+  padding-left: 15px;
+}
+
+.card-block .table > thead > tr > th {
+  border-bottom-width: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #9A9A9A;
+  font-weight: 400;
+  padding-bottom:  5px;
+  padding-left: 8px;
+  border-top: 0;
+}
+.card-block .table > tbody > tr > td {
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  padding: 12px 8px;
 }
 .card-footer{
   border-top: none;
@@ -48,6 +95,38 @@ a:hover{
 }
 .card-footer .btn-fill i{
   vertical-align: middle;
+}
+
+.user-profile .card-header{
+  background-image: url("../img/users/user-background.png");
+  background-size: cover;
+  background-position: center center;
+  height: 120px;
+}
+.user-profile .avatar{
+  text-align: center;
+  margin-top: -80px;
+}
+.user-profile .avatar img{
+  width: 124px;
+  height: 124px;
+  border: 5px solid #EEE;
+  margin-bottom: 5px;
+  border-radius: 50%;
+}
+.user-profile .avatar span{
+  font-weight: 300;
+  font-size: 19px;
+  display: block;
+}
+.user-profile .card-block .menu{
+  margin-top: 10px;
+}
+.user-profile .card-block .menu button{
+  padding: 6px 8px;
+}
+.user-profile .card-block .menu button:hover, .user-profile .card-block .menu button:active{
+  background-color: #dadada;
 }
 /* Styles for the inputs */
 .form-group .form-control{
@@ -177,6 +256,7 @@ a:hover{
 /* Styles for the tooltips */
 .tooltip-hover{
   position: relative;
+  cursor: pointer;
 }
 .tooltip-hover:before{
   position: absolute;
@@ -199,3 +279,43 @@ a:hover{
   opacity: 1;
   margin-top: -20px;
 }
+/* Input toggle switch */
+label.switch input{
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  height: 1em;
+  width: 2em;
+  margin: 0;
+  cursor: pointer;
+}
+.switch .toggle {
+  background: #cccccc;
+  border-radius: 1em;
+  transition: all 300ms;
+}
+
+.switch .toggle .icon {
+  height: 1em;
+  width: 1em;
+  border-radius: 1em;
+  background: #FFF;
+  box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
+  transition: all 500ms;
+}
+.switch input:checked + .toggle {
+  background: #3d74c0;
+}
+
+.switch input:checked + .toggle  .icon {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+

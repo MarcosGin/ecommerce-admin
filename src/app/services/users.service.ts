@@ -1,64 +1,79 @@
 import { Injectable } from '@angular/core';
+import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class UsersService {
-  private users: Users[] = [
-    {
-      id: 1,
-      firstName: 'Marcos',
-      lastName: 'Gin',
-      username: 'Khyzo',
-      document: 42270070,
-      email: 'marcosgin291@gmail.com.ar',
-      phone: 42131424,
-      country: 'ar',
-      city: 'Avellaneda',
-      address: 'Beazley 91',
-      postalCode: 1872
-    },
-    {
-      id: 2,
-      firstName: 'Johanna',
-      lastName: 'Ramirez',
-      username: 'johan12',
-      document: 41235456,
-      email: 'soyjohan@yahoo.com.ar',
-      phone: 1542213472,
-      country: 'pe',
-      city: 'Lima',
-      address: 'Avenida Jose Carlos 1832',
-      postalCode: 1241
-    },
-    {
-      id: 3,
-      firstName: 'Matías',
-      lastName: 'Mendoza',
-      username: 'maty241',
-      document: 51603242,
-      email: 'matimendoza@gmail.com',
-      phone: null,
-      country: 'ar',
-      city: 'Capital Federal',
-      address: 'Lavalle 32',
-      postalCode: 11241
-    }
-  ];
 
-  constructor () {}
+  constructor ( private http: Http,
+                private _authService: AuthService ) {}
 
   getUsers () {
-    return this.users;
+    const apiUrl = environment.apiUrl + environment.endpoints.userList;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
   }
 
   getUser ( id: number ) {
-    return this.users[id - 1];
+    const apiUrl = environment.apiUrl + environment.endpoints.user + '/' + id;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json().response;
+      }).catch(this.handleError);
+  }
+
+  searchUser( value: string ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.userSearch + '/' + value;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  updateUser ( id: number, data: any) {
+    const apiUrl = environment.apiUrl + environment.endpoints.userUpdate + '/' + id;
+    return this.http.put(apiUrl, JSON.stringify(data))
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  deleteUser ( id: number ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.userDelete + '/' + id;
+    const headers = new Headers();
+    headers.append('authorization', this._authService.token);
+    const options = new RequestOptions({headers: headers});
+    return this.http.delete(apiUrl, options)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  private handleError(error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    return Observable.throw(errMsg);
   }
 
 }
 export class Users {
   id: number;
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   username: string;
   document: number;
   email: string;
@@ -66,5 +81,5 @@ export class Users {
   country: string;
   city: string;
   address: string;
-  postalCode: number;
+  postalcode: number;
 }

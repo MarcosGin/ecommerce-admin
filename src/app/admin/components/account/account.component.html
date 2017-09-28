@@ -1,0 +1,33 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row animated fadeInLeft">
+      <div class="col-md-8">
+        <div class="card">
+            <router-outlet></router-outlet>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card user-profile">
+          <div class="card-header">
+          </div>
+          <div class="card-block">
+            <div class="avatar">
+              <img src="../../../assets/img/users/user-avatar.png" class="img-thumbnail" alt="">
+              <span> {{ user.firstName }} {{ user.lastName }} </span>
+              <span>{{ token }}</span>
+            </div>
+
+            <div class="menu text-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary" routerLinkActive="active" [routerLink]="['profile']">Profile</button>
+                <button type="button" class="btn btn-secondary" routerLinkActive="active" [routerLink]="['config']">Config</button>
+                <button type="button" class="btn btn-secondary" routerLinkActive="active" [routerLink]="['history']">History</button>
+                <button type="button" class="btn btn-secondary" routerLinkActive="active" [routerLink]="['permission']">Permissions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,55 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
 import { ListProduct } from './home.service';
-import { Products } from '../interfaces/products';
 
 @Injectable()
 export class ProductsService {
-  private products: Products [] = [
-    {
-      id: 1,
-      title: 'Celular Motorola 4G liberado 16GB',
-      description: 'its is my description',
-      category: 1,
-      mark: 1,
-      price: 1700,
-      stock: 120,
-      created_at: 'four hour ago',
-      updated_at: 'now',
-    },
-    {
-      id: 2,
-      title: 'Smart Tv SAMSUNG 48 UN48JU6700',
-      description: 'its is my description',
-      category: 3,
-      mark: 3,
-      price: 8700,
-      stock: 47,
-      created_at: 'six hour ago',
-      updated_at: 'yesterday',
-    },
-    {
-      id: 3,
-      title: 'Notebook Lenovo Y700-15ISK 80NV003SAR',
-      description: 'its is my description',
-      category: 2,
-      mark: 2,
-      price: 13000,
-      stock: 23,
-      created_at: 'three hour ago',
-      updated_at: 'yesterday',
-    },
-    {
-      id: 4,
-      title: 'Notebook ACER E5-573-574S CI5',
-      description: 'its is my description',
-      category: 2,
-      mark: 2,
-      price: 19000,
-      stock: 23,
-      created_at: 'three hour ago',
-      updated_at: 'yesterday',
-    }
-  ];
   private lastProductsList: ListProduct [] = [
     {
       id: 1,
@@ -71,37 +31,70 @@ export class ProductsService {
     },
   ];
 
-  constructor () {}
+  constructor ( private http: Http) {}
 
   getProducts() {
-    return this.products;
+    const apiUrl = environment.apiUrl + environment.endpoints.productList;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  getProduct (id: number) {
+    const apiUrl = environment.apiUrl + environment.endpoints.product + '/' + id;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  addProduct (data: any) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productAdd;
+    return this.http.post(apiUrl, JSON.stringify(data))
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  updateProduct( id: number, data: any) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productUpdate + '/' + id;
+    return this.http.put(apiUrl,  JSON.stringify(data))
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  deleteProduct( id: number ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productDelete + '/' + id;
+    return this.http.delete(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
+  }
+
+  searchProduct( value: string ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productSearch + '/' + value;
+    return this.http.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      }).catch(this.handleError);
   }
 
   getLastProductsList() {
     return this.lastProductsList;
   }
 
-  getProduct (id: number) {
-    return this.products[id - 1];
-  }
-
-  getProductsForMark( id: number ) {
-    let cont = 0;
-    for (const product of this.products) {
-      if (product.mark === id) {
-        cont++;
-      }
+  private handleError(error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
     }
-    return cont;
-  }
-  getProductsForCategory( id: number ) {
-    let cont = 0;
-    for (const product of this.products) {
-      if (product.category === id) {
-        cont++;
-      }
-    }
-    return cont;
+    return Observable.throw(errMsg);
   }
 
 }

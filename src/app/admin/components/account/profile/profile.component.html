@@ -1,0 +1,115 @@
+<div class="card-header"> My account <small class="card-title">(Edit your personal information)</small></div>
+<div class="card-block animated fadeIn">
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label class="form-control-label" for="firstName">First name</label>
+        <div class="form-icon-error" *ngIf="formErrors.firstName">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message animated fadeInDown">{{ formErrors.firstName }}</div>
+        </div>
+        <input  formControlName="firstName" [ngClass]="{'input-invalid': formErrors.firstName }"
+                type="text" class="form-control" id="firstName" placeholder="First name">
+
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label class="form-control-label" for="lastName">Last name</label>
+        <div class="form-icon-error" *ngIf="formErrors.lastName">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message">{{ formErrors.lastName }}</div>
+        </div>
+        <input formControlName="lastName" [ngClass]="{'input-invalid': formErrors.lastName }"
+               type="text" class="form-control" id="lastName" placeholder="Last name">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label class="form-control-label" for="username">Username</label>
+        <div class="form-icon-error" *ngIf="formErrors.username">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message">{{ formErrors.username }}</div>
+        </div>
+        <input formControlName="username" [ngClass]="{'input-invalid': formErrors.username }"
+               type="text" class="form-control" id="username" placeholder="Username">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label class="form-control-label" for="email">Email Address</label>
+        <div class="form-icon-error" *ngIf="formErrors.email">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message">{{ formErrors.email }}</div>
+        </div>
+        <input formControlName="email" [ngClass]="{'input-invalid': formErrors.email }"
+               type="email" class="form-control" id="email" placeholder="Email address">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label class="form-control-label" for="numberPhone">Number phone</label>
+        <div class="form-icon-error" *ngIf="formErrors.phone">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message">{{ formErrors.phone }}</div>
+        </div>
+        <input formControlName="phone" [ngClass]="{'input-invalid': formErrors.phone }"
+               type="text" class="form-control" id="numberPhone" placeholder="Phone">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label class="form-control-label" for="country">Country</label>
+        <div class="form-icon-error" *ngIf="formErrors.country">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message">{{ formErrors.country }}</div>
+        </div>
+        <select formControlName="country" [ngClass]="{'input-invalid': formErrors.country }"
+                class="form-control"  id="country">
+          <option *ngFor="let country of countrys" [value]="country.id">{{ country.name }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label class="form-control-label" for="city">City</label>
+        <div class="form-icon-error" *ngIf="formErrors.city">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message">{{ formErrors.city }}</div>
+        </div>
+        <input formControlName="city" [ngClass]="{'input-invalid': formErrors.city }"
+               type="text" class="form-control" id="city" placeholder="City">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="form-control-label" for="address">Address</label>
+        <div class="form-icon-error" *ngIf="formErrors.address">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message">{{ formErrors.address }}</div>
+        </div>
+        <input formControlName="address" [ngClass]="{'input-invalid': formErrors.address }"
+               type="text" class="form-control" id="address" placeholder="Address">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label class="form-control-label" for="postalCode">Postal code</label>
+        <div class="form-icon-error" *ngIf="formErrors.postalCode">
+          <div class="form-icon animated fadeIn"><i class="ti-alert"></i></div>
+          <div class="message">{{ formErrors.postalCode }}</div>
+        </div>
+        <input formControlName="postalCode" [ngClass]="{'input-invalid': formErrors.postalCode }"
+               type="text" class="form-control" id="postalCode" placeholder="Postal code">
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-info float-right" [disabled]="!form.valid || !form.dirty" (click)="save()">Save changes</button>
+  <div class="clearfix"></div>
+</form>
+</div>
