@@ -6,12 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  public options = {
-    position: ['bottom', 'right'],
-    timeOut: 6000,
-    lastOnBottom: true,
-    showProgressBar: true
-  };
+
   constructor() {
   }
 
