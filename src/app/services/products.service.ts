@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
 
 import { ListProduct } from './home.service';
+import { CommonService } from './common.service';
 
 @Injectable()
 export class ProductsService {
@@ -31,70 +29,51 @@ export class ProductsService {
     },
   ];
 
-  constructor ( private http: Http) {}
+  constructor ( private _commonService: CommonService) {}
 
   getProducts() {
     const apiUrl = environment.apiUrl + environment.endpoints.productList;
-    return this.http.get(apiUrl)
+    return this._commonService.get(apiUrl)
       .map((res: Response) => {
         return res.json();
-      }).catch(this.handleError);
+      });
   }
-
   getProduct (id: number) {
     const apiUrl = environment.apiUrl + environment.endpoints.product + '/' + id;
-    return this.http.get(apiUrl)
+    return this._commonService.get(apiUrl)
       .map((res: Response) => {
         return res.json();
-      }).catch(this.handleError);
+      });
   }
-
   addProduct (data: any) {
     const apiUrl = environment.apiUrl + environment.endpoints.productAdd;
-    return this.http.post(apiUrl, JSON.stringify(data))
+    return this._commonService.post(apiUrl, JSON.stringify(data))
       .map((res: Response) => {
         return res.json();
-      }).catch(this.handleError);
+      });
   }
-
   updateProduct( id: number, data: any) {
     const apiUrl = environment.apiUrl + environment.endpoints.productUpdate + '/' + id;
-    return this.http.put(apiUrl,  JSON.stringify(data))
+    return this._commonService.put(apiUrl,  JSON.stringify(data))
       .map((res: Response) => {
         return res.json();
-      }).catch(this.handleError);
+      });
   }
-
   deleteProduct( id: number ) {
     const apiUrl = environment.apiUrl + environment.endpoints.productDelete + '/' + id;
-    return this.http.delete(apiUrl)
+    return this._commonService.delete(apiUrl)
       .map((res: Response) => {
         return res.json();
-      }).catch(this.handleError);
+      });
   }
-
   searchProduct( value: string ) {
     const apiUrl = environment.apiUrl + environment.endpoints.productSearch + '/' + value;
-    return this.http.get(apiUrl)
+    return this._commonService.get(apiUrl)
       .map((res: Response) => {
         return res.json();
-      }).catch(this.handleError);
+      });
   }
-
   getLastProductsList() {
     return this.lastProductsList;
   }
-
-  private handleError(error: Response | any) {
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
-    }
-    return Observable.throw(errMsg);
-  }
-
 }

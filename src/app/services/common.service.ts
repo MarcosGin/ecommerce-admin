@@ -19,7 +19,7 @@ export class CommonService {
               private _notifications: NotificationsService,
               private router: Router) {
     const headers = new Headers();
-    headers.append('Authorization', this._auth.getToken());
+    headers.append('Authorization', this._auth.token);
     headers.append('Content-Type', 'application/json');
     this.options = new RequestOptions({'headers': headers});
   }

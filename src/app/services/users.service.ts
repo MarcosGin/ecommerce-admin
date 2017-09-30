@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
 
-import { AuthService } from './auth.service';
 import {CommonService} from './common.service';
 
 @Injectable()
 export class UsersService {
 
-  constructor ( private http: Http,
-                private _authService: AuthService,
-                private _commonService: CommonService) {}
+  constructor ( private _commonService: CommonService ) {}
 
   getUsers () {
     const apiUrl = environment.apiUrl + environment.endpoints.userList;
@@ -22,7 +17,6 @@ export class UsersService {
         return res.json();
       });
   }
-
   getUser ( id: number ) {
     const apiUrl = environment.apiUrl + environment.endpoints.user + '/' + id;
     return this._commonService.get(apiUrl)
@@ -30,7 +24,6 @@ export class UsersService {
         return res.json().response;
       });
   }
-
   searchUser( value: string ) {
     const apiUrl = environment.apiUrl + environment.endpoints.userSearch + '/' + value;
     return this._commonService.get(apiUrl)
@@ -38,15 +31,13 @@ export class UsersService {
         return res.json();
       });
   }
-
   updateUser ( id: number, data: any) {
     const apiUrl = environment.apiUrl + environment.endpoints.userUpdate + '/' + id;
-    return this.http.put(apiUrl, JSON.stringify(data))
+    return this._commonService.put(apiUrl, JSON.stringify(data))
       .map((res: Response) => {
         return res.json();
       });
   }
-
   deleteUser ( id: number ) {
     const apiUrl = environment.apiUrl + environment.endpoints.userDelete + '/' + id;
     return this._commonService.delete(apiUrl)
@@ -54,7 +45,6 @@ export class UsersService {
         return res.json();
       });
   }
-
 }
 export class Users {
   id: number;
