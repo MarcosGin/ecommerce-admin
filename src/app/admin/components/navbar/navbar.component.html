@@ -1,7 +1,7 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="menu-phone" *ngIf="phoneDetected" (click)="activeMenu()">
+    <div class="icon" [ngClass]="{'active': menuActive }"><span></span></div>
+  </div>
   <a class="navbar-brand" href="#">{{ getTittle() }}</a>
   <div class="collapse navbar-collapse" id="navbarText">
 
