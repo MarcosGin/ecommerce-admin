@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { AuthService } from './auth.service';
-import { NotificationsService } from 'angular2-notifications/dist';
+import { NotificationsService } from 'angular2-notifications';
 
 
 @Injectable()

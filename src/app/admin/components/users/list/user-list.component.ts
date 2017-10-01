@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService, Users } from '../../../../services/users.service';
-import { NotificationsService } from 'angular2-notifications/dist';
+import { NotificationsService } from 'angular2-notifications';
 
 
 @Component({

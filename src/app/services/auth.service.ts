@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response, Headers } from '@angular/http';
 import { Router } from '@angular/router';
-import { NotificationsService } from 'angular2-notifications/dist';
+import { NotificationsService } from 'angular2-notifications';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';

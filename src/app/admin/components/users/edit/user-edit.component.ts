@@ -6,7 +6,7 @@ import { Country } from '../../../../interfaces/country';
 
 import { UsersService, Users } from '../../../../services/users.service';
 import { CountryService } from '../../../../services/country.service';
-import { NotificationsService } from 'angular2-notifications/dist';
+import { NotificationsService } from 'angular2-notifications';
 
 import { ActivatedRoute } from '@angular/router';
 

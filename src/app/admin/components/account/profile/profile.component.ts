@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AccountService } from '../../../../services/account.service';
-import { NotificationsService } from 'angular2-notifications/dist';
+import { NotificationsService } from 'angular2-notifications';
 import { Users } from '../../../../services/users.service';
 import { Country } from '../../../../interfaces/country';
 

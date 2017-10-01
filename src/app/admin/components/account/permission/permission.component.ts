@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PermissionComponent implements OnInit {
 
+  superadmin = false;
   public permissions: any = {
     users_edit: true,
     users_delete: false,
