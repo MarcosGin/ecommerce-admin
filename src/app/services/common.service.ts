@@ -24,40 +24,27 @@ export class CommonService {
     this.options = new RequestOptions({'headers': headers});
   }
 
-  private updateOptions( params: any ) {
-    const options = this.options;
-    if ( params ) {
-      options.params = params;
-    }
-    return options;
-  }
-
   public get( url: string, params?: any) {
-    const options = this.updateOptions(params);
     return this.http.get(url, this.options)
       .catch(err => this.handleError(err));
   }
 
   public post( url: string, params?: any) {
-    const options = this.updateOptions(params);
     return this.http.post(url, params, this.options)
       .catch(err => this.handleError(err));
   }
 
   public put( url: string, params?: any) {
-    const options = this.updateOptions(params);
     return this.http.put(url, params, this.options)
       .catch(err => this.handleError(err));
   }
 
   public patch( url: string, params?: any) {
-    const options = this.updateOptions(params);
     return this.http.patch(url, params, this.options)
       .catch(err => this.handleError(err));
   }
 
   public delete( url: string, params?: any) {
-    const options = this.updateOptions(params);
     return this.http.delete(url, this.options)
       .catch(err => this.handleError(err));
   }
