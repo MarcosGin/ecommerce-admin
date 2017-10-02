@@ -25,6 +25,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './admin/components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './admin/components/sidebar/sidebar.component';
+import { SidebarResponsiveComponent } from './admin/components/sidebar/sidebar-responsive.component';
 import { NavbarComponent } from './admin/components/navbar/navbar.component';
 import { UsersComponent } from './admin/components/users/users.component';
 import { UserEditComponent } from './admin/components/users/edit/user-edit.component';
@@ -48,6 +49,7 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     HomeComponent,
     LoginComponent,
     SidebarComponent,
+    SidebarResponsiveComponent,
     NavbarComponent,
     UsersComponent,
     UserEditComponent,
@@ -63,7 +65,7 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     HistoryComponent,
     PermissionComponent,
     MarksComponent,
-    CategoriesComponent
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
