@@ -1,0 +1,34 @@
+<div class="sidebar-phone animated fadeIn">
+  <ul class="nav flex-column">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="accountDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="pe-7s-user"></i> <p> My account</p>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="accountDropdown">
+        <a class="dropdown-item" [routerLink]="['account/profile']" routerLinkActive="active">My account</a>
+        <a class="dropdown-item" [routerLink]="['account/config']" routerLinkActive="active">Config</a>
+        <a class="dropdown-item">Logout</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="pe-7s-bell"></i> <p>Notifications <span class="notification hidden-sm hidden-xs">3</span></p>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="notificationDropdown">
+        <a class="dropdown-item" href="#">notification 1</a>
+        <a class="dropdown-item" href="#">notification 2</a>
+        <a class="dropdown-item" href="#">notification 3</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" [routerLink]="['home']"> <i class="pe-7s-home"></i> <p>Home</p></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" [routerLink]="['users']"> <i class="pe-7s-users"></i><p >Users</p></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" [routerLink]="['products']"><i class="pe-7s-cart"></i> <p>Products</p></a>
+    </li>
+  </ul>
+</div>
+
