@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
-import {windowWhen} from "rxjs/operator/windowWhen";
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +11,7 @@ export class NavbarComponent implements OnInit {
 
   private listRoutes: any = [
     {path: '', title: 'Home'},
+    {path: 'account', title: 'My account'},
     {path: 'home', title: 'Home'},
     {path: 'users', title: 'Users'},
     {path: 'products', title: 'Products'}
@@ -20,9 +20,9 @@ export class NavbarComponent implements OnInit {
   public menuActive = false;
   constructor( private _authService: AuthService,
                private router: Router) {
-    this.phoneDetected = window.innerWidth < 680;
+    this.phoneDetected = window.innerWidth <= 991;
     window.onresize = (e) => {
-       this.phoneDetected = window.innerWidth < 680;
+       this.phoneDetected = window.innerWidth <= 991;
     };
   }
 
