@@ -13,7 +13,6 @@ import { NotificationsService } from 'angular2-notifications';
 export class CommonService {
 
   private options;
-  private token: string;
   constructor(private http: Http,
               private _auth: AuthService,
               private _notifications: NotificationsService,
