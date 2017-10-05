@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public options = {
+    position: ['bottom', 'right'],
+    timeOut: 6000,
+    lastOnBottom: true,
+    showProgressBar: true
+  };
   title = 'app';
 }

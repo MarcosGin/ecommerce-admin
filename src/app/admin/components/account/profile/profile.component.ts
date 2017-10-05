@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AuthService } from '../../../../services/auth.service';
-import { UsersService } from '../../../../services/users.service';
+import { AccountService } from '../../../../services/account.service';
+import { NotificationsService } from 'angular2-notifications';
 import { Users } from '../../../../services/users.service';
 import { Country } from '../../../../interfaces/country';
 
@@ -14,13 +14,13 @@ import { Country } from '../../../../interfaces/country';
 export class ProfileComponent implements OnInit {
 
   public user: Users;
-  public username: string;
   public form: FormGroup;
   public countrys: Country [];
+  public loading = false;
 
-  constructor( private _authService: AuthService,
-               private _usersService: UsersService,
-               private formBuilder: FormBuilder) {
+  constructor(  private _accountService: AccountService,
+                private _notifications: NotificationsService,
+                private formBuilder: FormBuilder) {
     this.user = new Users();
     this.countrys = [
       {
@@ -39,9 +39,8 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit() {
     this.buildForm();
-    this._usersService.getUser(1)
+    this._accountService.getProfile()
       .subscribe(data => {
-        this.username = data.firstname + ' ' + data.lastname;
         this.form.setValue({
           'firstname': data.firstname,
           'lastname': data.lastname,
@@ -58,18 +57,35 @@ export class ProfileComponent implements OnInit {
   }
 
   save () {
-    console.log(this.form.value);
+    this.loading = true;
+    this._accountService.updateProfile(this.form.value)
+      .subscribe(data => {
+        this.form.setValue({
+          'firstname': data.response.data.firstname,
+          'lastname': data.response.data.lastname,
+          'username': data.response.data.username,
+          'document': data.response.data.document,
+          'email': data.response.data.email,
+          'phone': data.response.data.phone,
+          'country': data.response.data.country,
+          'city': data.response.data.city,
+          'address': data.response.data.address,
+          'postalcode': data.response.data.postalcode
+        });
+        this._notifications.success('Edit profile', data.response.message);
+        this.loading = false;
+      });
   }
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      'firstName': [this.user.firstname, [
+      'firstname': [this.user.firstname, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30)
       ]
       ],
-      'lastName': [this.user.lastname, [
+      'lastname': [this.user.lastname, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(30)
@@ -89,7 +105,7 @@ export class ProfileComponent implements OnInit {
       'country': [this.user.country, [Validators.required]],
       'city': [this.user.city, [Validators.required]],
       'address': [this.user.address, [Validators.required]],
-      'postalCode': [this.user.postalcode, [Validators.required]]
+      'postalcode': [this.user.postalcode, [Validators.required]]
     });
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -97,7 +113,6 @@ export class ProfileComponent implements OnInit {
 
   onValueChanged(data?: any) {
     if (!this.form) { return; }
-    console.log('entro');
     const form = this.form;
 
     for (const field in this.formErrors) {
@@ -147,7 +162,7 @@ export class ProfileComponent implements OnInit {
     'country': {'required': 'This field is required'},
     'city': {'required': 'This field is required'},
     'address': {'required': 'This field is required'},
-    'postalCode': {'required': 'This field is required'}
+    'postalcode': {'required': 'This field is required'}
   };
 
 }

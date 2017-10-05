@@ -7,7 +7,9 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { HttpModule } from '@angular/http';
 import { APP_ROUTING } from './app.routes';
 
+import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
+import { AccountService } from './services/account.service';
 import { HomeService } from './services/home.service';
 import { UsersService } from './services/users.service';
 import { ProductsService } from './services/products.service';
@@ -23,6 +25,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './admin/components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './admin/components/sidebar/sidebar.component';
+import { SidebarResponsiveComponent } from './admin/components/sidebar/sidebar-responsive.component';
 import { NavbarComponent } from './admin/components/navbar/navbar.component';
 import { UsersComponent } from './admin/components/users/users.component';
 import { UserEditComponent } from './admin/components/users/edit/user-edit.component';
@@ -46,6 +49,7 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     HomeComponent,
     LoginComponent,
     SidebarComponent,
+    SidebarResponsiveComponent,
     NavbarComponent,
     UsersComponent,
     UserEditComponent,
@@ -61,7 +65,7 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     HistoryComponent,
     PermissionComponent,
     MarksComponent,
-    CategoriesComponent
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,8 +79,10 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     SimpleNotificationsModule.forRoot()
   ],
   providers: [
+    CommonService,
     AuthGuard,
     AuthService,
+    AccountService,
     HomeService,
     UsersService,
     ProductsService,

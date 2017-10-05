@@ -5,6 +5,7 @@
 const endpoints = {
   authLogin: 'auth/login',
   authLogout: 'auth/logout',
+  accountProfile: 'account/profile',
   user: 'users/get',
   userList: 'users/list',
   userSearch: 'users/search',

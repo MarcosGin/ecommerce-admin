@@ -8,7 +8,7 @@ import { ProductsService } from '../../../../services/products.service';
 import { CategorysService } from '../../../../services/categorys.service';
 import { MarksService } from '../../../../services/marks.service';
 import { PaginationService } from '../../../../services/pagination.service';
-import { NotificationsService } from 'angular2-notifications/dist';
+import { NotificationsService } from 'angular2-notifications';
 
 
 @Component({
