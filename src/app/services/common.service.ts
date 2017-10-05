@@ -13,11 +13,15 @@ import { NotificationsService } from 'angular2-notifications';
 export class CommonService {
 
   private options;
-
+  private token: string;
   constructor(private http: Http,
               private _auth: AuthService,
               private _notifications: NotificationsService,
               private router: Router) {
+    this.setHeaders();
+  }
+  
+  setHeaders() {
     const headers = new Headers();
     headers.append('Authorization', this._auth.token);
     headers.append('Content-Type', 'application/json');
@@ -25,6 +29,7 @@ export class CommonService {
   }
 
   public get( url: string, params?: any) {
+    this.setHeaders();
     return this.http.get(url, this.options)
       .catch(err => this.handleError(err));
   }
