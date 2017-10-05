@@ -35,6 +35,7 @@ export class CommonService {
   }
 
   public post( url: string, params?: any) {
+    this.setHeaders();
     return this.http.post(url, params, this.options)
       .catch(err => this.handleError(err));
   }
@@ -45,11 +46,13 @@ export class CommonService {
   }
 
   public patch( url: string, params?: any) {
+    this.setHeaders();
     return this.http.patch(url, params, this.options)
       .catch(err => this.handleError(err));
   }
 
   public delete( url: string, params?: any) {
+    this.setHeaders();
     return this.http.delete(url, this.options)
       .catch(err => this.handleError(err));
   }
