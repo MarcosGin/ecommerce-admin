@@ -32,3 +32,14 @@
 .card-block .table > thead > tr > th:nth-child(7),.card-block .table > thead > tr > th:nth-child(8){
   width: 5%;
 }
+.product-profile .card-block{
+  padding-top: 0;
+}
+.product-profile .product{
+  max-width: 250px;
+  margin: 0 auto;
+  margin-top: -20px;
+}
+.product-profile .product img{
+  max-width: 100%;
+}

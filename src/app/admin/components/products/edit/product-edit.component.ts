@@ -30,6 +30,10 @@ export class ProductEditComponent implements OnInit {
   public marks: Mark [];
   public id: number;
   public loading = false;
+  public data = {
+    title: '',
+    img: ''
+  };
 
   constructor( private _productsService: ProductsService,
                private _categoriesService: CategorysService,
@@ -48,6 +52,8 @@ export class ProductEditComponent implements OnInit {
       this._productsService.getProduct(this.id)
         .subscribe( data => {
           if ( data.status === true) {
+            this.data.title = data.response.title;
+            this.data.img = data.response.image ? data.response.image : 'http://www.sitechecker.eu/img/not-available.png';
             this.form.setValue({
               'title': data.response.title,
               'price': data.response.price,
