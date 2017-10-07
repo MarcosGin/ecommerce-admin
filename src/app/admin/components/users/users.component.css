@@ -29,6 +29,13 @@
 .card-block .table > thead > tr > th:nth-child(6),.card-block .table > thead > tr > th:nth-child(7){
   width: 5%;
 }
+.loading{
+  text-align: center;
+  margin-bottom: 25px;
+}
+.loading img{
+  max-width: 30px;
+}
 
 
 .flag{
@@ -69,4 +76,12 @@
 }
 .flag-ve{
   background-image: url("../../../../assets/img/flags/ve.svg");
+}
+
+@media (max-width:680px){
+  .card-block .table > thead > tr > th:nth-child(5), .card-block .table > tbody > tr > td:nth-child(5),
+  .card-block .table > thead > tr > th:nth-child(4), .card-block .table > tbody > tr > td:nth-child(4){
+    display: none;
+  }
+    
 }
