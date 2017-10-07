@@ -42,6 +42,7 @@ import { HistoryComponent } from './admin/components/account/history/history.com
 import { PermissionComponent } from './admin/components/account/permission/permission.component';
 import { MarksComponent } from './admin/components/products/marks/marks.component';
 import { CategoriesComponent } from './admin/components/products/categories/categories.component';
+import { ImageEditComponent } from './admin/components/products/images/image-edit.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     PermissionComponent,
     MarksComponent,
     CategoriesComponent,
+    ImageEditComponent,
   ],
   imports: [
     BrowserModule,
