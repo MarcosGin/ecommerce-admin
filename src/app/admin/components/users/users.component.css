@@ -29,6 +29,13 @@
 .card-block .table > thead > tr > th:nth-child(6),.card-block .table > thead > tr > th:nth-child(7){
   width: 5%;
 }
+.loading{
+  text-align: center;
+  margin-bottom: 25px;
+}
+.loading img{
+  max-width: 30px;
+}
 
 
 .flag{

@@ -14,10 +14,10 @@ export class UserListComponent implements OnInit {
   searchValue: string = '';
   message = {
     status: false,
-    type: 'danger',
     content: ''
   };
-
+  // https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif
+  loading = true;
   constructor( private _usersService: UsersService,
                private _notifications: NotificationsService) { }
 
@@ -26,21 +26,22 @@ export class UserListComponent implements OnInit {
   }
 
   search() {
+    this.message.status = false;
     if (this.searchValue) {
+       this.listUsers = [];
+      this.loading = true;
       this._usersService.searchUser(this.searchValue)
         .subscribe(data => {
           if (data.status === true) {
             this.listUsers = data.response;
-            this.message.status = false;
           } else {
             this.getUsers();
             this.message.status = true;
-            this.message.type = 'danger';
             this.message.content = data.response;
           }
+          this.loading = false;
         });
     } else {
-        this.message.status = false;
         this.getUsers();
     }
   }
@@ -58,9 +59,12 @@ export class UserListComponent implements OnInit {
   }
 
   getUsers() {
+    this.listUsers = [];
+    this.loading = true;
     this._usersService.getUsers()
       .subscribe(data => {
         this.listUsers = data.response;
+        this.loading = false;
       });
   }
 
