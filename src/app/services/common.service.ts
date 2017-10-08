@@ -19,11 +19,15 @@ export class CommonService {
               private router: Router) {
     this.setHeaders();
   }
-  
-  setHeaders() {
+
+  setHeaders( options?: any ) {
     const headers = new Headers();
     headers.append('Authorization', this._auth.token);
     headers.append('Content-Type', 'application/json');
+    const remove = options && options.removeContent;
+    if (remove) {
+        headers.delete('Content-Type');
+    }
     this.options = new RequestOptions({'headers': headers});
   }
 
@@ -33,13 +37,14 @@ export class CommonService {
       .catch(err => this.handleError(err));
   }
 
-  public post( url: string, params?: any) {
-    this.setHeaders();
+  public post( url: string, params?: any, options?: any) {
+    this.setHeaders( options );
     return this.http.post(url, params, this.options)
       .catch(err => this.handleError(err));
   }
 
   public put( url: string, params?: any) {
+    this.setHeaders();
     return this.http.put(url, params, this.options)
       .catch(err => this.handleError(err));
   }
