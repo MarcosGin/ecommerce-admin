@@ -1,3 +1,27 @@
-<p>
-  image-edit works!
-</p>
+<div class="row animated fadeInLeftBig">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">Editing product images</div>
+      <div class="card-block">
+        <div id="preview"></div>
+        <div>
+          <h2>Upload Image</h2>
+          <div class="alert alert-info" *ngIf="!cantImages">Not images selects</div>
+          <ul>
+            <li *ngFor="let file of filesToUpload"> {{ file.name  }}</li>
+          </ul>
+          <input type="file" multiple="true" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+          <button type="button" (click)="upload()">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="card-block">
+        <a class="btn btn-primary float-right" [routerLink]="['/admin/products/edit', id]"> Edit product</a>
+      </div>
+    </div>
+  </div>
+</div>
