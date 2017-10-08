@@ -73,6 +73,16 @@ export class ProductsService {
         return res.json();
       });
   }
+  updateImages( id: number, data: any) {
+    const headers = {
+      removeContent : true
+    };
+    const apiUrl = environment.apiUrl + environment.endpoints.productImage + '/' + id;
+    return this._commonService.post(apiUrl, data, headers)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
   getLastProductsList() {
     return this.lastProductsList;
   }
