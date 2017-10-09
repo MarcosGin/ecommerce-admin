@@ -8,6 +8,7 @@ a:hover{
 /* Styles for the cards */
 .card{
   font-weight: 300;
+  margin-bottom: 10px;
 }
 .card-header{
   background-color: #fff;

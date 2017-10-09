@@ -45,6 +45,13 @@ export class ProductsService {
         return res.json();
       });
   }
+  getImages (id: number) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productImage + '/' + id;
+    return this._commonService.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
   addProduct (data: any) {
     const apiUrl = environment.apiUrl + environment.endpoints.productAdd;
     return this._commonService.post(apiUrl, JSON.stringify(data))
@@ -73,11 +80,11 @@ export class ProductsService {
         return res.json();
       });
   }
-  updateImages( id: number, data: any) {
+  addImages( id: number, data: any) {
     const headers = {
       removeContent : true
     };
-    const apiUrl = environment.apiUrl + environment.endpoints.productImage + '/' + id;
+    const apiUrl = environment.apiUrl + environment.endpoints.productImageAdd + '/' + id;
     return this._commonService.post(apiUrl, data, headers)
       .map((res: Response) => {
         return res.json();

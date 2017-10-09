@@ -43,3 +43,6 @@
 .product-profile .product img{
   max-width: 100%;
 }
+.img{
+  background-color: red !important;
+}
