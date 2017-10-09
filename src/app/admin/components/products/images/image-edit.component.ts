@@ -29,8 +29,11 @@ export class ImageEditComponent implements OnInit {
         }, err => {}, () => {
           this._productsService.getImages( this.id )
             .subscribe( data => {
-              this.images = data.response;
-              console.log(this.images);
+              if(data.status === true){
+                this.images = data.response;
+              } else {
+                this.images = [];
+              }
             });
         });
       this.preview = document.querySelector('#preview');
@@ -75,6 +78,9 @@ export class ImageEditComponent implements OnInit {
       this._productsService.addImages(this.id, formData)
         .subscribe(res => {
           console.log(res);
+          this.filesToUpload = [];
+          this.cantImages = 0;
+          this.preview.innerHTML = '';
         });
     } else {
       console.log('no upload');
