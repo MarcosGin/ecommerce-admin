@@ -5,6 +5,12 @@
 a:hover{
   text-decoration: none;
 }
+.img {
+  width:100%;
+}
+.img img {
+  max-width: 100%;
+}
 /* Styles for the cards */
 .card{
   font-weight: 300;
@@ -326,4 +332,48 @@ label.switch input{
 .loading img{
   max-width: 30px;
 }
-
+.label-file{
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  color: #fff;
+  padding: .5rem 1rem;
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.preview .image{
+  flex: 0 0 23%;
+  margin: 1%;
+  border-radius: 50%;
+  border:1px solid #ddd;
+  max-width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background-position: center center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.preview .image:hover > .delete {
+  display: flex;
+}
+.preview .delete {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size:4em;
+  background-color: rgba(221, 221, 221, 0.51);
+  opacity: 0.5;
+  color: #949494;
+  display: none;
+}

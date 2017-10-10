@@ -63,8 +63,8 @@ export class ImageEditComponent implements OnInit {
         const reader = new FileReader();
         reader.addEventListener('load', function () {
           const div = document.createElement('div');
-          div.className = 'col-md-3';
-          div.innerHTML = '<div class="img" style=" width:100%;"><img src="' + this.result + '" title ="' + file.name + '" style="max-width: 100%;"/></div>';
+          div.className = ' image';
+          div.style.backgroundImage = 'url(' + this.result + ')';
           preview.appendChild(div);
         }, false);
         reader.readAsDataURL(file);
