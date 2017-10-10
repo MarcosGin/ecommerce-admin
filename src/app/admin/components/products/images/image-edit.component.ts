@@ -10,7 +10,7 @@ import { ProductsService } from '../../../../services/products.service';
 })
 export class ImageEditComponent implements OnInit {
   public title: string;
-  public image: string;
+  public image = 'http://www.sitechecker.eu/img/not-available.png';
   public images: any;
   public id: number;
   filesToUpload: Array<File>;
@@ -27,7 +27,7 @@ export class ImageEditComponent implements OnInit {
       this._productsService.getProduct(this.id)
         .subscribe( data => {
           this.title = data.response.title;
-          this.image = data.response.image ? data.response.image : 'http://www.sitechecker.eu/img/not-available.png';
+          this.image = data.response.image ? data.response.image : this.image;
         }, err => {}, () => {
           this._productsService.getImages( this.id )
             .subscribe( data => {
