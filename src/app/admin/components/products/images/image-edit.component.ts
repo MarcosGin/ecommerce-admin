@@ -14,6 +14,8 @@ export class ImageEditComponent implements OnInit {
   public images: any;
   public id: number;
   filesToUpload: Array<File>;
+  loadingUpload = false;
+  public notImages =  false;
   cantImages: number;
   preview;
   constructor( private router: ActivatedRoute,
@@ -33,6 +35,7 @@ export class ImageEditComponent implements OnInit {
                 this.images = data.response;
               } else {
                 this.images = [];
+                this.notImages = true;
               }
             });
         });
@@ -71,16 +74,21 @@ export class ImageEditComponent implements OnInit {
 
   upload() {
     if (this.cantImages) {
+      this.loadingUpload = true;
       const formData: FormData = new FormData();
       for (const file of this.filesToUpload) {
         formData.append('uploads[]', file, file.name);
       }
       this._productsService.addImages(this.id, formData)
         .subscribe(res => {
-          console.log(res);
+          this.loadingUpload = false;
           this.filesToUpload = [];
           this.cantImages = 0;
           this.preview.innerHTML = '';
+          for (const image of res.response.data.images){
+             this.images.push({ id: image.name, url: image.url});
+          }
+          this.notImages = false;
         });
     } else {
       console.log('no upload');
