@@ -19,7 +19,7 @@ const endpoints = {
   productDelete: 'products/delete',
   productImage: 'products/images/get',
   productImageAdd: 'products/images/add',
-  productImageUpdate: 'products/images/update',
+  productImageDelete: 'products/images/delete',
   productMarkList: 'products/marks/list',
   productCategoryList: 'products/categories/list',
   countryList: 'country/list'

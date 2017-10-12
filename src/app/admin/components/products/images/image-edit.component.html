@@ -7,8 +7,8 @@
           <div class="card-block">
           <div *ngIf="notImages">not images</div>
            <div class="preview">
-             <div class="image" *ngFor="let image of images" [ngStyle]="{'background-image': 'url(' + image.url + ')'}">
-               <div class="delete animated fadeIn"><i class="pe-7s-close"></i></div>
+             <div class="image" *ngFor="let image of images" [ngStyle]="{'background-image': 'url(' + image.url + ')'}" >
+               <div class="delete animated fadeIn" (click)="delete(image.name)"><i class="pe-7s-close"></i></div>
              </div>
            </div>
           </div>

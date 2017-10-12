@@ -90,6 +90,13 @@ export class ProductsService {
         return res.json();
       });
   }
+  deleteImage( id: number, name: string ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productImageDelete + '/' + id + '/' + name;
+    return this._commonService.delete(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
   getLastProductsList() {
     return this.lastProductsList;
   }
