@@ -77,17 +77,18 @@ export class ImageEditComponent implements OnInit {
   upload() {
     if (this.cantImages) {
       if (this.cantImages <= 20) {
+        this.preview.innerHTML = '';
         this.loadingUpload = true;
         const formData: FormData = new FormData();
         for (const file of this.filesToUpload) {
           formData.append('uploads[]', file, file.name);
         }
+
         this._productsService.addImages(this.id, formData)
           .subscribe(res => {
             this.loadingUpload = false;
-            this.filesToUpload = [];
             this.cantImages = 0;
-            this.preview.innerHTML = '';
+            this.filesToUpload = [];
             if (res.status === true) {
               this._notifications.success('Upload images', res.response.message);
               for (const image of res.response.data.images) {

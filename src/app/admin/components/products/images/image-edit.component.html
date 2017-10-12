@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header">Editing the product images</div>
           <div class="card-block">
-          <div *ngIf="notImages">not images</div>
+          <div *ngIf="notImages" class="alert alert-info">Product has not images</div>
            <div class="preview">
              <div class="image" *ngFor="let image of images" [ngStyle]="{'background-image': 'url(' + image.url + ')'}" >
                <div class="delete animated fadeIn" (click)="delete(image.name)"><i class="pe-7s-close"></i></div>
@@ -20,14 +20,14 @@
         <div class="card-block">
           <div id="preview" class="preview"></div>
           <div class="alert alert-info" *ngIf="!cantImages">Not images selects</div>
-          <div *ngIf="loadingUpload">Loading...</div>
+          <div *ngIf="loadingUpload" class="loading"> <img src="../../../assets/img/loading.gif" /></div>
           <input type="file" multiple="true" id="images" (change)="fileChangeEvent($event)" style="display: none"/>
           <label for="images" class="label-file float-left">
             <i class="fa fa-upload"></i>
             <span *ngIf="!cantImages">Select images for upload</span>
             <span *ngIf="cantImages">{{ cantImages }} images selects</span>
           </label>
-          <button class="btn btn-success float-right" type="button" (click)="upload()">Upload</button>
+          <button class="btn btn-success float-right" type="button" (click)="upload()" [disabled]="loadingUpload">Upload</button>
         </div>
       </div>
       </div>
