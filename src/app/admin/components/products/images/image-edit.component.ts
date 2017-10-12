@@ -16,6 +16,7 @@ export class ImageEditComponent implements OnInit {
   public id: number;
   filesToUpload: Array<File>;
   loadingUpload = false;
+  loadingDelete = false;
   public notImages =  false;
   cantImages: number;
   preview;
@@ -112,6 +113,10 @@ export class ImageEditComponent implements OnInit {
   }
 
   delete (name: string) {
+    if (this.loadingDelete === true) {
+      return false;
+    }
+    this.loadingDelete = true;
     this._productsService.deleteImage(this.id, name)
       .subscribe(res => {
         if (res.status === true) {
@@ -125,6 +130,7 @@ export class ImageEditComponent implements OnInit {
           this.images = [];
           this.notImages = true;
         }
+        this.loadingDelete = false;
       });
   }
 }
