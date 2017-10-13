@@ -27,7 +27,7 @@
             <span *ngIf="!cantImages">Select images for upload</span>
             <span *ngIf="cantImages">{{ cantImages }} images selects</span>
           </label>
-          <button class="btn btn-success float-right" type="button" (click)="upload()" [disabled]="loadingUpload">Upload</button>
+          <button class="btn btn-success float-right" type="button" (click)="upload()" [disabled]="loadingUpload || !cantImages">Upload</button>
         </div>
       </div>
       </div>

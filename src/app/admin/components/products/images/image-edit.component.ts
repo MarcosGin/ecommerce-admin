@@ -62,7 +62,6 @@ export class ImageEditComponent implements OnInit {
       [].forEach.call(this.filesToUpload, readAndPreview);
     }
     function readAndPreview(file) {
-      if ( /\.(jpe?g|png)$/i.test(file.name) ) {
         const reader = new FileReader();
         reader.addEventListener('load', function () {
           const div = document.createElement('div');
@@ -71,7 +70,6 @@ export class ImageEditComponent implements OnInit {
           preview.appendChild(div);
         }, false);
         reader.readAsDataURL(file);
-      }
     }
   }
 
