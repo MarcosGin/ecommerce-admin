@@ -11,15 +11,19 @@ import { NotificationsService } from 'angular2-notifications';
 })
 export class ImageEditComponent implements OnInit {
   public title: string;
-  public image = 'http://www.sitechecker.eu/img/not-available.png';
+  public image;
   public images: any;
   public id: number;
   filesToUpload: Array<File>;
-  loadingUpload = false;
+  fileToUpload: Array<File>;
+  loadingUploadImages = false;
+  loadingUploadImage = false;
   loadingDelete = false;
   public notImages =  false;
   cantImages: number;
+  cantImage: number;
   preview;
+  preview_image;
   constructor( private router: ActivatedRoute,
                private _productsService: ProductsService,
                private _notifications: NotificationsService) { }
@@ -30,7 +34,7 @@ export class ImageEditComponent implements OnInit {
       this._productsService.getProduct(this.id)
         .subscribe( data => {
           this.title = data.response.title;
-          this.image = data.response.image ? data.response.image : this.image;
+          this.image = data.response.image ? data.response.image : null;
         }, err => {}, () => {
           this._productsService.getImages( this.id )
             .subscribe( data => {
@@ -43,10 +47,11 @@ export class ImageEditComponent implements OnInit {
             });
         });
       this.preview = document.querySelector('#preview');
+      this.preview_image = document.querySelector('#preview-image');
     });
   }
 
-  fileChangeEvent(fileInput: any) {
+  addImages(fileInput: any) {
     const preview = this.preview;
     preview.innerHTML = '';
     this.filesToUpload = [];
@@ -65,19 +70,45 @@ export class ImageEditComponent implements OnInit {
         const reader = new FileReader();
         reader.addEventListener('load', function () {
           const div = document.createElement('div');
-          div.className = ' image';
-          div.style.backgroundImage = 'url(' + this.result + ')';
+          div.className = 'image';
+          div.innerHTML = '<img src="' + this.result + '">';
           preview.appendChild(div);
         }, false);
         reader.readAsDataURL(file);
     }
   }
-
-  upload() {
+  addImage(fileInput: any) {
+    console.log('entro aca');
+    const preview_image = this.preview_image;
+    this.preview_image.innerHTML = '';
+    this.fileToUpload = [];
+    let cont = 0;
+    for (const file of fileInput.target.files){
+      if ( /\.(jpe?g|png)$/i.test(file.name) ) {
+        this.fileToUpload[cont] = file;
+        cont++;
+      }
+    }
+    this.cantImage = this.fileToUpload.length;
+    if (this.cantImage) {
+      [].forEach.call(this.fileToUpload, readAndPreview);
+    }
+    function readAndPreview(file) {
+      const reader = new FileReader();
+      reader.addEventListener('load', function () {
+        const div = document.createElement('div');
+        div.className = 'image';
+        div.innerHTML = '<img src="' + this.result + '">';
+        preview_image.appendChild(div);
+      }, false);
+      reader.readAsDataURL(file);
+    }
+  }
+  uploadImages() {
     if (this.cantImages) {
       if (this.cantImages <= 20) {
         this.preview.innerHTML = '';
-        this.loadingUpload = true;
+        this.loadingUploadImages = true;
         const formData: FormData = new FormData();
         for (const file of this.filesToUpload) {
           formData.append('uploads[]', file, file.name);
@@ -85,7 +116,7 @@ export class ImageEditComponent implements OnInit {
 
         this._productsService.addImages(this.id, formData)
           .subscribe(res => {
-            this.loadingUpload = false;
+            this.loadingUploadImages = false;
             this.cantImages = 0;
             this.filesToUpload = [];
             if (res.status === true) {
@@ -110,7 +141,31 @@ export class ImageEditComponent implements OnInit {
     }
   }
 
-  delete (name: string) {
+  uploadImage() {
+    if (this.cantImage) {
+      this.preview_image.innerHTML = '';
+      this.loadingUploadImage = true;
+      const formData: FormData = new FormData();
+      for (const file of this.fileToUpload) {
+        formData.append('uploads[]', file, file.name);
+      }
+
+      this._productsService.addImage(this.id, formData)
+        .subscribe(res => {
+          this.loadingUploadImage = false;
+          this.cantImage = 0;
+          this.fileToUpload = [];
+          if (res.status === true) {
+            this._notifications.success('Upload image', res.response.message);
+            this.image = res.response.data.images[0].url;
+          } else {
+            this._notifications.error('Upload image', res.response.message);
+          }
+        });
+    }
+  }
+
+  remove(name: string) {
     if (this.loadingDelete === true) {
       return false;
     }
