@@ -90,6 +90,16 @@ export class ProductsService {
         return res.json();
       });
   }
+  addImage( id: number, data: any) {
+    const headers = {
+      removeContent : true
+    };
+    const apiUrl = environment.apiUrl + environment.endpoints.productImageCoverAdd + '/' + id;
+    return this._commonService.post(apiUrl, data, headers)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
   deleteImage( id: number, name: string ) {
     const apiUrl = environment.apiUrl + environment.endpoints.productImageDelete + '/' + id + '/' + name;
     return this._commonService.delete(apiUrl)

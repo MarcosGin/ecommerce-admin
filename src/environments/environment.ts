@@ -18,6 +18,7 @@ const endpoints = {
   productUpdate: 'products/update',
   productDelete: 'products/delete',
   productImage: 'products/images/get',
+  productImageCoverAdd: 'products/images/cover',
   productImageAdd: 'products/images/add',
   productImageDelete: 'products/images/delete',
   productMarkList: 'products/marks/list',
