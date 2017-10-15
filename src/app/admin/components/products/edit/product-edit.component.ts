@@ -53,7 +53,7 @@ export class ProductEditComponent implements OnInit {
         .subscribe( data => {
           if ( data.status === true) {
             this.data.title = data.response.title;
-            this.data.img = data.response.image ? data.response.image : 'http://www.sitechecker.eu/img/not-available.png';
+            this.data.img = data.response.image.url ? data.response.image.url : 'http://www.sitechecker.eu/img/not-available.png';
             this.form.setValue({
               'title': data.response.title,
               'price': data.response.price,

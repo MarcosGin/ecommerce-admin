@@ -78,7 +78,6 @@ export class ImageEditComponent implements OnInit {
     }
   }
   addImage(fileInput: any) {
-    console.log('entro aca');
     const preview_image = this.preview_image;
     this.preview_image.innerHTML = '';
     this.fileToUpload = [];
@@ -126,7 +125,7 @@ export class ImageEditComponent implements OnInit {
               }
               this.notImages = false;
             } else {
-              this._notifications.error('Upload images', res.response.message);
+              this._notifications.error('Upload images', res.response);
             }
           });
       } else {
