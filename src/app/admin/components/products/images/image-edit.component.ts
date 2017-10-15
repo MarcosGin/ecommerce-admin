@@ -34,7 +34,7 @@ export class ImageEditComponent implements OnInit {
       this._productsService.getProduct(this.id)
         .subscribe( data => {
           this.title = data.response.title;
-          this.image = data.response.image ? data.response.image : null;
+          this.image = data.response.image.url ? data.response.image.url : null;
         }, err => {}, () => {
           this._productsService.getImages( this.id )
             .subscribe( data => {
