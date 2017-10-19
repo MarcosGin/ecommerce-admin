@@ -75,5 +75,10 @@
   .card-block .table > thead > tr > th:nth-child(4), .card-block .table > tbody > tr > td:nth-child(4){
     display: none;
   }
-
+}
+@media (max-width:380px){
+  .card-block .table > thead > tr > th:nth-child(1), .card-block .table > tbody > tr > td:nth-child(1),
+  .card-block .table > thead > tr > th:nth-child(2), .card-block .table > tbody > tr > td:nth-child(2){
+    display: none;
+  }
 }
