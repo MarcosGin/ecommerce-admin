@@ -10,6 +10,7 @@ import { APP_ROUTING } from './app.routes';
 import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
 import { AccountService } from './services/account.service';
+import { StatisticsService } from "./services/statistics.service";
 import { HomeService } from './services/home.service';
 import { UsersService } from './services/users.service';
 import { ProductsService } from './services/products.service';
@@ -85,6 +86,7 @@ import { ImageEditComponent } from './admin/components/products/images/image-edi
     AuthGuard,
     AuthService,
     AccountService,
+    StatisticsService,
     HomeService,
     UsersService,
     ProductsService,

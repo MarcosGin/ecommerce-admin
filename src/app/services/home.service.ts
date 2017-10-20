@@ -4,7 +4,6 @@ import { ProductsService } from './products.service';
 
 @Injectable()
 export class HomeService {
-  private productsNew: ListProduct [] = [];
   private mistakesNew: ListMistake [] = [
     {
       id: 4521,
@@ -25,48 +24,12 @@ export class HomeService {
       state: 'pending'
     }
   ];
-  private statistics: StatisticsHome [] = [
-    {
-      products: {
-        size: 2450,
-        updated_at: 'Updated now'
-      },
-      users: {
-        size: 145,
-        updated_at: 'In the last hour'
-      },
-      buys: {
-        size: 42,
-        updated_at: 'In the last hour'
-      },
-      mistakes: {
-        size: 23,
-        updated_at: 'In the last hour'
-      }
-    }
-  ];
-
 
   constructor( private _productsService: ProductsService ) {}
 
-
-  getLastProducts() {
-    this.productsNew = this._productsService.getLastProductsList();
-    return this.productsNew;
-  }
   getLastMistakes() {
     return this.mistakesNew;
   }
-  getStatistics() {
-    return this.statistics;
-  }
-}
-
-export interface ListProduct {
-  id: number;
-  title: string;
-  created_at: string;
-  category: string;
 }
 export interface ListMistake {
   id: number;
@@ -74,23 +37,6 @@ export interface ListMistake {
   created_at: string;
   state: string;
 }
-export interface StatisticsHome {
-  products: {
-    size: number,
-    updated_at: string
-  };
-  users: {
-    size: number,
-    updated_at: string
-  };
-  buys: {
-    size: number,
-    updated_at: string
-  };
-  mistakes: {
-    size: number,
-    updated_at: string
-  };
-}
+
 
 

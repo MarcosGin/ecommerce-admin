@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService, ListProduct, ListMistake, StatisticsHome } from '../../../services/home.service';
+import { HomeService, ListMistake } from '../../../services/home.service';
+import { StatisticsService, StatisticsHome } from '../../../services/statistics.service';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +9,23 @@ import { HomeService, ListProduct, ListMistake, StatisticsHome } from '../../../
 })
 export class HomeComponent implements OnInit {
 
-  lastProducts: ListProduct[] = [];
+  lastProducts = [];
   lastMistakes: ListMistake[] = [];
-  statistics: StatisticsHome[] = [];
+  statistics: StatisticsHome;
 
 
-  constructor( private _homeService: HomeService) { }
+  constructor( private _homeService: HomeService,
+               private _statisticsService: StatisticsService) {
+    this.statistics = new StatisticsHome();
+  }
 
   ngOnInit() {
-    this.lastProducts = this._homeService.getLastProducts();
+    this._statisticsService.getStatistics()
+      .subscribe(data => {
+          this.statistics = data.response;
+      });
+
     this.lastMistakes = this._homeService.getLastMistakes();
-    this.statistics =   this._homeService.getStatistics();
   }
 
 }

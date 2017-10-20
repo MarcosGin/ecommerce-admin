@@ -7,13 +7,13 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-orange text-center"><i class="ti-shopping-cart"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Products</p> {{ statistics[0].products.size }}</div>
+              <div class="col-7"><div class="numbers"><p>Products</p> {{ statistics.products }}</div>
               </div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].products.updated_at }}</div>
+            <div class="stats"><i class="ti-reload"></i> -</div>
           </div>
         </div>
       </div>
@@ -22,12 +22,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-celestial text-center"><i class="ti-user"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Users</p>  {{ statistics[0].users.size }}</div></div>
+              <div class="col-7"><div class="numbers"><p>Users</p>  {{ statistics.users }}</div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].users.updated_at }}</div>
+            <div class="stats"><i class="ti-reload"></i> - </div>
           </div>
         </div>
       </div>
@@ -36,12 +36,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-green text-center"><i class="ti-wallet"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Buys</p> {{ statistics[0].buys.size }} </div></div>
+              <div class="col-7"><div class="numbers"><p>Buys</p> {{ statistics.buys }} </div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].buys.updated_at }}</div>
+            <div class="stats"><i class="ti-reload"></i> - </div>
           </div>
         </div>
       </div>
@@ -50,12 +50,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-red text-center"><i class="ti-pulse"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Errors</p> {{ statistics[0].mistakes.size }}</div></div>
+              <div class="col-7"><div class="numbers"><p>Errors</p> {{ statistics.mistakes }}</div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].mistakes.updated_at }}</div>
+            <div class="stats"><i class="ti-reload"></i> - </div>
           </div>
         </div>
       </div>
