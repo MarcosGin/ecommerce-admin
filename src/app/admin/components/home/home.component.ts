@@ -13,8 +13,7 @@ export class HomeComponent implements OnInit {
 
   lastProducts: Products [] = [];
   lastMistakes: ListMistake[] = [];
-  statistics: StatisticsHome;
-  date = Date.now();
+  statistics: StatisticsHome
 
   constructor( private _homeService: HomeService,
                private _statisticsService: StatisticsService,
