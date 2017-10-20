@@ -68,10 +68,10 @@
           <div class="card-block card-nopadding">
             <table class="table">
               <tr *ngFor="let product of lastProducts;">
-                <td class="text-center"><i class="ti-mobile"></i></td>
+                <td class="text-center"><i class="fa {{ product.category.icon }}"></i></td>
                 <td>{{ product.title }}</td>
-                <td class="text-center"><span class="badge badge-pill badge-info">{{ product.created_at }}</span></td>
-                <td class="text-center"><a href="product/1" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
+                <td class="text-center"><span class="badge badge-pill badge-info">time</span></td>
+                <td class="text-center"><a [routerLink]="['/admin/products/edit', product.id]" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
               </tr>
             </table>
           </div>
