@@ -44,6 +44,7 @@ import { PermissionComponent } from './admin/components/account/permission/permi
 import { MarksComponent } from './admin/components/products/marks/marks.component';
 import { CategoriesComponent } from './admin/components/products/categories/categories.component';
 import { ImageEditComponent } from './admin/components/products/images/image-edit.component';
+import { TimePipe } from './pipes/time.pipe';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ImageEditComponent } from './admin/components/products/images/image-edi
     MarksComponent,
     CategoriesComponent,
     ImageEditComponent,
+    TimePipe,
   ],
   imports: [
     BrowserModule,
