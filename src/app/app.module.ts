@@ -10,12 +10,13 @@ import { APP_ROUTING } from './app.routes';
 import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
 import { AccountService } from './services/account.service';
-import { HomeService } from './services/home.service';
+import { StatisticsService } from './services/statistics.service';
 import { UsersService } from './services/users.service';
 import { ProductsService } from './services/products.service';
 import { CategorysService } from './services/categorys.service';
 import { MarksService } from './services/marks.service';
 import { CountryService } from './services/country.service';
+import { MistakesService } from './services/mistakes.service';
 import { PaginationService } from './services/pagination.service';
 
 
@@ -42,6 +43,9 @@ import { HistoryComponent } from './admin/components/account/history/history.com
 import { PermissionComponent } from './admin/components/account/permission/permission.component';
 import { MarksComponent } from './admin/components/products/marks/marks.component';
 import { CategoriesComponent } from './admin/components/products/categories/categories.component';
+import { ImageEditComponent } from './admin/components/products/images/image-edit.component';
+import { TimePipe } from './pipes/time.pipe';
+import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,9 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     PermissionComponent,
     MarksComponent,
     CategoriesComponent,
+    ImageEditComponent,
+    TimePipe,
+    StatusPipe,
   ],
   imports: [
     BrowserModule,
@@ -83,12 +90,13 @@ import { CategoriesComponent } from './admin/components/products/categories/cate
     AuthGuard,
     AuthService,
     AccountService,
-    HomeService,
+    StatisticsService,
     UsersService,
     ProductsService,
     CategorysService,
     MarksService,
     CountryService,
+    MistakesService,
     PaginationService
   ],
   bootstrap: [AppComponent]

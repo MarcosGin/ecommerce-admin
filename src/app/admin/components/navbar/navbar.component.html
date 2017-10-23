@@ -2,15 +2,9 @@
   <button class="menu-phone" *ngIf="phoneDetected" (click)="activeMenu()" [ngClass]="{'active': menuActive }">
     <i class="ti-menu-alt"></i>
   </button>
-  <a class="navbar-brand" href="#">{{ getTittle() }}</a>
+  <a class="navbar-brand " href="#">{{ getTittle() }}</a>
   <div class="collapse navbar-collapse" id="navbarText">
-
-    <form class="navbar-form mr-auto navbar-left navbar-search-form" role="search" *ngIf="!phoneDetected">
-          <div class="input-group">
-            <input class="form-control" placeholder="Search..." type="text" value="">
-            <span class="input-group-addon"><i class="pe-7s-search"></i></span>
-          </div>
-    </form>
+   <div class="mr-auto"></div>
     <ul class="navbar-nav" *ngIf="!phoneDetected">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="accountDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

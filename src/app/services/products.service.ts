@@ -3,36 +3,22 @@ import { Response } from '@angular/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 
-import { ListProduct } from './home.service';
 import { CommonService } from './common.service';
 
 @Injectable()
 export class ProductsService {
-  private lastProductsList: ListProduct [] = [
-    {
-      id: 1,
-      title: 'Celular Motorola 4G liberado 16GB',
-      category: 'celular',
-      created_at: 'six hour ago'
-    },
-    {
-      id: 2,
-      title: 'Smart Tv SAMSUNG 48 UN48JU6700',
-      category: 'televisor',
-      created_at: 'six hour ago'
-    },
-    {
-      id: 3,
-      title: 'Notebook Lenovo Y700-15ISK 80NV003SAR',
-      category: 'celular',
-      created_at: 'six hour ago'
-    },
-  ];
 
   constructor ( private _commonService: CommonService) {}
 
-  getProducts() {
-    const apiUrl = environment.apiUrl + environment.endpoints.productList;
+  getProducts( order: string = '', limit: number = 0) {
+    let apiUrl =  environment.apiUrl + environment.endpoints.productList;
+    if ( order.length ) {
+      if (limit > 0) {
+        apiUrl = apiUrl + '/' + order + '/' + limit;
+      } else {
+        apiUrl = apiUrl + '/' + order;
+      }
+    }
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
         return res.json();
@@ -40,6 +26,13 @@ export class ProductsService {
   }
   getProduct (id: number) {
     const apiUrl = environment.apiUrl + environment.endpoints.product + '/' + id;
+    return this._commonService.get(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+  getImages (id: number) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productImage + '/' + id;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
         return res.json();
@@ -73,7 +66,31 @@ export class ProductsService {
         return res.json();
       });
   }
-  getLastProductsList() {
-    return this.lastProductsList;
+  addImages( id: number, data: any) {
+    const headers = {
+      removeContent : true
+    };
+    const apiUrl = environment.apiUrl + environment.endpoints.productImageAdd + '/' + id;
+    return this._commonService.post(apiUrl, data, headers)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+  addImage( id: number, data: any) {
+    const headers = {
+      removeContent : true
+    };
+    const apiUrl = environment.apiUrl + environment.endpoints.productImageCoverAdd + '/' + id;
+    return this._commonService.post(apiUrl, data, headers)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+  deleteImage( id: number, name: string ) {
+    const apiUrl = environment.apiUrl + environment.endpoints.productImageDelete + '/' + id + '/' + name;
+    return this._commonService.delete(apiUrl)
+      .map((res: Response) => {
+        return res.json();
+      });
   }
 }

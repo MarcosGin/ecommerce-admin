@@ -12,7 +12,15 @@ export class Products {
     name: ''
   };
   price: number;
+  folder?: string;
+  image?: string;
   stock: number;
-  created_at: string;
-  updated_at: string;
+  created_at = {
+    date: '',
+    timestamp: ''
+  };
+  updated_at = {
+    date: '',
+    timestamp: ''
+  };
 }

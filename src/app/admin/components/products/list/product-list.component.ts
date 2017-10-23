@@ -24,13 +24,17 @@ export class ProductListComponent implements OnInit {
   searchValue: string = '';
   message = {
     status: false,
-    type: 'danger',
     content: ''
   };
   pagerProducts: any = {};
   pagedProducts: any[];
   pagerMarks: any = {};
   pagedMarks: any[];
+  loading = {
+    loadingProducts: true,
+    loadingMarks: true,
+    loadingCategories: true
+  };
   constructor( private _productsService: ProductsService,
                private _categorysService: CategorysService,
                private _marksService: MarksService,
@@ -41,14 +45,17 @@ export class ProductListComponent implements OnInit {
     this._productsService.getProducts()
       .subscribe( data => {
         if ( data.status === true) {this.productsList = data.response; this.setPageProducts(1); }
+        this.loading.loadingProducts = false;
       },err => console.log(err),
                 () => {
                   this._marksService.getMarks().subscribe(data => {
                     if (data.status === true) {this.marksList = data.response; this.setPageMarks(1); }
+                      this.loading.loadingMarks = false;
                   },err => console.log(err),
                     () => {
                     this._categorysService.getCategories().subscribe(data => {
                       if (data.status === true) {this.categoriesList = data.response; }
+                      this.loading.loadingCategories = false;
                     });
                     });
                   });
@@ -68,6 +75,8 @@ export class ProductListComponent implements OnInit {
 
   search() {
     if (this.searchValue) {
+      this.loading.loadingProducts = true;
+      this.pagedProducts = [];
       this._productsService.searchProduct(this.searchValue)
         .subscribe(data => {
           if (data.status === true) {
@@ -77,9 +86,9 @@ export class ProductListComponent implements OnInit {
           } else {
             this.getProducts();
             this.message.status = true;
-            this.message.type = 'danger';
             this.message.content = data.response;
           }
+          this.loading.loadingProducts = false;
         });
     } else {
       this.message.status = false;
@@ -88,12 +97,15 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts() {
+    this.loading.loadingProducts = true;
+    this.pagedProducts = [];
     this._productsService.getProducts()
       .subscribe( data => {
         if (data.status === true) {
           this.productsList = data.response;
           this.setPageProducts(1);
         }
+        this.loading.loadingProducts = false;
       });
   }
 

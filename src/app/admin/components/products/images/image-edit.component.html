@@ -1,0 +1,74 @@
+<div class="row animated fadeInLeftBig">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">Editing the product images ({{ title}}) <button class="btn btn-primary float-right" [routerLink]="['/admin/products/edit', id]">Edit product</button></div>
+          <div class="card-block">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="title">
+                  The image of the product cover
+                </div>
+                <div *ngIf="!image" class="preview-empty">Product has not cover</div>
+                <div class="cover-product" *ngIf="image">
+                  <img [src]="image" alt="">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="title">
+                  The images of the product (Slider)
+                </div>
+                <div *ngIf="notImages" class="preview-empty">Product has not images</div>
+                <div class="preview">
+                  <div class="image" *ngFor="let image of images">
+                    <img [src]="image.url" alt="">
+                    <div class="remove animated fadeIn" (click)="remove(image.name)"><i class="pe-7s-close"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">Upload new cover image</div>
+              <div class="card-block">
+                <div id="preview-image" class="preview"></div>
+                <div class="alert alert-info" *ngIf="!cantImage">Not image select</div>
+                <div *ngIf="loadingUploadImage" class="loading"> <img src="../../../assets/img/loading.gif" /></div>
+                <input type="file" id="image" (change)="addImage($event)" style="display: none"/>
+                <label for="image" class="label-file float-left">
+                  <i class="fa fa-upload"></i>
+                  <span *ngIf="!cantImage">Select image for upload</span>
+                  <span *ngIf="cantImage">{{ cantImage }} image select</span>
+                </label>
+                <button class="btn btn-success float-right" type="button" (click)="uploadImage()" [disabled]="loadingUploadImage || !cantImage">Upload</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">Upload new images</div>
+              <div class="card-block">
+                <div id="preview" class="preview"></div>
+                <div class="alert alert-info" *ngIf="!cantImages">Not images selects</div>
+                <div *ngIf="loadingUploadImages" class="loading"> <img src="../../../assets/img/loading.gif" /></div>
+                <input type="file" multiple="true" id="images" (change)="addImages($event)" style="display: none"/>
+                <label for="images" class="label-file float-left">
+                  <i class="fa fa-upload"></i>
+                  <span *ngIf="!cantImages">Select images for upload</span>
+                  <span *ngIf="cantImages">{{ cantImages }} images selects</span>
+                </label>
+                <button class="btn btn-success float-right" type="button" (click)="uploadImages()" [disabled]="loadingUploadImages || !cantImages">Upload</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

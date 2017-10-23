@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarResponsiveComponent } from './sidebar-responsive.component';
+import { ImageEditComponent } from './image-edit.component';
 
-describe('SidebarResponsiveComponent', () => {
-  let component: SidebarResponsiveComponent;
-  let fixture: ComponentFixture<SidebarResponsiveComponent>;
+describe('ImageEditComponent', () => {
+  let component: ImageEditComponent;
+  let fixture: ComponentFixture<ImageEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarResponsiveComponent ]
+      declarations: [ ImageEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SidebarResponsiveComponent);
+    fixture = TestBed.createComponent(ImageEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

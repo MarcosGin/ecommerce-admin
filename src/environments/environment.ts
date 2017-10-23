@@ -6,6 +6,7 @@ const endpoints = {
   authLogin: 'auth/login',
   authLogout: 'auth/logout',
   accountProfile: 'account/profile',
+  statistics: 'statistics',
   user: 'users/get',
   userList: 'users/list',
   userSearch: 'users/search',
@@ -17,9 +18,14 @@ const endpoints = {
   productAdd: 'products/add',
   productUpdate: 'products/update',
   productDelete: 'products/delete',
+  productImage: 'products/images/get',
+  productImageCoverAdd: 'products/images/cover',
+  productImageAdd: 'products/images/add',
+  productImageDelete: 'products/images/delete',
   productMarkList: 'products/marks/list',
   productCategoryList: 'products/categories/list',
-  countryList: 'country/list'
+  countryList: 'country/list',
+  mistakeList: 'mistakes/list'
 };
 export const environment = {
   production: false,

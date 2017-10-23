@@ -7,13 +7,13 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-orange text-center"><i class="ti-shopping-cart"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Products</p> {{ statistics[0].products.size }}</div>
+              <div class="col-7"><div class="numbers"><p>Products</p> {{ statistics.products }}</div>
               </div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].products.updated_at }}</div>
+            <div class="stats"><i class="ti-reload"></i> -</div>
           </div>
         </div>
       </div>
@@ -22,12 +22,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-celestial text-center"><i class="ti-user"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Users</p>  {{ statistics[0].users.size }}</div></div>
+              <div class="col-7"><div class="numbers"><p>Users</p>  {{ statistics.users }}</div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].users.updated_at }}</div>
+            <div class="stats"><i class="ti-reload"></i> - </div>
           </div>
         </div>
       </div>
@@ -36,12 +36,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-green text-center"><i class="ti-wallet"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Buys</p> {{ statistics[0].buys.size }} </div></div>
+              <div class="col-7"><div class="numbers"><p>Buys</p> {{ statistics.buys }} </div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].buys.updated_at }}</div>
+            <div class="stats"><i class="ti-reload"></i> - </div>
           </div>
         </div>
       </div>
@@ -50,12 +50,12 @@
           <div class="card-block">
             <div class="row">
               <div class="col-5"><div class="icon-big icon-red text-center"><i class="ti-pulse"></i></div></div>
-              <div class="col-7"><div class="numbers"><p>Errors</p> {{ statistics[0].mistakes.size }}</div></div>
+              <div class="col-7"><div class="numbers"><p>Errors</p> {{ statistics.mistakes }}</div></div>
             </div>
           </div>
           <div class="card-footer">
             <hr>
-            <div class="stats"><i class="ti-reload"></i> {{ statistics[0].mistakes.updated_at }}</div>
+            <div class="stats"><i class="ti-reload"></i> - </div>
           </div>
         </div>
       </div>
@@ -68,10 +68,10 @@
           <div class="card-block card-nopadding">
             <table class="table">
               <tr *ngFor="let product of lastProducts;">
-                <td class="text-center"><i class="ti-mobile"></i></td>
+                <td class="text-center"><i class="fa {{ product.category.icon }}"></i></td>
                 <td>{{ product.title }}</td>
-                <td class="text-center"><span class="badge badge-pill badge-info">{{ product.created_at }}</span></td>
-                <td class="text-center"><a href="product/1" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
+                <td class="text-center"><span class="badge badge-pill badge-info">{{ product.created_at.timestamp | time }}</span></td>
+                <td class="text-center"><a [routerLink]="['/admin/products/edit', product.id]" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
               </tr>
             </table>
           </div>
@@ -88,22 +88,32 @@
       </div>
       <div class="col-md-6">
         <div class="card">
-          <div class="card-header">Last mistakes
-            <div class="card-title">Errors produced on the web</div>
+          <div class="card-header">
+            <div class="float-left"> Mistakes<div class="card-title">Errors produced on the web</div></div>
+            <ul *ngIf="pagerMistakes.pages && pagerMistakes.pages.length" class="pagination float-right">
+              <li class="page-item" [ngClass]="{disabled:pagerMistakes.currentPage === 1}">
+                <a class="page-link" (click)="setPageMistakes(pagerMistakes.currentPage - 1)">&laquo;</a>
+              </li>
+              <li class="page-item" *ngFor="let page of pagerMistakes.pages" [ngClass]="{active:pagerMistakes.currentPage === page}">
+                <a class="page-link" (click)="setPageMistakes(page)">{{page}}</a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:pagerMistakes.currentPage === pagerMistakes.totalPages}">
+                <a class="page-link" (click)="setPageMistakes(pagerMistakes.currentPage + 1)">&raquo;</a>
+              </li>
+            </ul>
 
           </div>
           <div class="card-block card-nopadding">
             <table class="table">
               <tbody>
-                <tr *ngFor="let mistake of lastMistakes;">
-                  <td class="text-center">#{{ mistake.id }}</td>
+                <tr *ngFor="let mistake of pagedMistakes;">
                   <td>{{ mistake.title }}</td>
-                  <td class="text-center"><span class="badge badge-pill badge-info">{{ mistake.created_at }}</span></td>
+                  <td class="text-center"><span class="badge badge-pill badge-info">{{ mistake.created_at | time:'date' }}</span></td>
                   <td class="text-center">
                     <span class="badge badge-pill"
-                          [ngClass]="{'badge-danger': mistake.state == 'pending',
-                                      'badge-success': mistake.state == 'fixed',
-                                      'badge-warning': mistake.state == 'fixing'}">{{ mistake.state}}</span></td>
+                          [ngClass]="{'badge-danger': mistake.status == 1,
+                                      'badge-warning': mistake.status == 2,
+                                      'badge-success': mistake.status == 3}">{{ mistake.status | status}}</span></td>
                   <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
                 </tr>
               </tbody>

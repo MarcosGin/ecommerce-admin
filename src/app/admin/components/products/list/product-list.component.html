@@ -15,7 +15,7 @@
                 <a class="page-link" (click)="setPageProducts(pagerProducts.currentPage + 1)">&raquo;</a>
               </li>
             </ul>
-            <div class="float-right alert alert-{{ message.type }} animated fadeInLeft" *ngIf="message.status"> {{ message.content }}</div>
+            <div class="float-right alert alert-danger animated fadeInLeft" *ngIf="message.status"> {{ message.content }}</div>
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="card-search float-right">
@@ -54,6 +54,7 @@
           </tr>
           </tbody>
         </table>
+        <div *ngIf="loading.loadingProducts" class="loading"> <img src="../../../assets/img/loading.gif" /></div>
       </div>
       <div class="card-footer">
         <hr>
@@ -105,6 +106,7 @@
           </tr>
           </tbody>
         </table>
+        <div *ngIf="loading.loadingMarks" class="loading"> <img src="../../../assets/img/loading.gif" /></div>
       </div>
       <div class="card-footer">
         <hr>
@@ -143,6 +145,7 @@
           </tr>
           </tbody>
         </table>
+        <div *ngIf="loading.loadingCategories" class="loading"> <img src="../../../assets/img/loading.gif" /></div>
       </div>
       <div class="card-footer">
         <hr>
