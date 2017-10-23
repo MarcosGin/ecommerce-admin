@@ -45,6 +45,7 @@ import { MarksComponent } from './admin/components/products/marks/marks.componen
 import { CategoriesComponent } from './admin/components/products/categories/categories.component';
 import { ImageEditComponent } from './admin/components/products/images/image-edit.component';
 import { TimePipe } from './pipes/time.pipe';
+import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { TimePipe } from './pipes/time.pipe';
     CategoriesComponent,
     ImageEditComponent,
     TimePipe,
+    StatusPipe,
   ],
   imports: [
     BrowserModule,

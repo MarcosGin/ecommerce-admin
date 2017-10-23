@@ -102,7 +102,7 @@
                     <span class="badge badge-pill"
                           [ngClass]="{'badge-danger': mistake.status == 1,
                                       'badge-warning': mistake.status == 2,
-                                      'badge-success': mistake.status == 3}">{{ mistake.status}}</span></td>
+                                      'badge-success': mistake.status == 3}">{{ mistake.status | status}}</span></td>
                   <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
                 </tr>
               </tbody>
