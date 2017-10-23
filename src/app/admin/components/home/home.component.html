@@ -88,16 +88,27 @@
       </div>
       <div class="col-md-6">
         <div class="card">
-          <div class="card-header">Last mistakes
-            <div class="card-title">Errors produced on the web</div>
+          <div class="card-header">
+            <div class="float-left"> Mistakes<div class="card-title">Errors produced on the web</div></div>
+            <ul *ngIf="pagerMistakes.pages && pagerMistakes.pages.length" class="pagination float-right">
+              <li class="page-item" [ngClass]="{disabled:pagerMistakes.currentPage === 1}">
+                <a class="page-link" (click)="setPageMistakes(pagerMistakes.currentPage - 1)">&laquo;</a>
+              </li>
+              <li class="page-item" *ngFor="let page of pagerMistakes.pages" [ngClass]="{active:pagerMistakes.currentPage === page}">
+                <a class="page-link" (click)="setPageMistakes(page)">{{page}}</a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:pagerMistakes.currentPage === pagerMistakes.totalPages}">
+                <a class="page-link" (click)="setPageMistakes(pagerMistakes.currentPage + 1)">&raquo;</a>
+              </li>
+            </ul>
 
           </div>
           <div class="card-block card-nopadding">
             <table class="table">
               <tbody>
-                <tr *ngFor="let mistake of lastMistakes;">
+                <tr *ngFor="let mistake of pagedMistakes;">
                   <td>{{ mistake.title }}</td>
-                  <td class="text-center"><span class="badge badge-pill badge-info">{{ mistake.created_at | time }}</span></td>
+                  <td class="text-center"><span class="badge badge-pill badge-info">{{ mistake.created_at | time:'date' }}</span></td>
                   <td class="text-center">
                     <span class="badge badge-pill"
                           [ngClass]="{'badge-danger': mistake.status == 1,
