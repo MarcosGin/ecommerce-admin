@@ -96,14 +96,13 @@
             <table class="table">
               <tbody>
                 <tr *ngFor="let mistake of lastMistakes;">
-                  <td class="text-center">#{{ mistake.id }}</td>
                   <td>{{ mistake.title }}</td>
-                  <td class="text-center"><span class="badge badge-pill badge-info">{{ mistake.created_at }}</span></td>
+                  <td class="text-center"><span class="badge badge-pill badge-info">{{ mistake.created_at | time }}</span></td>
                   <td class="text-center">
                     <span class="badge badge-pill"
-                          [ngClass]="{'badge-danger': mistake.state == 'pending',
-                                      'badge-success': mistake.state == 'fixed',
-                                      'badge-warning': mistake.state == 'fixing'}">{{ mistake.state}}</span></td>
+                          [ngClass]="{'badge-danger': mistake.status == 1,
+                                      'badge-warning': mistake.status == 2,
+                                      'badge-success': mistake.status == 3}">{{ mistake.status}}</span></td>
                   <td class="text-center"><a href="" tooltip-msg="See more" class="tooltip-hover"><i class="ti-eye"></i></a></td>
                 </tr>
               </tbody>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService, ListMistake } from '../../../services/home.service';
 import { StatisticsService, StatisticsHome } from '../../../services/statistics.service';
+import { MistakesService, Mistakes} from '../../../services/mistakes.service';
 import { ProductsService } from '../../../services/products.service';
 import { Products } from '../../../interfaces/products';
 
@@ -12,11 +12,11 @@ import { Products } from '../../../interfaces/products';
 export class HomeComponent implements OnInit {
 
   lastProducts: Products [] = [];
-  lastMistakes: ListMistake[] = [];
+  lastMistakes: Mistakes [] = [];
   statistics: StatisticsHome;
 
-  constructor( private _homeService: HomeService,
-               private _statisticsService: StatisticsService,
+  constructor( private _statisticsService: StatisticsService,
+               private _mistakesService: MistakesService,
                private _productsService: ProductsService) {
     this.statistics = new StatisticsHome();
   }
@@ -29,10 +29,13 @@ export class HomeComponent implements OnInit {
         this._productsService.getProducts('desc', 5)
           .subscribe(data => {
             this.lastProducts = data.response;
+          }, err => console.log(err), () => {
+            this._mistakesService.getMistakes()
+              .subscribe(data => {
+                this.lastMistakes = data.response;
+              });
           });
       });
-
-    this.lastMistakes = this._homeService.getLastMistakes();
   }
 
 }
