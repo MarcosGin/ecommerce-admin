@@ -13,6 +13,7 @@ export class StatisticsService {
     const apiUrl = environment.apiUrl + environment.endpoints.statistics;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }

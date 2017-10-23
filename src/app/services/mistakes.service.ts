@@ -20,6 +20,7 @@ export class MistakesService {
     }
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }

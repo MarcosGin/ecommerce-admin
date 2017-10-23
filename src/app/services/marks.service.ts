@@ -13,6 +13,7 @@ s
     const apiUrl = environment.apiUrl + environment.endpoints.productMarkList;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }

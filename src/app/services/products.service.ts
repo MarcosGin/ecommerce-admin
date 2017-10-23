@@ -21,6 +21,7 @@ export class ProductsService {
     }
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -28,6 +29,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.product + '/' + id;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -35,6 +37,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.productImage + '/' + id;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -42,6 +45,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.productAdd;
     return this._commonService.post(apiUrl, JSON.stringify(data))
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -49,6 +53,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.productUpdate + '/' + id;
     return this._commonService.put(apiUrl,  JSON.stringify(data))
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -56,6 +61,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.productDelete + '/' + id;
     return this._commonService.delete(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -63,6 +69,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.productSearch + '/' + value;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -73,6 +80,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.productImageAdd + '/' + id;
     return this._commonService.post(apiUrl, data, headers)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -83,6 +91,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.productImageCoverAdd + '/' + id;
     return this._commonService.post(apiUrl, data, headers)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -90,6 +99,7 @@ export class ProductsService {
     const apiUrl = environment.apiUrl + environment.endpoints.productImageDelete + '/' + id + '/' + name;
     return this._commonService.delete(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }

@@ -14,6 +14,7 @@ export class CountryService {
     const apiUrl = environment.apiUrl + environment.endpoints.countryList;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }

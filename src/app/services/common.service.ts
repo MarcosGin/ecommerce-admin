@@ -31,6 +31,10 @@ export class CommonService {
     this.options = new RequestOptions({'headers': headers});
   }
 
+  updateJwt(jwt: string) {
+    this._auth.updateJwt(jwt);
+  }
+
   public get( url: string, params?: any) {
     this.setHeaders();
     return this.http.get(url, this.options)

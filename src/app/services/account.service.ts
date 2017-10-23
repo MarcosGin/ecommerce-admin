@@ -15,6 +15,7 @@ export class AccountService {
     const apiUrl = environment.apiUrl + environment.endpoints.accountProfile;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json().response;
       });
   }
@@ -22,6 +23,7 @@ export class AccountService {
     const apiUrl = environment.apiUrl + environment.endpoints.accountProfile;
     return this._commonService.put(apiUrl, JSON.stringify(data))
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }

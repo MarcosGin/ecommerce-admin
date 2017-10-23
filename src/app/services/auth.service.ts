@@ -20,6 +20,12 @@ export class AuthService {
     this.token = currentUser && currentUser.jwt;
   }
 
+  updateJwt (jwt: string) {
+    localStorage.setItem('jwt', JSON.stringify({jwt: jwt }));
+    const currentUser = JSON.parse(localStorage.getItem('jwt'));
+    this.token = currentUser && currentUser.jwt;
+  }
+
   login( username: string, password: string ) {
     const apiUrl = environment.apiUrl + environment.endpoints.authLogin;
     return this.http.post(apiUrl, JSON.stringify({email: username, password: password}))

@@ -14,6 +14,7 @@ export class UsersService {
     const apiUrl = environment.apiUrl + environment.endpoints.userList;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -21,6 +22,7 @@ export class UsersService {
     const apiUrl = environment.apiUrl + environment.endpoints.user + '/' + id;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json().response;
       });
   }
@@ -28,6 +30,7 @@ export class UsersService {
     const apiUrl = environment.apiUrl + environment.endpoints.userSearch + '/' + value;
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -35,6 +38,7 @@ export class UsersService {
     const apiUrl = environment.apiUrl + environment.endpoints.userUpdate + '/' + id;
     return this._commonService.put(apiUrl, JSON.stringify(data))
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
@@ -42,6 +46,7 @@ export class UsersService {
     const apiUrl = environment.apiUrl + environment.endpoints.userDelete + '/' + id;
     return this._commonService.delete(apiUrl)
       .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
         return res.json();
       });
   }
