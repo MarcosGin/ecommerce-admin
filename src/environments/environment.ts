@@ -24,7 +24,8 @@ const endpoints = {
   productImageDelete: 'products/images/delete',
   productMarkList: 'products/marks/list',
   productCategoryList: 'products/categories/list',
-  countryList: 'country/list'
+  countryList: 'country/list',
+  mistakeList: 'mistakes/list'
 };
 export const environment = {
   production: false,

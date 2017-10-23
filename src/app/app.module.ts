@@ -10,13 +10,13 @@ import { APP_ROUTING } from './app.routes';
 import { CommonService } from './services/common.service';
 import { AuthService } from './services/auth.service';
 import { AccountService } from './services/account.service';
-import { StatisticsService } from "./services/statistics.service";
-import { HomeService } from './services/home.service';
+import { StatisticsService } from './services/statistics.service';
 import { UsersService } from './services/users.service';
 import { ProductsService } from './services/products.service';
 import { CategorysService } from './services/categorys.service';
 import { MarksService } from './services/marks.service';
 import { CountryService } from './services/country.service';
+import { MistakesService } from './services/mistakes.service';
 import { PaginationService } from './services/pagination.service';
 
 
@@ -89,12 +89,12 @@ import { TimePipe } from './pipes/time.pipe';
     AuthService,
     AccountService,
     StatisticsService,
-    HomeService,
     UsersService,
     ProductsService,
     CategorysService,
     MarksService,
     CountryService,
+    MistakesService,
     PaginationService
   ],
   bootstrap: [AppComponent]
