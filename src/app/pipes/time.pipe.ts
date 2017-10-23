@@ -19,9 +19,12 @@ export class TimePipe implements PipeTransform {
     } else if (difference > 3600 && difference <= 86400) {
       const hours = Math.floor((difference / 60) / 60);
       str = hours > 1 ? `${hours} hours ago` : `${hours} hour ago`;
-    } else if (difference > 86400) {
+    } else if (difference > 86400 && difference <= 2629750) {
       const days = Math.floor(((difference / 60) / 60 ) *  0.041666);
       str = days > 1 ? `${days} days ago` : `${days} day ago`;
+    } else if (difference > 2629750) {
+      const months = Math.floor((((difference / 60) / 60 ) *  0.041666) * 0.0328549112);
+      str = months > 1 ? `${months} months ago` : `${months} month ago`;
     }
     return str;
 
