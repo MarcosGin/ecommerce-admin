@@ -11,15 +11,13 @@ export class ProductsService {
   constructor ( private _commonService: CommonService) {}
 
   getProducts( order: string = '', limit: number = 0) {
-    let apiUrl;
+    let apiUrl =  environment.apiUrl + environment.endpoints.productList;
     if ( order.length ) {
       if (limit > 0) {
-        apiUrl = environment.apiUrl + environment.endpoints.productList + '/' + order + '/' + limit;
+        apiUrl = apiUrl + '/' + order + '/' + limit;
       } else {
-        apiUrl = environment.apiUrl + environment.endpoints.productList + '/' + order;
+        apiUrl = apiUrl + '/' + order;
       }
-    } else {
-      apiUrl = environment.apiUrl + environment.endpoints.productList;
     }
     return this._commonService.get(apiUrl)
       .map((res: Response) => {

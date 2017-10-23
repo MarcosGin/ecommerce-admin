@@ -9,8 +9,15 @@ export class MistakesService {
 
   constructor( private _commonService: CommonService ) { }
 
-  getMistakes() {
-    const apiUrl = environment.apiUrl + environment.endpoints.mistakeList;
+  getMistakes( order: string = '', limit: number = 0) {
+    let apiUrl = environment.apiUrl + environment.endpoints.mistakeList;
+    if ( order.length ) {
+      if (limit > 0) {
+        apiUrl = apiUrl + '/' + order + '/' + limit;
+      } else {
+        apiUrl = apiUrl + '/' + order;
+      }
+    }
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
         return res.json();

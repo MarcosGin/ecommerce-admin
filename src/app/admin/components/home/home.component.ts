@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
           .subscribe(data => {
             this.lastProducts = data.response;
           }, err => console.log(err), () => {
-            this._mistakesService.getMistakes()
+            this._mistakesService.getMistakes('desc')
               .subscribe(data => {
                 this.mistakes = data.response;
                 this.setPageMistakes(1);
