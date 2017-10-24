@@ -19,6 +19,16 @@ export class AccountService {
         return res.json().response;
       });
   }
+
+  getHistory() {
+    const apiUrl = environment.apiUrl + environment.endpoints.accountHistory;
+    return this._commonService.get(apiUrl)
+      .map((res: Response) => {
+        this._commonService.updateJwt(res.json().jwt);
+        return res.json().response;
+      });
+  }
+
   updateProfile( data: any) {
     const apiUrl = environment.apiUrl + environment.endpoints.accountProfile;
     return this._commonService.put(apiUrl, JSON.stringify(data))
