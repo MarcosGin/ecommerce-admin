@@ -89,19 +89,7 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header">
-            <div class="float-left"> Mistakes<div class="card-title">Errors produced on the web</div></div>
-            <ul *ngIf="pagerMistakes.pages && pagerMistakes.pages.length" class="pagination float-right">
-              <li class="page-item" [ngClass]="{disabled:pagerMistakes.currentPage === 1}">
-                <a class="page-link" (click)="setPageMistakes(pagerMistakes.currentPage - 1)">&laquo;</a>
-              </li>
-              <li class="page-item" *ngFor="let page of pagerMistakes.pages" [ngClass]="{active:pagerMistakes.currentPage === page}">
-                <a class="page-link" (click)="setPageMistakes(page)">{{page}}</a>
-              </li>
-              <li class="page-item" [ngClass]="{disabled:pagerMistakes.currentPage === pagerMistakes.totalPages}">
-                <a class="page-link" (click)="setPageMistakes(pagerMistakes.currentPage + 1)">&raquo;</a>
-              </li>
-            </ul>
-
+            Mistakes<div class="card-title">Errors produced on the web</div>
           </div>
           <div class="card-block card-nopadding">
             <table class="table">
@@ -118,15 +106,18 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-          <div class="card-footer">
-            <hr>
-            <div class="footer-title">Add a new error</div>
-            <div class="float-right">
-              <button class="btn btn-info btn-fill btn-icon btn-sm">
-                <i class="ti-plus"></i>
-              </button>
-            </div>
+            <ul *ngIf="pagerMistakes.pages && pagerMistakes.pages.length" class="pagination float-right">
+              <li class="page-item" [ngClass]="{disabled:pagerMistakes.currentPage === 1}">
+                <a class="page-link" (click)="setPageMistakes(pagerMistakes.currentPage - 1)">&laquo;</a>
+              </li>
+              <li class="page-item" *ngFor="let page of pagerMistakes.pages" [ngClass]="{active:pagerMistakes.currentPage === page}">
+                <a class="page-link" (click)="setPageMistakes(page)">{{page}}</a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:pagerMistakes.currentPage === pagerMistakes.totalPages}">
+                <a class="page-link" (click)="setPageMistakes(pagerMistakes.currentPage + 1)">&raquo;</a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
           </div>
         </div>
       </div>

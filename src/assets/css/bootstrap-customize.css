@@ -28,17 +28,17 @@ a:hover{
   padding: 5px 8px;
   margin: 0;
 }
-.card-header .pagination {
+.pagination {
   font-size: 14px;
   margin-left: 20px;
 }
-.card-header .pagination .page-item{
+.pagination .page-item{
   cursor: pointer;
 }
-.card-header .pagination .page-item.disabled{
+.pagination .page-item.disabled{
   cursor: not-allowed;
 }
-.card-header .pagination .page-item.active .page-link{
+.pagination .page-item.active .page-link{
   background-color: #eceeef;
   border-color: #dddfe0;
   color: #000;
