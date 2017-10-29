@@ -5,6 +5,7 @@ import { AccountService } from '../../../../services/account.service';
 import { NotificationsService } from 'angular2-notifications';
 import { Users } from '../../../../services/users.service';
 import { Country } from '../../../../interfaces/country';
+import {CountryService} from "../../../../services/country.service";
 
 @Component({
   selector: 'app-profile',
@@ -19,40 +20,32 @@ export class ProfileComponent implements OnInit {
   public loading = false;
 
   constructor(  private _accountService: AccountService,
+                private _countryService: CountryService,
                 private _notifications: NotificationsService,
                 private formBuilder: FormBuilder) {
     this.user = new Users();
-    this.countrys = [
-      {
-        id: 'ar',
-        name: 'Argentina'
-      },
-      {
-        id: 'bo',
-        name: 'Bolivia'
-      },
-      {
-        id: 'pe',
-        name: 'Perú'
-      }
-    ];
   }
   ngOnInit() {
     this.buildForm();
-    this._accountService.getProfile()
+    this._countryService.getCountrys()
       .subscribe(data => {
-        this.form.setValue({
-          'firstname': data.firstname,
-          'lastname': data.lastname,
-          'username': data.username,
-          'document': data.document,
-          'email': data.email,
-          'phone': data.phone,
-          'country': data.country,
-          'city': data.city,
-          'address': data.address,
-          'postalcode': data.postalcode
-        });
+        this.countrys = data.response;
+      }, err => console.log(err), () => {
+        this._accountService.getProfile()
+          .subscribe(data => {
+            this.form.setValue({
+              'firstname': data.firstname,
+              'lastname': data.lastname,
+              'username': data.username,
+              'document': data.document,
+              'email': data.email,
+              'phone': data.phone,
+              'country': data.country,
+              'city': data.city,
+              'address': data.address,
+              'postalcode': data.postalcode
+            });
+          });
       });
   }
 
