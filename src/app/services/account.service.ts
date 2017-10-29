@@ -25,7 +25,7 @@ export class AccountService {
     return this._commonService.get(apiUrl)
       .map((res: Response) => {
         this._commonService.updateJwt(res.json().jwt);
-        return res.json().response;
+        return res.json();
       });
   }
 

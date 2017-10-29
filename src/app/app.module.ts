@@ -72,7 +72,7 @@ import { StatusPipe } from './pipes/status.pipe';
     CategoriesComponent,
     ImageEditComponent,
     TimePipe,
-    StatusPipe,
+    StatusPipe
   ],
   imports: [
     BrowserModule,

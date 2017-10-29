@@ -8,12 +8,13 @@ import { AccountService } from '../../../../services/account.service';
 })
 export class HistoryComponent implements OnInit {
 
+  public historySessions = [];
   constructor(private _accountService: AccountService) { }
 
   ngOnInit() {
     this._accountService.getHistory()
       .subscribe(data => {
-        console.log(data.response);
+       this.historySessions = data.response.sessions;
       });
   }
 

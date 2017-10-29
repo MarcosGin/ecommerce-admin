@@ -3,37 +3,19 @@
   <table class="table table-hover table-striped">
     <thead>
     <tr>
-      <th>Action</th>
       <th>Device</th>
       <th class="text-center">IP</th>
+      <th class="text-center">State</th>
       <th class="text-center">Date</th>
     </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Edit product(#00102)</td>
-        <td>Desktop - Google Chrome</td>
-        <td class="text-center">182.132.1.200</td>
-        <td class="text-center">An hour ago</td>
+      <tr *ngFor="let session of historySessions">
+        <td>{{ session.device }}</td>
+        <td class="text-center">{{ session.ip }}</td>
+        <td class="text-center" *ngIf="session.activate == 0"><span class="badge badge-pill badge-danger">Disconnected</span></td>
+        <td class="text-center" *ngIf="session.activate != 0"><span class="badge badge-pill badge-success">Connected</span></td>
+        <td class="text-center">{{ session.created_at | time:'date'}}</td>
       </tr>
-      <tr>
-        <td>Delete products(#31003)</td>
-        <td>Desktop - Mozilla Firefox</td>
-        <td class="text-center">185.321.1.421</td>
-        <td class="text-center">Three hours ago</td>
-      </tr>
-      <tr>
-        <td>Edit product(#00402)</td>
-        <td>Desktop - Google Chrome</td>
-        <td class="text-center">182.132.1.200</td>
-        <td class="text-center">Five hours ago</td>
-      </tr>
-      <tr>
-        <td>Add product(#00402)</td>
-        <td>Desktop - Google Chrome</td>
-        <td class="text-center">182.132.1.200</td>
-        <td class="text-center">Five hours ago</td>
-      </tr>
-    </tbody>
   </table>
 </div>
