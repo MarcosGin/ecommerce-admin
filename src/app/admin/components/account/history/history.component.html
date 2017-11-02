@@ -10,12 +10,23 @@
     </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let session of historySessions">
+      <tr *ngFor="let session of pagedHistories">
         <td>{{ session.device }}</td>
         <td class="text-center">{{ session.ip }}</td>
         <td class="text-center" *ngIf="session.activate == 0"><span class="badge badge-pill badge-danger">Disconnected</span></td>
         <td class="text-center" *ngIf="session.activate != 0"><span class="badge badge-pill badge-success">Connected</span></td>
-        <td class="text-center">{{ session.created_at | time:'date'}}</td>
+        <td class="text-center"><span class="badge badge-pill badge-info">{{ session.created_at | time:'date'}}</span></td>
       </tr>
   </table>
+  <ul *ngIf="pagerHistories.pages && pagerHistories.pages.length" class="pagination float-right">
+    <li class="page-item" [ngClass]="{disabled:pagerHistories.currentPage === 1}">
+      <a class="page-link" (click)="setPageHistories(pagerHistories.currentPage - 1)">&laquo;</a>
+    </li>
+    <li class="page-item" *ngFor="let page of pagerHistories.pages" [ngClass]="{active:pagerHistories.currentPage === page}">
+      <a class="page-link" (click)="setPageHistories(page)">{{page}}</a>
+    </li>
+    <li class="page-item" [ngClass]="{disabled:pagerHistories.currentPage === pagerHistories.totalPages}">
+      <a class="page-link" (click)="setPageHistories(pagerHistories.currentPage + 1)">&raquo;</a>
+    </li>
+  </ul>
 </div>

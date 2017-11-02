@@ -1,0 +1,23 @@
+.pagination{
+  margin: 0 20px;
+  margin-bottom: 10px;
+}
+.card-block .table > thead > tr > th:first-child {
+  width: 40%;
+}
+.card-block .table > thead > tr > th:nth-child(2),
+.card-block .table > thead > tr > th:nth-child(3),
+.card-block .table > thead > tr > th:nth-child(4){
+  width: 20%;
+}
+.badge{
+  font-weight: 300;
+  padding: 3px 6px;
+  padding-top: 4px;
+}
+@media (max-width:490px){
+  .card-block .table > thead > tr > th:nth-child(4),
+  .card-block .table > tbody > tr > td:nth-child(4){
+    display: none;
+  }
+}
